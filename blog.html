@@ -41,13 +41,53 @@
             <p>Thoughts on Innovation, AI, Faith, and Coffee</p>
         </div>
         
-        <div class="blog-content">
-            <iframe src="https://donbarger.substack.com" frameborder="0" title="Don's Blog"></iframe>
+        <div class="blog-content" id="blog-articles">
+            <div class="loading">Loading articles...</div>
         </div>
     </div>
     
     <div class="bmc-footer">
         <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="donbarger" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
     </div>
+    
+    <script>
+        // Fetch and display Substack articles from RSS feed
+        async function loadBlogPosts() {
+            const container = document.getElementById('blog-articles');
+            
+            try {
+                // Using RSS2JSON service to convert RSS to JSON
+                const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://donbarger.substack.com/feed');
+                const data = await response.json();
+                
+                if (data.status === 'ok' && data.items.length > 0) {
+                    container.innerHTML = '<div class="articles-grid">' + 
+                        data.items.map(post => `
+                            <article class="blog-post">
+                                ${post.thumbnail ? `<img src="${post.thumbnail}" alt="${post.title}" class="post-image">` : ''}
+                                <div class="post-content">
+                                    <h2 class="post-title"><a href="${post.link}" target="_blank" rel="noopener noreferrer">${post.title}</a></h2>
+                                    <p class="post-date">${new Date(post.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                                    <p class="post-excerpt">${post.description.replace(/<[^>]*>/g, '').substring(0, 200)}...</p>
+                                    <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="read-more">Read More →</a>
+                                </div>
+                            </article>
+                        `).join('') + 
+                        '</div>' +
+                        '<div class="subscribe-cta">' +
+                            '<h3>Want more?</h3>' +
+                            '<p>Subscribe to get my latest articles delivered to your inbox</p>' +
+                            '<a href="https://donbarger.substack.com" target="_blank" rel="noopener noreferrer" class="subscribe-button">Subscribe on Substack</a>' +
+                        '</div>';
+                } else {
+                    container.innerHTML = '<div class="error"><p>Unable to load articles. <a href="https://donbarger.substack.com" target="_blank" rel="noopener noreferrer">Visit my Substack directly →</a></p></div>';
+                }
+            } catch (error) {
+                container.innerHTML = '<div class="error"><p>Unable to load articles. <a href="https://donbarger.substack.com" target="_blank" rel="noopener noreferrer">Visit my Substack directly →</a></p></div>';
+            }
+        }
+        
+        loadBlogPosts();
+    </script>
 </body>
 </html>
