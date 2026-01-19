@@ -73,13 +73,47 @@
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(data.contents, 'text/html');
                     
-                    // Extract article content from Substack page
-                    const title = doc.querySelector('h1.post-title, h1')?.textContent || 'Article';
-                    const subtitle = doc.querySelector('.subtitle')?.textContent || '';
-                    const date = doc.querySelector('time')?.textContent || '';
-                    const body = doc.querySelector('.body, article, .post-content')?.innerHTML || 
-                                doc.querySelector('main')?.innerHTML ||
-                                '<p>Unable to load article content. <a href="' + articleUrl + '" target="_blank" rel="noopener noreferrer">Read on Substack →</a></p>';
+                    // Extract article metadata
+                    let title = doc.querySelector('h1.post-title, h1.article-title, h1')?.textContent || 'Article';
+                    let subtitle = doc.querySelector('.subtitle, .article-subtitle')?.textContent || '';
+                    let date = doc.querySelector('time, .post-date')?.textContent || '';
+                    
+                    // Try multiple selectors to find the article body
+                    let bodyElement = doc.querySelector('.body.markup, .available-content, article.post, .post-content, main article');
+                    
+                    if (!bodyElement) {
+                        bodyElement = doc.querySelector('article, main, .post');
+                    }
+                    
+                    let body = '';
+                    if (bodyElement) {
+                        // Clone the element to manipulate it
+                        const bodyClone = bodyElement.cloneNode(true);
+                        
+                        // Remove unwanted elements
+                        bodyClone.querySelectorAll('script, style, .subscription-widget, .share-buttons, .comments, footer, nav, .subscribe-cta, button').forEach(el => el.remove());
+                        
+                        // Clean up the HTML
+                        body = bodyClone.innerHTML;
+                        
+                        // Remove inline styles that might break formatting
+                        body = body.replace(/style="[^"]*"/g, '');
+                        
+                        // Remove empty paragraphs
+                        body = body.replace(/<p>\s*<\/p>/g, '');
+                        
+                        // Ensure images are responsive
+                        body = body.replace(/<img/g, '<img style="max-width: 100%; height: auto;"');
+                    }
+                    
+                    if (!body || body.trim().length < 100) {
+                        throw new Error('Unable to extract article content');
+                    }
+                    
+                    // Clean up title/subtitle/date
+                    title = title.trim();
+                    subtitle = subtitle.trim();
+                    date = date.trim();
                     
                     container.innerHTML = `
                         <header class="post-header">
@@ -94,6 +128,19 @@
                             <a href="${articleUrl}" target="_blank" rel="noopener noreferrer" class="original-link">Read Original on Substack →</a>
                         </div>
                     `;
+                    
+                    // After rendering, apply additional cleanup
+                    const renderedBody = container.querySelector('.post-body');
+                    if (renderedBody) {
+                        // Remove any remaining unwanted elements
+                        renderedBody.querySelectorAll('.subscription-widget, .paywall, .subscribe-cta').forEach(el => el.remove());
+                        
+                        // Add target="_blank" to all links
+                        renderedBody.querySelectorAll('a').forEach(link => {
+                            link.setAttribute('target', '_blank');
+                            link.setAttribute('rel', 'noopener noreferrer');
+                        });
+                    }
                 } else {
                     throw new Error('Unable to load content');
                 }
