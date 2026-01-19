@@ -98,9 +98,32 @@
         }
         
         .lang-count {
-            font-size: 0.85rem;
-            color: var(--coffee-gold);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            flex: 1;
+        }
+        
+        .lang-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1.75rem;
+            background: linear-gradient(135deg, var(--espresso), var(--dark-roast));
+            color: var(--white);
             font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(62, 39, 35, 0.2);
+            margin-top: auto;
+        }
+        
+        .lang-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(62, 39, 35, 0.3);
+            background: linear-gradient(135deg, var(--dark-roast), var(--medium-roast));
         }
         
         @media (max-width: 768px) {
@@ -132,7 +155,7 @@
             </button>
             <div class="nav-links">
                 <a href="blog.html" class="nav-link">Don's Blog</a>
-                <a href="#" class="nav-link nav-dropdown">Missional AI Tools ▾
+                <a href="index.html#tools" class="nav-link nav-dropdown">Missional AI Tools ▾
                     <div class="dropdown-menu">
                         <a href="coffeecoach.html">Coffee Coach</a>
                         <a href="faithbot.html">FaithBot</a>
@@ -167,6 +190,7 @@
                 <h3 class="lang-title">Español</h3>
                 <p class="lang-subtitle">Spanish</p>
                 <p class="lang-count">7 Tools Available</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-arabic.html" class="lang-card">
@@ -174,6 +198,7 @@
                 <h3 class="lang-title">العربية</h3>
                 <p class="lang-subtitle">Arabic</p>
                 <p class="lang-count">بوت الإيمان</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-bengali.html" class="lang-card">
@@ -181,6 +206,7 @@
                 <h3 class="lang-title">বাংলা</h3>
                 <p class="lang-subtitle">Bengali</p>
                 <p class="lang-count">বিশ্বাস-সহায়ক</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-burmese.html" class="lang-card">
@@ -188,6 +214,7 @@
                 <h3 class="lang-title">ဗမာ</h3>
                 <p class="lang-subtitle">Burmese</p>
                 <p class="lang-count">ယုံကြည်ခြင်းဘော့</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-cantonese.html" class="lang-card">
@@ -195,6 +222,7 @@
                 <h3 class="lang-title">粵語</h3>
                 <p class="lang-subtitle">Cantonese</p>
                 <p class="lang-count">信仰小助手</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-hindi.html" class="lang-card">
@@ -202,6 +230,7 @@
                 <h3 class="lang-title">हिन्दी</h3>
                 <p class="lang-subtitle">Hindi</p>
                 <p class="lang-count">विश्वास मित्र</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-hokkien.html" class="lang-card">
@@ -209,6 +238,7 @@
                 <h3 class="lang-title">閩南語</h3>
                 <p class="lang-subtitle">Hokkien</p>
                 <p class="lang-count">Sìn-ông Ló͘-bó</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-indonesian.html" class="lang-card">
@@ -216,6 +246,7 @@
                 <h3 class="lang-title">Indonesia</h3>
                 <p class="lang-subtitle">Indonesian</p>
                 <p class="lang-count">ImanBot</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-japanese.html" class="lang-card">
@@ -223,6 +254,7 @@
                 <h3 class="lang-title">日本語</h3>
                 <p class="lang-subtitle">Japanese</p>
                 <p class="lang-count">フェイスボット</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-javanese.html" class="lang-card">
@@ -230,6 +262,7 @@
                 <h3 class="lang-title">Basa Jawa</h3>
                 <p class="lang-subtitle">Javanese</p>
                 <p class="lang-count">ImaneBot</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-korean.html" class="lang-card">
@@ -237,6 +270,7 @@
                 <h3 class="lang-title">한국어</h3>
                 <p class="lang-subtitle">Korean</p>
                 <p class="lang-count">페이스봇</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-khmer.html" class="lang-card">
@@ -244,6 +278,7 @@
                 <h3 class="lang-title">ខ្មែរ</h3>
                 <p class="lang-subtitle">Khmer</p>
                 <p class="lang-count">បុតជំនឿ</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-lao.html" class="lang-card">
@@ -251,6 +286,7 @@
                 <h3 class="lang-title">ລາວ</h3>
                 <p class="lang-subtitle">Lao</p>
                 <p class="lang-count">ຟ້າຍບອດ</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-mandarin.html" class="lang-card">
@@ -258,6 +294,7 @@
                 <h3 class="lang-title">普通话</h3>
                 <p class="lang-subtitle">Mandarin (Simplified)</p>
                 <p class="lang-count">真理伙伴</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-malay.html" class="lang-card">
@@ -265,6 +302,7 @@
                 <h3 class="lang-title">Bahasa Melayu</h3>
                 <p class="lang-subtitle">Malay</p>
                 <p class="lang-count">Suara Iman</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-mongolian.html" class="lang-card">
@@ -272,6 +310,7 @@
                 <h3 class="lang-title">Монгол</h3>
                 <p class="lang-subtitle">Mongolian</p>
                 <p class="lang-count">ИтгэлБот</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-filipino.html" class="lang-card">
@@ -279,6 +318,7 @@
                 <h3 class="lang-title">Tagalog/Pilipino</h3>
                 <p class="lang-subtitle">Filipino</p>
                 <p class="lang-count">Gabay sa Pananampalataya</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-shona.html" class="lang-card">
@@ -286,6 +326,7 @@
                 <h3 class="lang-title">chiShona</h3>
                 <p class="lang-subtitle">Shona</p>
                 <p class="lang-count">Mubatsiri weKutenda</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-thai.html" class="lang-card">
@@ -293,6 +334,7 @@
                 <h3 class="lang-title">ไทย</h3>
                 <p class="lang-subtitle">Thai</p>
                 <p class="lang-count">เพื่อนคริสเตียน</p>
+                <span class="lang-button">Explore</span>
             </a>
             
             <a href="lang-vietnamese.html" class="lang-card">
@@ -300,7 +342,9 @@
                 <h3 class="lang-title">Tiếng Việt</h3>
                 <p class="lang-subtitle">Vietnamese</p>
                 <p class="lang-count">Bạn Đức Tin</p>
+                <span class="lang-button">Explore</span>
             </a>
+            
         </div>
     </section>
     

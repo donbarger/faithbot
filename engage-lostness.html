@@ -99,12 +99,25 @@
         }
         
         .worldview-link {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            color: var(--coffee-gold);
+            gap: 0.75rem;
+            padding: 0.875rem 1.75rem;
+            background: linear-gradient(135deg, var(--espresso), var(--dark-roast));
+            color: var(--white);
             font-weight: 600;
-            font-size: 0.9rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(62, 39, 35, 0.2);
+            margin-top: auto;
+        }
+        
+        .worldview-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(62, 39, 35, 0.3);
+            background: linear-gradient(135deg, var(--dark-roast), var(--medium-roast));
         }
         
         @media (max-width: 768px) {
@@ -137,7 +150,7 @@
             </button>
             <div class="nav-links">
                 <a href="blog.html" class="nav-link">Don's Blog</a>
-                <a href="#" class="nav-link nav-dropdown">Missional AI Tools ▾
+                <a href="index.html#tools" class="nav-link nav-dropdown">Missional AI Tools ▾
                     <div class="dropdown-menu">
                         <a href="coffeecoach.html">Coffee Coach</a>
                         <a href="faithbot.html">FaithBot</a>
@@ -171,119 +184,119 @@
                 <div class="worldview-icon">✝️</div>
                 <h3 class="worldview-title">Cultural Christians</h3>
                 <p class="worldview-description">Engage with those who identify as Christian culturally but may not have a personal relationship with Christ.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
             
             <a href="engage-gen-alpha.html" class="worldview-card">
                 <div class="worldview-icon">👶</div>
                 <h3 class="worldview-title">Gen Alpha</h3>
                 <p class="worldview-description">Connect with the generation born after 2010, growing up in an AI-native world.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
             
             <a href="engage-gen-z.html" class="worldview-card">
                 <div class="worldview-icon">📱</div>
                 <h3 class="worldview-title">Gen Z</h3>
                 <p class="worldview-description">Understand and engage the digital-native generation shaping culture today.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
             
             <a href="engage-postmoderns.html" class="worldview-card">
                 <div class="worldview-icon">🎭</div>
                 <h3 class="worldview-title">Postmoderns</h3>
                 <p class="worldview-description">Navigate conversations about truth, meaning, and faith in a postmodern context.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
             
             <a href="engage-mormons.html" class="worldview-card">
                 <div class="worldview-icon">🏛️</div>
                 <h3 class="worldview-title">Mormons</h3>
                 <p class="worldview-description">Learn about LDS beliefs and practice gracious dialogue with Mormon friends.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
             
             <a href="engage-latin-american-catholics.html" class="worldview-card">
                 <div class="worldview-icon">🌎</div>
                 <h3 class="worldview-title">Latin American Catholics</h3>
                 <p class="worldview-description">Understand Latin American Catholic culture and share the gospel effectively.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
             
             <a href="engage-muslims.html" class="worldview-card">
                 <div class="worldview-icon">☪️</div>
                 <h3 class="worldview-title">Muslims</h3>
                 <p class="worldview-description">Build bridges with Muslim friends and share your faith with cultural sensitivity.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
             
             <a href="engage-animism.html" class="worldview-card">
                 <div class="worldview-icon">🌿</div>
                 <h3 class="worldview-title">Animism</h3>
                 <p class="worldview-description">Understand animistic beliefs and communicate Christ's power over spiritual forces.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
             
             <a href="engage-chinese-religions.html" class="worldview-card">
                 <div class="worldview-icon">🏮</div>
                 <h3 class="worldview-title">Chinese Religions</h3>
                 <p class="worldview-description">Navigate the blend of Confucianism, Taoism, and Buddhism in Chinese culture.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
             
             <a href="engage-hindus.html" class="worldview-card">
                 <div class="worldview-icon">🕉️</div>
                 <h3 class="worldview-title">Hindus</h3>
                 <p class="worldview-description">Learn about Hindu beliefs and share Christ within this worldview framework.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
             
             <a href="engage-japanese.html" class="worldview-card">
                 <div class="worldview-icon">🎌</div>
                 <h3 class="worldview-title">Japanese</h3>
                 <p class="worldview-description">Understand Shinto, Buddhism, and Japanese cultural values in evangelism.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
             
             <a href="engage-orthodox.html" class="worldview-card">
                 <div class="worldview-icon">☦️</div>
                 <h3 class="worldview-title">Orthodox</h3>
                 <p class="worldview-description">Engage with Eastern Orthodox Christians and understand their rich traditions.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
             
             <a href="engage-jehovah-witnesses.html" class="worldview-card">
                 <div class="worldview-icon">📖</div>
                 <h3 class="worldview-title">Jehovah's Witnesses</h3>
                 <p class="worldview-description">Navigate doctrinal differences and share the true gospel lovingly.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
             
             <a href="engage-turks.html" class="worldview-card">
                 <div class="worldview-icon">🇹🇷</div>
                 <h3 class="worldview-title">Turks</h3>
                 <p class="worldview-description">Understand Turkish culture and share Christ in this unique Muslim context.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
             
             <a href="engage-catholicism.html" class="worldview-card">
                 <div class="worldview-icon">⛪</div>
                 <h3 class="worldview-title">Catholicism</h3>
                 <p class="worldview-description">Understand Catholic beliefs and practice gracious interfaith dialogue.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
             
             <a href="engage-african-traditional.html" class="worldview-card">
                 <div class="worldview-icon">🌍</div>
                 <h3 class="worldview-title">African Traditional Religions</h3>
                 <p class="worldview-description">Learn about ATR and contextualize the gospel for African contexts.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
             
             <a href="engage-buddhists.html" class="worldview-card">
                 <div class="worldview-icon">☸️</div>
                 <h3 class="worldview-title">Buddhists</h3>
                 <p class="worldview-description">Understand Buddhist philosophy and share Christ's answer to suffering.</p>
-                <span class="worldview-link">Explore →</span>
+                <span class="worldview-link">Explore</span>
             </a>
         </div>
     </section>
