@@ -73,7 +73,7 @@ body {
 .hero {
     position: relative;
     background: linear-gradient(135deg, var(--espresso) 0%, var(--dark-roast) 50%, var(--medium-roast) 100%);
-    padding: 8rem 0 6rem;
+    padding: 4rem 0 3rem;
     overflow: hidden;
 }
 
@@ -104,8 +104,8 @@ body {
 }
 
 .coffee-icon-hero {
-    font-size: 5rem;
-    margin-bottom: 1.5rem;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
     animation: float 3s ease-in-out infinite;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
 }
@@ -116,19 +116,19 @@ body {
 }
 
 .hero-title {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 800;
     color: var(--white);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     letter-spacing: -0.03em;
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .hero-tagline {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 500;
     color: var(--coffee-gold);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
