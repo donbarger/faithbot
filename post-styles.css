@@ -1,17 +1,18 @@
-/* Post Viewer Styles */
+/* Post Viewer Styles - Iframe Version */
 .post-container {
     flex: 1;
     width: 100%;
     height: calc(100vh - 64px);
-    overflow: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     background: var(--foam);
-    padding: 2rem 0;
 }
 
-.post-wrapper {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 2rem;
+.post-header-wrapper {
+    background: var(--white);
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border-light);
 }
 
 .back-link {
@@ -20,7 +21,7 @@
     color: var(--text-secondary);
     text-decoration: none;
     font-weight: 500;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     transition: color 0.3s ease;
 }
 
@@ -28,297 +29,41 @@
     color: var(--espresso);
 }
 
-.post-article {
-    background: var(--white);
-    border-radius: 12px;
-    padding: 3rem;
-    box-shadow: 0 2px 8px rgba(62, 39, 35, 0.1);
-    margin-bottom: 2rem;
+.post-info {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.post-header {
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 2px solid var(--cream);
+.article-meta {
+    text-align: center;
+    padding: 1rem 0;
 }
 
-.post-title {
-    font-size: 2.5rem;
+.article-title {
+    font-size: 2rem;
     font-weight: 700;
     color: var(--espresso);
     line-height: 1.2;
-    margin-bottom: 1rem;
-}
-
-.post-subtitle {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-    margin-bottom: 1rem;
-}
-
-.post-date {
-    color: var(--text-light);
-    font-size: 0.95rem;
-}
-
-.post-body {
-    font-size: 1.125rem;
-    line-height: 1.8;
-    color: var(--text-primary);
-    font-family: Georgia, 'Times New Roman', serif;
-}
-
-.post-body > * {
-    margin-bottom: 1.5rem;
-}
-
-.post-body p {
-    margin-bottom: 1.5rem;
-    text-align: left;
-}
-
-.post-body p:empty {
-    display: none;
-}
-
-.post-body h1, .post-body h2, .post-body h3, .post-body h4, .post-body h5, .post-body h6 {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    color: var(--espresso);
-    margin-top: 2.5rem;
-    margin-bottom: 1.25rem;
-    font-weight: 700;
-    line-height: 1.3;
-}
-
-.post-body h1 {
-    font-size: 2.25rem;
-    margin-top: 3rem;
-}
-
-.post-body h2 {
-    font-size: 1.875rem;
-    margin-top: 2.5rem;
-}
-
-.post-body h3 {
-    font-size: 1.5rem;
-}
-
-.post-body h4 {
-    font-size: 1.25rem;
-}
-
-.post-body h5, .post-body h6 {
-    font-size: 1.1rem;
-}
-
-.post-body img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin: 2rem 0;
-    display: block;
-}
-
-.post-body figure {
-    margin: 2rem 0;
-}
-
-.post-body figcaption {
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--text-light);
-    margin-top: 0.5rem;
-    font-style: italic;
-}
-
-.post-body a {
-    color: var(--coffee-gold);
-    text-decoration: underline;
-    transition: color 0.3s ease;
-}
-
-.post-body a:hover {
-    color: var(--coffee-amber);
-}
-
-.post-body ul, .post-body ol {
-    margin-bottom: 1.5rem;
-    padding-left: 2rem;
-    line-height: 1.8;
-}
-
-.post-body ul {
-    list-style-type: disc;
-}
-
-.post-body ol {
-    list-style-type: decimal;
-}
-
-.post-body li {
-    margin-bottom: 0.75rem;
-}
-
-.post-body li > p {
     margin-bottom: 0.5rem;
 }
 
-.post-body blockquote {
-    border-left: 4px solid var(--coffee-gold);
-    padding-left: 1.5rem;
-    margin: 2rem 0;
-    font-style: italic;
-    color: var(--text-secondary);
-    font-size: 1.15rem;
-}
-
-.post-body blockquote p {
-    margin-bottom: 1rem;
-}
-
-.post-body code {
-    background: var(--cream);
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    font-family: 'Monaco', 'Courier New', monospace;
-    font-size: 0.9em;
-    color: var(--dark-roast);
-}
-
-.post-body pre {
-    background: var(--cream);
-    padding: 1.5rem;
-    border-radius: 8px;
-    overflow-x: auto;
-    margin: 2rem 0;
-    border: 1px solid var(--border-light);
-}
-
-.post-body pre code {
-    background: none;
-    padding: 0;
+.article-date {
+    color: var(--text-light);
     font-size: 0.95rem;
-    line-height: 1.6;
 }
 
-.post-body hr {
-    border: none;
-    border-top: 2px solid var(--cream);
-    margin: 3rem 0;
-}
-
-.post-body table {
+.post-iframe-wrapper {
+    flex: 1;
     width: 100%;
-    border-collapse: collapse;
-    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
 }
 
-.post-body table th,
-.post-body table td {
-    padding: 0.75rem;
-    border: 1px solid var(--border-light);
-    text-align: left;
-}
-
-.post-body table th {
-    background: var(--cream);
-    font-weight: 600;
-    color: var(--espresso);
-}
-
-.post-body table tr:nth-child(even) {
-    background: var(--foam);
-}
-
-/* Substack-specific content cleanup */
-.post-body .subscription-widget,
-.post-body .paywall,
-.post-body .captioned-button-wrap,
-.post-body .subscribe-widget,
-.post-body [class*="subscribe"],
-.post-body [class*="paywall"] {
-    display: none !important;
-}
-
-/* Better spacing for nested elements */
-.post-body li > ul,
-.post-body li > ol {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-/* Improve emphasis */
-.post-body strong, .post-body b {
-    font-weight: 700;
-    color: var(--espresso);
-}
-
-.post-body em, .post-body i {
-    font-style: italic;
-}
-
-/* Better handling of embedded content */
-.post-body iframe {
-    max-width: 100%;
-    margin: 2rem 0;
-    border-radius: 8px;
-}
-
-.post-body video {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin: 2rem 0;
-}
-
-/* Pullquotes and highlights */
-.post-body .pullquote,
-.post-body [class*="highlight"] {
-    background: var(--cream);
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 2rem 0;
-    border-left: 4px solid var(--coffee-gold);
-}
-
-.read-original {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--cream);
-    text-align: center;
-}
-
-.original-link {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, var(--espresso), var(--dark-roast));
-    color: var(--white);
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.original-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(62, 39, 35, 0.3);
-}
-
-.post-footer {
-    text-align: center;
-    color: var(--text-light);
-    font-size: 0.9rem;
-}
-
-.post-footer a {
-    color: var(--coffee-gold);
-    text-decoration: none;
-}
-
-.post-footer a:hover {
-    text-decoration: underline;
+#post-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
 }
 
 .loading, .error {
@@ -332,39 +77,43 @@
     margin-bottom: 1rem;
 }
 
+.error .subscribe-button {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    background: linear-gradient(135deg, var(--espresso), var(--dark-roast));
+    color: var(--white);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.error .subscribe-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(62, 39, 35, 0.3);
+}
+
 @media (max-width: 768px) {
     .post-container {
         height: calc(100vh - 56px);
-        padding: 1rem 0;
     }
     
-    .post-wrapper {
-        padding: 0 1rem;
+    .post-header-wrapper {
+        padding: 1rem 1.5rem;
     }
     
-    .post-article {
-        padding: 2rem 1.5rem;
-    }
-    
-    .post-title {
-        font-size: 2rem;
-    }
-    
-    .post-subtitle {
-        font-size: 1.1rem;
-    }
-    
-    .post-body {
-        font-size: 1rem;
+    .article-title {
+        font-size: 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
-    .post-article {
-        padding: 1.5rem 1rem;
+    .post-header-wrapper {
+        padding: 1rem;
     }
     
-    .post-title {
-        font-size: 1.75rem;
+    .article-title {
+        font-size: 1.25rem;
     }
 }

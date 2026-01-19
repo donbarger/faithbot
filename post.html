@@ -36,14 +36,12 @@
     </nav>
     
     <div class="post-container">
-        <div class="post-wrapper">
+        <div class="post-header-wrapper">
             <a href="blog.html" class="back-link">← Back to Blog</a>
-            <article id="post-content" class="post-article">
-                <div class="loading">Loading article...</div>
-            </article>
-            <div class="post-footer">
-                <p>Originally published on <a href="https://donbarger.substack.com" target="_blank" rel="noopener noreferrer">Don's Substack</a></p>
-            </div>
+            <div id="post-info" class="post-info"></div>
+        </div>
+        <div class="post-iframe-wrapper">
+            <iframe id="post-frame" frameborder="0" title="Blog Post"></iframe>
         </div>
     </div>
     
@@ -57,103 +55,74 @@
         const articleUrl = urlParams.get('url');
         
         async function loadArticle() {
-            const container = document.getElementById('post-content');
+            const iframe = document.getElementById('post-frame');
+            const postInfo = document.getElementById('post-info');
             
             if (!articleUrl) {
-                container.innerHTML = '<div class="error"><p>No article specified. <a href="blog.html">Return to blog</a></p></div>';
+                postInfo.innerHTML = '<div class="error"><p>No article specified. <a href="blog.html">Return to blog</a></p></div>';
                 return;
             }
             
+            // Show loading state
+            postInfo.innerHTML = '<div class="loading">Loading article...</div>';
+            
+            // Set iframe source to article URL
+            iframe.src = articleUrl;
+            
+            // Try to get article metadata from RSS to show title
             try {
-                // Fetch the article content using CORS proxy
-                const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(articleUrl)}`);
+                const rssUrl = 'https://donbarger.substack.com/feed';
+                const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`);
                 const data = await response.json();
                 
                 if (data.contents) {
                     const parser = new DOMParser();
-                    const doc = parser.parseFromString(data.contents, 'text/html');
+                    const xml = parser.parseFromString(data.contents, 'text/xml');
+                    const items = xml.querySelectorAll('item');
                     
-                    // Extract article metadata
-                    let title = doc.querySelector('h1.post-title, h1.article-title, h1')?.textContent || 'Article';
-                    let subtitle = doc.querySelector('.subtitle, .article-subtitle')?.textContent || '';
-                    let date = doc.querySelector('time, .post-date')?.textContent || '';
+                    // Find the matching article
+                    const article = Array.from(items).find(item => {
+                        const link = item.querySelector('link')?.textContent;
+                        return link === articleUrl;
+                    });
                     
-                    // Try multiple selectors to find the article body
-                    let bodyElement = doc.querySelector('.body.markup, .available-content, article.post, .post-content, main article');
-                    
-                    if (!bodyElement) {
-                        bodyElement = doc.querySelector('article, main, .post');
+                    if (article) {
+                        const title = article.querySelector('title')?.textContent || '';
+                        const pubDate = article.querySelector('pubDate')?.textContent || '';
+                        
+                        if (title) {
+                            postInfo.innerHTML = `
+                                <div class="article-meta">
+                                    <h1 class="article-title">${title}</h1>
+                                    ${pubDate ? `<p class="article-date">${new Date(pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>` : ''}
+                                </div>
+                            `;
+                        } else {
+                            postInfo.innerHTML = '';
+                        }
+                    } else {
+                        postInfo.innerHTML = '';
                     }
-                    
-                    let body = '';
-                    if (bodyElement) {
-                        // Clone the element to manipulate it
-                        const bodyClone = bodyElement.cloneNode(true);
-                        
-                        // Remove unwanted elements
-                        bodyClone.querySelectorAll('script, style, .subscription-widget, .share-buttons, .comments, footer, nav, .subscribe-cta, button').forEach(el => el.remove());
-                        
-                        // Clean up the HTML
-                        body = bodyClone.innerHTML;
-                        
-                        // Remove inline styles that might break formatting
-                        body = body.replace(/style="[^"]*"/g, '');
-                        
-                        // Remove empty paragraphs
-                        body = body.replace(/<p>\s*<\/p>/g, '');
-                        
-                        // Ensure images are responsive
-                        body = body.replace(/<img/g, '<img style="max-width: 100%; height: auto;"');
-                    }
-                    
-                    if (!body || body.trim().length < 100) {
-                        throw new Error('Unable to extract article content');
-                    }
-                    
-                    // Clean up title/subtitle/date
-                    title = title.trim();
-                    subtitle = subtitle.trim();
-                    date = date.trim();
-                    
-                    container.innerHTML = `
-                        <header class="post-header">
-                            <h1 class="post-title">${title}</h1>
-                            ${subtitle ? `<p class="post-subtitle">${subtitle}</p>` : ''}
-                            ${date ? `<p class="post-date">${date}</p>` : ''}
-                        </header>
-                        <div class="post-body">
-                            ${body}
-                        </div>
-                        <div class="read-original">
-                            <a href="${articleUrl}" target="_blank" rel="noopener noreferrer" class="original-link">Read Original on Substack →</a>
-                        </div>
-                    `;
-                    
-                    // After rendering, apply additional cleanup
-                    const renderedBody = container.querySelector('.post-body');
-                    if (renderedBody) {
-                        // Remove any remaining unwanted elements
-                        renderedBody.querySelectorAll('.subscription-widget, .paywall, .subscribe-cta').forEach(el => el.remove());
-                        
-                        // Add target="_blank" to all links
-                        renderedBody.querySelectorAll('a').forEach(link => {
-                            link.setAttribute('target', '_blank');
-                            link.setAttribute('rel', 'noopener noreferrer');
-                        });
-                    }
-                } else {
-                    throw new Error('Unable to load content');
                 }
             } catch (error) {
-                console.error('Article loading error:', error);
-                container.innerHTML = `
+                console.log('Could not load article metadata');
+                postInfo.innerHTML = '';
+            }
+            
+            // Handle iframe load
+            iframe.onload = function() {
+                console.log('Article loaded successfully');
+            };
+            
+            iframe.onerror = function() {
+                postInfo.innerHTML = `
                     <div class="error">
                         <h2>Unable to load article</h2>
                         <p>Please read this article directly on Substack:</p>
                         <a href="${articleUrl}" target="_blank" rel="noopener noreferrer" class="subscribe-button">Read on Substack →</a>
                     </div>
                 `;
-            }
+            };
         }
         
         loadArticle();
