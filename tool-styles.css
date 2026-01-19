@@ -11,6 +11,12 @@
     /* Accent Colors */
     --coffee-gold: #D4AF37;
     --coffee-amber: #C9A050;
+    
+    /* Text Colors */
+    --text-primary: #2C2C2C;
+    --text-secondary: #5D4E37;
+    --text-light: #8B7355;
+    --border-light: #E0D5C7;
 }
 
 * {
@@ -57,6 +63,7 @@ body {
     font-size: 1.125rem;
     transition: opacity 0.3s ease;
     flex-shrink: 0;
+    z-index: 1001;
 }
 
 .nav-logo:hover {
@@ -71,30 +78,56 @@ body {
     white-space: nowrap;
 }
 
+/* Mobile Menu Toggle Button */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.nav-toggle span {
+    width: 28px;
+    height: 3px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(9px, 9px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
 /* Navigation Links */
 .nav-links {
     display: flex;
     gap: 0.5rem;
     flex: 1;
     justify-content: center;
-    overflow-x: auto;
-    scrollbar-width: none;
-}
-
-.nav-links::-webkit-scrollbar {
-    display: none;
+    align-items: center;
 }
 
 .nav-link {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.875rem;
     color: var(--cream);
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.875rem;
     border-radius: 6px;
     transition: all 0.3s ease;
     white-space: nowrap;
-    position: relative;
 }
 
 .nav-link:hover {
@@ -113,23 +146,20 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 1.25rem;
+    padding: 0.5rem 1rem;
     background: rgba(255, 255, 255, 0.1);
     color: var(--white);
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.875rem;
     border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
     flex-shrink: 0;
-    white-space: nowrap;
 }
 
 .nav-home:hover {
     background: var(--coffee-gold);
     color: var(--espresso);
-    border-color: var(--coffee-gold);
 }
 
 .nav-home svg {
@@ -177,37 +207,74 @@ body {
     }
     
     .nav-link {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.875rem;
+        padding: 0.4rem 0.65rem;
+        font-size: 0.8rem;
     }
 }
 
 @media (max-width: 768px) {
     .nav-container {
         padding: 0 1rem;
-        gap: 1rem;
     }
     
-    .nav-brand {
+    /* Show hamburger menu */
+    .nav-toggle {
+        display: flex;
+    }
+    
+    /* Hide home button on mobile */
+    .nav-home {
         display: none;
     }
     
+    /* Mobile menu dropdown */
     .nav-links {
-        gap: 0.25rem;
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, var(--espresso) 0%, var(--dark-roast) 100%);
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        border-bottom: 3px solid var(--coffee-gold);
+    }
+    
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
     }
     
     .nav-link {
-        padding: 0.5rem 0.6rem;
-        font-size: 0.8rem;
+        width: 100%;
+        padding: 1rem 2rem;
+        border-radius: 0;
+        font-size: 1rem;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     
-    .nav-home {
-        padding: 0.5rem 0.75rem;
-        font-size: 0;
+    .nav-link:last-child {
+        border-bottom: none;
     }
     
-    .nav-home svg {
-        margin: 0;
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .nav-link.active {
+        background: var(--coffee-gold);
+        color: var(--espresso);
+    }
+    
+    .tool-container {
+        height: calc(100vh - 64px);
     }
 }
 
@@ -216,17 +283,16 @@ body {
         height: 56px;
     }
     
-    .tool-container {
-        height: calc(100vh - 56px);
-    }
-    
     .nav-coffee {
         font-size: 1.25rem;
     }
     
-    .nav-link {
-        padding: 0.4rem 0.5rem;
-        font-size: 0.75rem;
+    .nav-links {
+        top: 56px;
+    }
+    
+    .tool-container {
+        height: calc(100vh - 56px);
     }
     
     .bmc-footer {
