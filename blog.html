@@ -67,6 +67,8 @@
                     const xml = parser.parseFromString(data.contents, 'text/xml');
                     const items = xml.querySelectorAll('item');
                     
+                    console.log('Found', items.length, 'articles');
+                    
                     if (items.length > 0) {
                         const articles = Array.from(items).map(item => {
                             const title = item.querySelector('title')?.textContent || 'Untitled';
@@ -74,36 +76,57 @@
                             const pubDate = item.querySelector('pubDate')?.textContent || '';
                             const description = item.querySelector('description')?.textContent || '';
                             
-                            // Get content:encoded which has full HTML including images
+                            // Try multiple methods to get content with images
                             let content = '';
-                            const contentEncoded = item.querySelector('encoded');
-                            if (contentEncoded) {
-                                content = contentEncoded.textContent;
-                            } else {
-                                // Try different namespace variations
-                                const contentNodes = item.getElementsByTagName('content:encoded');
-                                if (contentNodes.length > 0) {
-                                    content = contentNodes[0].textContent;
-                                }
+                            
+                            // Method 1: content:encoded (most common)
+                            const encoded = Array.from(item.children).find(el => 
+                                el.tagName === 'content:encoded' || el.localName === 'encoded'
+                            );
+                            if (encoded) {
+                                content = encoded.textContent;
                             }
                             
-                            // If no content:encoded, use description
-                            if (!content) {
+                            // Method 2: description often has HTML
+                            if (!content && description) {
                                 content = description;
                             }
                             
-                            // Extract first image from content
+                            // Extract thumbnail from multiple sources
                             let thumbnail = '';
-                            const imgMatch = content.match(/<img[^>]+src=["']([^"'>]+)["']/i);
-                            if (imgMatch && imgMatch[1]) {
-                                thumbnail = imgMatch[1];
+                            
+                            // Try 1: Extract from content HTML
+                            if (content) {
+                                const imgMatches = content.match(/<img[^>]+src=["']([^"'>]+)["'][^>]*>/gi);
+                                if (imgMatches && imgMatches.length > 0) {
+                                    const srcMatch = imgMatches[0].match(/src=["']([^"'>]+)["']/i);
+                                    if (srcMatch && srcMatch[1]) {
+                                        thumbnail = srcMatch[1];
+                                    }
+                                }
                             }
                             
-                            // Also check for media:thumbnail or media:content
-                            const mediaThumbnail = item.querySelector('thumbnail, media\\:thumbnail');
-                            if (!thumbnail && mediaThumbnail) {
-                                thumbnail = mediaThumbnail.getAttribute('url') || mediaThumbnail.textContent;
+                            // Try 2: media:thumbnail or media:content
+                            if (!thumbnail) {
+                                const mediaThumbnail = Array.from(item.children).find(el =>
+                                    el.tagName === 'media:thumbnail' || 
+                                    el.localName === 'thumbnail' ||
+                                    el.tagName === 'media:content'
+                                );
+                                if (mediaThumbnail) {
+                                    thumbnail = mediaThumbnail.getAttribute('url') || '';
+                                }
                             }
+                            
+                            // Try 3: enclosure tag (sometimes used for images)
+                            if (!thumbnail) {
+                                const enclosure = item.querySelector('enclosure[type^="image"]');
+                                if (enclosure) {
+                                    thumbnail = enclosure.getAttribute('url') || '';
+                                }
+                            }
+                            
+                            console.log('Article:', title, 'Image:', thumbnail ? 'Found' : 'None');
                             
                             // Clean description (remove HTML tags)
                             const cleanDesc = description.replace(/<[^>]*>/g, '').substring(0, 200).trim();
@@ -114,7 +137,7 @@
                         container.innerHTML = '<div class="articles-grid">' + 
                             articles.map(post => `
                                 <article class="blog-post">
-                                    ${post.thumbnail ? `<img src="${post.thumbnail}" alt="${post.title}" class="post-image">` : ''}
+                                    ${post.thumbnail ? `<img src="${post.thumbnail}" alt="${post.title}" class="post-image" onerror="this.style.display='none'">` : '<div class="no-image"></div>'}
                                     <div class="post-content">
                                         <h2 class="post-title"><a href="post.html?url=${encodeURIComponent(post.link)}">${post.title}</a></h2>
                                         <p class="post-date">${new Date(post.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
