@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engage Lostness - Don Barger</title>
+    <link rel="stylesheet" href="tool-styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            overflow: auto;
+            height: auto;
+        }
+        
+        .engage-hero {
+            background: linear-gradient(135deg, var(--espresso) 0%, var(--dark-roast) 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .engage-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .engage-hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: var(--cream);
+        }
+        
+        .worldviews-section {
+            padding: 4rem 2rem;
+            background: var(--foam);
+            min-height: calc(100vh - 200px);
+        }
+        
+        .worldviews-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .worldview-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(62, 39, 35, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .worldview-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(62, 39, 35, 0.15);
+        }
+        
+        .worldview-icon {
+            font-size: 2.5rem;
+        }
+        
+        .worldview-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--espresso);
+            margin: 0;
+        }
+        
+        .worldview-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            flex: 1;
+        }
+        
+        .worldview-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--coffee-gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .engage-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .engage-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .worldviews-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="tool-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-coffee">☕</span>
+                <span class="nav-brand">Don Barger</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="blog.html" class="nav-link">Don's Blog</a>
+                <a href="faithbot.html" class="nav-link">FaithBot</a>
+                <a href="biblepics.html" class="nav-link">BiblePics</a>
+                <a href="youversion.html" class="nav-link">YouVersion</a>
+                <a href="goals.html" class="nav-link">SMART Goals</a>
+                <a href="coffeecoach.html" class="nav-link">Coffee Coach</a>
+                <a href="ripen.html" class="nav-link">RIPEN</a>
+                <a href="engage-lostness.html" class="nav-link active">Engage Lostness</a>
+            </div>
+            <a href="index.html" class="nav-home">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                Home
+            </a>
+        </div>
+    </nav>
+    
+    <div class="engage-hero">
+        <h1>The Engage Lostness Series</h1>
+        <p>A place to learn about different cultures and worldviews, understand their beliefs, and practice sharing your faith with those different worldviews.</p>
+    </div>
+    
+    <section class="worldviews-section">
+        <div class="worldviews-grid">
+            <a href="engage-cultural-christians.html" class="worldview-card">
+                <div class="worldview-icon">✝️</div>
+                <h3 class="worldview-title">Cultural Christians</h3>
+                <p class="worldview-description">Engage with those who identify as Christian culturally but may not have a personal relationship with Christ.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+            
+            <a href="engage-gen-alpha.html" class="worldview-card">
+                <div class="worldview-icon">👶</div>
+                <h3 class="worldview-title">Gen Alpha</h3>
+                <p class="worldview-description">Connect with the generation born after 2010, growing up in an AI-native world.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+            
+            <a href="engage-gen-z.html" class="worldview-card">
+                <div class="worldview-icon">📱</div>
+                <h3 class="worldview-title">Gen Z</h3>
+                <p class="worldview-description">Understand and engage the digital-native generation shaping culture today.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+            
+            <a href="engage-postmoderns.html" class="worldview-card">
+                <div class="worldview-icon">🎭</div>
+                <h3 class="worldview-title">Postmoderns</h3>
+                <p class="worldview-description">Navigate conversations about truth, meaning, and faith in a postmodern context.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+            
+            <a href="engage-mormons.html" class="worldview-card">
+                <div class="worldview-icon">🏛️</div>
+                <h3 class="worldview-title">Mormons</h3>
+                <p class="worldview-description">Learn about LDS beliefs and practice gracious dialogue with Mormon friends.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+            
+            <a href="engage-latin-american-catholics.html" class="worldview-card">
+                <div class="worldview-icon">🌎</div>
+                <h3 class="worldview-title">Latin American Catholics</h3>
+                <p class="worldview-description">Understand Latin American Catholic culture and share the gospel effectively.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+            
+            <a href="engage-muslims.html" class="worldview-card">
+                <div class="worldview-icon">☪️</div>
+                <h3 class="worldview-title">Muslims</h3>
+                <p class="worldview-description">Build bridges with Muslim friends and share your faith with cultural sensitivity.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+            
+            <a href="engage-animism.html" class="worldview-card">
+                <div class="worldview-icon">🌿</div>
+                <h3 class="worldview-title">Animism</h3>
+                <p class="worldview-description">Understand animistic beliefs and communicate Christ's power over spiritual forces.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+            
+            <a href="engage-chinese-religions.html" class="worldview-card">
+                <div class="worldview-icon">🏮</div>
+                <h3 class="worldview-title">Chinese Religions</h3>
+                <p class="worldview-description">Navigate the blend of Confucianism, Taoism, and Buddhism in Chinese culture.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+            
+            <a href="engage-hindus.html" class="worldview-card">
+                <div class="worldview-icon">🕉️</div>
+                <h3 class="worldview-title">Hindus</h3>
+                <p class="worldview-description">Learn about Hindu beliefs and share Christ within this worldview framework.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+            
+            <a href="engage-japanese.html" class="worldview-card">
+                <div class="worldview-icon">🎌</div>
+                <h3 class="worldview-title">Japanese</h3>
+                <p class="worldview-description">Understand Shinto, Buddhism, and Japanese cultural values in evangelism.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+            
+            <a href="engage-orthodox.html" class="worldview-card">
+                <div class="worldview-icon">☦️</div>
+                <h3 class="worldview-title">Orthodox</h3>
+                <p class="worldview-description">Engage with Eastern Orthodox Christians and understand their rich traditions.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+            
+            <a href="engage-jehovah-witnesses.html" class="worldview-card">
+                <div class="worldview-icon">📖</div>
+                <h3 class="worldview-title">Jehovah's Witnesses</h3>
+                <p class="worldview-description">Navigate doctrinal differences and share the true gospel lovingly.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+            
+            <a href="engage-turks.html" class="worldview-card">
+                <div class="worldview-icon">🇹🇷</div>
+                <h3 class="worldview-title">Turks</h3>
+                <p class="worldview-description">Understand Turkish culture and share Christ in this unique Muslim context.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+            
+            <a href="engage-catholicism.html" class="worldview-card">
+                <div class="worldview-icon">⛪</div>
+                <h3 class="worldview-title">Catholicism</h3>
+                <p class="worldview-description">Understand Catholic beliefs and practice gracious interfaith dialogue.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+            
+            <a href="engage-african-traditional.html" class="worldview-card">
+                <div class="worldview-icon">🌍</div>
+                <h3 class="worldview-title">African Traditional Religions</h3>
+                <p class="worldview-description">Learn about ATR and contextualize the gospel for African contexts.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+            
+            <a href="engage-buddhists.html" class="worldview-card">
+                <div class="worldview-icon">☸️</div>
+                <h3 class="worldview-title">Buddhists</h3>
+                <p class="worldview-description">Understand Buddhist philosophy and share Christ's answer to suffering.</p>
+                <span class="worldview-link">Explore →</span>
+            </a>
+        </div>
+    </section>
+    
+    <div class="bmc-footer">
+        <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="donbarger" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+    </div>
+    
+    <script>
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
