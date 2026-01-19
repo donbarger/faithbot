@@ -73,14 +73,40 @@
                             const link = item.querySelector('link')?.textContent || '#';
                             const pubDate = item.querySelector('pubDate')?.textContent || '';
                             const description = item.querySelector('description')?.textContent || '';
-                            const content = item.querySelector('content\\:encoded, encoded')?.textContent || description;
                             
-                            // Try to extract image from content
-                            const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
-                            const thumbnail = imgMatch ? imgMatch[1] : '';
+                            // Get content:encoded which has full HTML including images
+                            let content = '';
+                            const contentEncoded = item.querySelector('encoded');
+                            if (contentEncoded) {
+                                content = contentEncoded.textContent;
+                            } else {
+                                // Try different namespace variations
+                                const contentNodes = item.getElementsByTagName('content:encoded');
+                                if (contentNodes.length > 0) {
+                                    content = contentNodes[0].textContent;
+                                }
+                            }
                             
-                            // Clean description
-                            const cleanDesc = description.replace(/<[^>]*>/g, '').substring(0, 200);
+                            // If no content:encoded, use description
+                            if (!content) {
+                                content = description;
+                            }
+                            
+                            // Extract first image from content
+                            let thumbnail = '';
+                            const imgMatch = content.match(/<img[^>]+src=["']([^"'>]+)["']/i);
+                            if (imgMatch && imgMatch[1]) {
+                                thumbnail = imgMatch[1];
+                            }
+                            
+                            // Also check for media:thumbnail or media:content
+                            const mediaThumbnail = item.querySelector('thumbnail, media\\:thumbnail');
+                            if (!thumbnail && mediaThumbnail) {
+                                thumbnail = mediaThumbnail.getAttribute('url') || mediaThumbnail.textContent;
+                            }
+                            
+                            // Clean description (remove HTML tags)
+                            const cleanDesc = description.replace(/<[^>]*>/g, '').substring(0, 200).trim();
                             
                             return { title, link, pubDate, description: cleanDesc, thumbnail };
                         });
@@ -90,10 +116,10 @@
                                 <article class="blog-post">
                                     ${post.thumbnail ? `<img src="${post.thumbnail}" alt="${post.title}" class="post-image">` : ''}
                                     <div class="post-content">
-                                        <h2 class="post-title"><a href="${post.link}" target="_blank" rel="noopener noreferrer">${post.title}</a></h2>
+                                        <h2 class="post-title"><a href="post.html?url=${encodeURIComponent(post.link)}">${post.title}</a></h2>
                                         <p class="post-date">${new Date(post.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                                        <p class="post-excerpt">${post.description}...</p>
-                                        <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="read-more">Read More →</a>
+                                        <p class="post-excerpt">${post.description}${post.description ? '...' : ''}</p>
+                                        <a href="post.html?url=${encodeURIComponent(post.link)}" class="read-more">Read More →</a>
                                     </div>
                                 </article>
                             `).join('') + 

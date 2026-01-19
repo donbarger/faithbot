@@ -1,0 +1,232 @@
+/* Post Viewer Styles */
+.post-container {
+    flex: 1;
+    width: 100%;
+    height: calc(100vh - 64px);
+    overflow: auto;
+    background: var(--foam);
+    padding: 2rem 0;
+}
+
+.post-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: var(--espresso);
+}
+
+.post-article {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 3rem;
+    box-shadow: 0 2px 8px rgba(62, 39, 35, 0.1);
+    margin-bottom: 2rem;
+}
+
+.post-header {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--cream);
+}
+
+.post-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--espresso);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.post-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.post-date {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.post-body {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+.post-body p {
+    margin-bottom: 1.5rem;
+}
+
+.post-body h1, .post-body h2, .post-body h3 {
+    color: var(--espresso);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.post-body h1 {
+    font-size: 2rem;
+}
+
+.post-body h2 {
+    font-size: 1.75rem;
+}
+
+.post-body h3 {
+    font-size: 1.5rem;
+}
+
+.post-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.post-body a {
+    color: var(--coffee-gold);
+    text-decoration: underline;
+}
+
+.post-body a:hover {
+    color: var(--coffee-amber);
+}
+
+.post-body ul, .post-body ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.post-body li {
+    margin-bottom: 0.5rem;
+}
+
+.post-body blockquote {
+    border-left: 4px solid var(--coffee-gold);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.post-body code {
+    background: var(--cream);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95em;
+}
+
+.post-body pre {
+    background: var(--cream);
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+.post-body pre code {
+    background: none;
+    padding: 0;
+}
+
+.read-original {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--cream);
+    text-align: center;
+}
+
+.original-link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--espresso), var(--dark-roast));
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.original-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(62, 39, 35, 0.3);
+}
+
+.post-footer {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.post-footer a {
+    color: var(--coffee-gold);
+    text-decoration: none;
+}
+
+.post-footer a:hover {
+    text-decoration: underline;
+}
+
+.loading, .error {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+}
+
+.error h2 {
+    color: var(--espresso);
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .post-container {
+        height: calc(100vh - 56px);
+        padding: 1rem 0;
+    }
+    
+    .post-wrapper {
+        padding: 0 1rem;
+    }
+    
+    .post-article {
+        padding: 2rem 1.5rem;
+    }
+    
+    .post-title {
+        font-size: 2rem;
+    }
+    
+    .post-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .post-body {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .post-article {
+        padding: 1.5rem 1rem;
+    }
+    
+    .post-title {
+        font-size: 1.75rem;
+    }
+}
