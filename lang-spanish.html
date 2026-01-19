@@ -5,7 +5,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){{dataLayer.push(arguments);}}
+  function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   
   gtag('config', 'G-S8PE79TKZ1');
@@ -20,47 +20,47 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {{
+        body {
             overflow: auto;
             height: auto;
-        }}
+        }
         
-        .lang-hero {{
+        .lang-hero {
             background: linear-gradient(135deg, var(--espresso) 0%, var(--dark-roast) 100%);
             padding: 3rem 2rem;
             text-align: center;
             color: var(--white);
-        }}
+        }
         
-        .lang-hero h1 {{
+        .lang-hero h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
             font-weight: 700;
-        }}
+        }
         
-        .lang-hero p {{
+        .lang-hero p {
             font-size: 1.25rem;
             max-width: 800px;
             margin: 0 auto;
             line-height: 1.6;
             color: var(--cream);
-        }}
+        }
         
-        .tools-section {{
+        .tools-section {
             padding: 4rem 2rem;
             background: var(--foam);
             min-height: calc(100vh - 200px);
-        }}
+        }
         
-        .tools-grid {{
+        .tools-grid {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
-        }}
+        }
         
-        .tool-card {{
+        .tool-card {
             background: var(--white);
             border-radius: 12px;
             padding: 2rem;
@@ -72,38 +72,54 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            text-align: center;
-        }}
+        }
         
-        .tool-card:hover {{
+        .tool-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 8px 24px rgba(62, 39, 35, 0.15);
-        }}
+        }
         
-        .tool-icon {{
-            font-size: 3rem;
-        }}
+        .tool-icon {
+            font-size: 2.5rem;
+            text-align: center;
+        }
         
-        .tool-title {{
+        .tool-title {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--espresso);
             margin: 0;
-        }}
+        }
         
-        @media (max-width: 768px) {{
-            .lang-hero h1 {{
+        .tool-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            flex: 1;
+        }
+        
+        .tool-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--coffee-gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .lang-hero h1 {
                 font-size: 2rem;
-            }}
+            }
             
-            .lang-hero p {{
+            .lang-hero p {
                 font-size: 1.1rem;
-            }}
+            }
             
-            .tools-grid {{
+            .tools-grid {
                 grid-template-columns: 1fr;
-            }}
-        }}
+            }
+        }
     </style>
 </head>
 <body>
@@ -144,45 +160,51 @@
             <a href="spanish-bot-de-fé.html" class="tool-card">
                 <div class="tool-icon">✝️</div>
                 <h3 class="tool-title">Bot de Fé</h3>
-                <p class="lang-count">Explora →</p>
+                <p class="tool-description">Encuentra respuestas a preguntas de fe desde una perspectiva bíblica.</p>
+                <span class="tool-link">Explorar →</span>
             </a>
             
             <a href="spanish-ilustraciones-biblicas.html" class="tool-card">
                 <div class="tool-icon">🖼️</div>
                 <h3 class="tool-title">Ilustraciones bíblicas</h3>
-                <p class="lang-count">Explora →</p>
+                <p class="tool-description">Genera imágenes impresionantes para historias bíblicas con IA.</p>
+                <span class="tool-link">Explorar →</span>
             </a>
             
             <a href="spanish-copiloto-de-pastor.html" class="tool-card">
                 <div class="tool-icon">👨‍✈️</div>
                 <h3 class="tool-title">Copiloto de Pastor</h3>
-                <p class="lang-count">Explora →</p>
+                <p class="tool-description">Asistente de IA para la planificación y preparación del ministerio pastoral.</p>
+                <span class="tool-link">Explorar →</span>
             </a>
             
             <a href="spanish-alcanzar-a-las-naciones.html" class="tool-card">
                 <div class="tool-icon">🌎</div>
                 <h3 class="tool-title">Alcanzar a las Naciónes</h3>
-                <p class="lang-count">Explora →</p>
+                <p class="tool-description">Herramientas para el alcance misionero y evangelización global.</p>
+                <span class="tool-link">Explorar →</span>
             </a>
             
             <a href="spanish-habla-con-los-postmodernos.html" class="tool-card">
                 <div class="tool-icon">🎭</div>
                 <h3 class="tool-title">Habla con los Postmodernos</h3>
-                <p class="lang-count">Explora →</p>
+                <p class="tool-description">Aprende a compartir tu fe en un contexto postmoderno.</p>
+                <span class="tool-link">Explorar →</span>
             </a>
             
             <a href="spanish-habla-con-la-generacion-a.html" class="tool-card">
                 <div class="tool-icon">👶</div>
                 <h3 class="tool-title">Habla con la Generación A</h3>
-                <p class="lang-count">Explora →</p>
+                <p class="tool-description">Conecta con la generación nacida después de 2010.</p>
+                <span class="tool-link">Explorar →</span>
             </a>
             
             <a href="spanish-habla-con-testigos-de-jehova.html" class="tool-card">
                 <div class="tool-icon">📖</div>
                 <h3 class="tool-title">Habla con Testigos de Jehová</h3>
-                <p class="lang-count">Explora →</p>
+                <p class="tool-description">Navega diferencias doctrinales y comparte el evangelio con amor.</p>
+                <span class="tool-link">Explorar →</span>
             </a>
-            
         </div>
     </section>
     
@@ -194,17 +216,17 @@
         const navToggle = document.querySelector('.nav-toggle');
         const navLinks = document.querySelector('.nav-links');
         
-        navToggle.addEventListener('click', () => {{
+        navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
-        }});
+        });
         
-        document.querySelectorAll('.nav-link').forEach(link => {{
-            link.addEventListener('click', () => {{
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
                 navLinks.classList.remove('active');
-            }});
-        }});
+            });
+        });
     </script>
 </body>
 </html>

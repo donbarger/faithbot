@@ -128,6 +128,7 @@ body {
     border-radius: 6px;
     transition: all 0.3s ease;
     white-space: nowrap;
+    position: relative;
 }
 
 .nav-link:hover {
@@ -136,6 +137,49 @@ body {
 }
 
 .nav-link.active {
+    background: var(--coffee-gold);
+    color: var(--espresso);
+    font-weight: 600;
+}
+
+/* Dropdown Menu */
+.nav-dropdown {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 200px;
+    margin-top: 0.5rem;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--espresso);
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+    background: var(--cream);
+}
+
+.dropdown-menu a.active {
     background: var(--coffee-gold);
     color: var(--espresso);
     font-weight: 600;
