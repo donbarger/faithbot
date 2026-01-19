@@ -141,7 +141,7 @@ body {
 .tool-container {
     flex: 1;
     width: 100%;
-    height: calc(100vh - 64px);
+    height: calc(100vh - 64px - 60px);
     overflow: hidden;
 }
 
@@ -150,6 +150,22 @@ body {
     height: 100%;
     border: none;
     display: block;
+}
+
+/* Ko-fi Footer */
+.kofi-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: var(--espresso);
+    border-top: 2px solid var(--coffee-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Responsive Design */
@@ -199,7 +215,7 @@ body {
     }
     
     .tool-container {
-        height: calc(100vh - 56px);
+        height: calc(100vh - 56px - 60px);
     }
     
     .nav-coffee {
@@ -209,5 +225,9 @@ body {
     .nav-link {
         padding: 0.4rem 0.5rem;
         font-size: 0.75rem;
+    }
+    
+    .kofi-footer {
+        height: 60px;
     }
 }
