@@ -357,9 +357,15 @@ body {
 }
 
 .bmc-widget {
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+.bmc-widget > script + div,
+.bmc-widget > div {
+    transform: scale(0.7);
 }
 
 /* CTA Section */
