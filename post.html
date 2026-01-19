@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="post-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="tool-nav">
@@ -36,12 +36,11 @@
     </nav>
     
     <div class="post-container">
-        <div class="post-header-wrapper">
-            <a href="blog.html" class="back-link">← Back to Blog</a>
-            <div id="post-info" class="post-info"></div>
-        </div>
-        <div class="post-iframe-wrapper">
-            <iframe id="post-frame" frameborder="0" title="Blog Post"></iframe>
+        <div class="post-wrapper">
+            <a href="blog.html" class="back-link">← Back to All Articles</a>
+            <article id="post-content" class="post-article">
+                <div class="loading">Loading article...</div>
+            </article>
         </div>
     </div>
     
@@ -50,35 +49,114 @@
     </div>
     
     <script>
-        // Get article URL from query parameter
         const urlParams = new URLSearchParams(window.location.search);
         const articleUrl = urlParams.get('url');
         
-        function loadArticle() {
-            const iframe = document.getElementById('post-frame');
-            const postInfo = document.getElementById('post-info');
+        async function loadArticle() {
+            const container = document.getElementById('post-content');
             
             if (!articleUrl) {
-                postInfo.innerHTML = '<div class="error"><p>No article specified. <a href="blog.html">Return to blog</a></p></div>';
+                container.innerHTML = '<div class="error"><p>No article specified. <a href="blog.html">Return to blog</a></p></div>';
                 return;
             }
             
-            // Load iframe immediately - no waiting for metadata
-            iframe.src = articleUrl;
-            
-            // Clear loading message
-            postInfo.innerHTML = '';
-            
-            // Handle iframe errors
-            iframe.onerror = function() {
-                postInfo.innerHTML = `
+            try {
+                const rssUrl = 'https://donbarger.substack.com/feed';
+                const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+                
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                
+                if (data.status === 'ok' && data.items) {
+                    const article = data.items.find(item => (item.link || item.guid) === articleUrl);
+                    
+                    if (article) {
+                        // Get preview content (first ~500 characters)
+                        let previewContent = article.content || article.description || '';
+                        
+                        // Clean HTML for preview
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = previewContent;
+                        
+                        // Remove unwanted elements
+                        tempDiv.querySelectorAll('a[href*="subscribe"], [class*="subscribe"], [class*="paywall"], button').forEach(el => el.remove());
+                        
+                        // Get first image if available
+                        let featuredImage = '';
+                        const firstImg = tempDiv.querySelector('img');
+                        if (firstImg) {
+                            featuredImage = firstImg.src;
+                        }
+                        
+                        // Extract text content for preview
+                        let textContent = tempDiv.textContent || '';
+                        textContent = textContent.trim().substring(0, 600);
+                        
+                        // Get first few paragraphs of HTML content
+                        const paragraphs = Array.from(tempDiv.querySelectorAll('p')).slice(0, 3);
+                        let previewHTML = paragraphs.map(p => p.outerHTML).join('');
+                        
+                        // Ensure images are responsive
+                        const previewDiv = document.createElement('div');
+                        previewDiv.innerHTML = previewHTML;
+                        previewDiv.querySelectorAll('img').forEach(img => {
+                            img.style.maxWidth = '100%';
+                            img.style.height = 'auto';
+                        });
+                        previewHTML = previewDiv.innerHTML;
+                        
+                        container.innerHTML = `
+                            <header class="post-header">
+                                ${featuredImage ? `<img src="${featuredImage}" alt="${article.title}" class="featured-image">` : ''}
+                                <h1 class="post-title">${article.title}</h1>
+                                <p class="post-meta">
+                                    <span class="post-date">${new Date(article.pubDate).toLocaleDateString('en-US', { 
+                                        year: 'numeric', 
+                                        month: 'long', 
+                                        day: 'numeric' 
+                                    })}</span>
+                                    <span class="post-author">by Don Barger</span>
+                                </p>
+                            </header>
+                            <div class="post-preview">
+                                ${previewHTML || `<p>${textContent}...</p>`}
+                            </div>
+                            <div class="continue-reading">
+                                <div class="fade-overlay"></div>
+                                <div class="continue-cta">
+                                    <h3>Continue Reading on Substack</h3>
+                                    <p>Get the full article with all the details, examples, and insights.</p>
+                                    <a href="${articleUrl}" target="_blank" rel="noopener noreferrer" class="read-full-btn">
+                                        Read Full Article on Substack →
+                                    </a>
+                                </div>
+                            </div>
+                            <footer class="post-footer">
+                                <div class="newsletter-signup">
+                                    <h3>Want articles like this in your inbox?</h3>
+                                    <p>Subscribe to get my latest writing on Innovation, AI, Faith, and Coffee.</p>
+                                    <a href="https://donbarger.substack.com/subscribe" target="_blank" rel="noopener noreferrer" class="subscribe-btn">
+                                        Subscribe to Newsletter
+                                    </a>
+                                </div>
+                            </footer>
+                        `;
+                    } else {
+                        throw new Error('Article not found');
+                    }
+                } else {
+                    throw new Error('Unable to load');
+                }
+            } catch (error) {
+                console.error('Article loading error:', error);
+                container.innerHTML = `
                     <div class="error">
-                        <h2>Unable to load article</h2>
-                        <p>Please read this article directly on Substack:</p>
-                        <a href="${articleUrl}" target="_blank" rel="noopener noreferrer" class="subscribe-button">Read on Substack →</a>
+                        <h2>Unable to Load Preview</h2>
+                        <p>Read this article directly on Substack:</p>
+                        <a href="${articleUrl}" target="_blank" rel="noopener noreferrer" class="substack-btn">Read on Substack →</a>
                     </div>
                 `;
-            };
+            }
         }
         
         loadArticle();

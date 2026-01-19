@@ -62,6 +62,7 @@
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(62, 39, 35, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
 .blog-post:hover {
@@ -108,15 +109,16 @@
     margin-bottom: 1rem;
 }
 
-.read-more {
+.read-more-btn {
     display: inline-block;
     color: var(--coffee-gold);
     font-weight: 600;
     text-decoration: none;
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
-.read-more:hover {
+.read-more-btn:hover {
     transform: translateX(4px);
 }
 

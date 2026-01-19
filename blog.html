@@ -100,13 +100,13 @@
                     
                     container.innerHTML = '<div class="articles-grid">' + 
                         articles.map(post => `
-                            <article class="blog-post">
+                            <article class="blog-post" onclick="window.location.href='post.html?url=${encodeURIComponent(post.link)}'">
                                 ${post.thumbnail ? `<img src="${post.thumbnail}" alt="${post.title}" class="post-image" onerror="this.style.display='none'">` : '<div class="no-image"></div>'}
                                 <div class="post-content">
-                                    <h2 class="post-title"><a href="post.html?url=${encodeURIComponent(post.link)}">${post.title}</a></h2>
+                                    <h2 class="post-title">${post.title}</h2>
                                     <p class="post-date">${new Date(post.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                                     <p class="post-excerpt">${post.description}${post.description ? '...' : ''}</p>
-                                    <a href="post.html?url=${encodeURIComponent(post.link)}" class="read-more">Read More →</a>
+                                    <div class="read-more-btn">Read Article →</div>
                                 </div>
                             </article>
                         `).join('') + 
