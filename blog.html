@@ -23,15 +23,14 @@
                 <span></span>
             </button>
             <div class="nav-links">
-            
-            
                 <a href="blog.html" class="nav-link active">Don's Blog</a>
-                <a href="faithbot.html" class="nav-link">FaithBot</a>
-                <a href="biblepics.html" class="nav-link">BiblePics</a>
-                <a href="youversion.html" class="nav-link">YouVersion</a>
-                <a href="goals.html" class="nav-link">SMART Goals</a>
                 <a href="coffeecoach.html" class="nav-link">Coffee Coach</a>
+                <a href="faithbot.html" class="nav-link">FaithBot</a>
+                <a href="engage-lostness.html" class="nav-link">Engage Lostness</a>
+                <a href="biblepics.html" class="nav-link">BiblePics</a>
                 <a href="ripen.html" class="nav-link">RIPEN</a>
+                <a href="goals.html" class="nav-link">SMART Goals</a>
+                <a href="youversion.html" class="nav-link">YouVersion</a>
             </div>
             <a href="index.html" class="nav-home">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -75,9 +74,10 @@
                 
                 if (data.status === 'ok' && data.items && data.items.length > 0) {
                     const articles = data.items.map(post => {
-                        // Extract thumbnail from content or description
-                        let thumbnail = post.thumbnail || '';
+                        // Extract thumbnail from multiple sources
+                        let thumbnail = post.thumbnail || post.enclosure?.link || '';
                         
+                        // Try content field
                         if (!thumbnail && post.content) {
                             const imgMatch = post.content.match(/<img[^>]+src=["']([^"'>]+)["']/i);
                             if (imgMatch && imgMatch[1]) {
@@ -85,6 +85,7 @@
                             }
                         }
                         
+                        // Try description field
                         if (!thumbnail && post.description) {
                             const imgMatch = post.description.match(/<img[^>]+src=["']([^"'>]+)["']/i);
                             if (imgMatch && imgMatch[1]) {
@@ -95,7 +96,7 @@
                         // Clean description
                         const cleanDesc = (post.description || '').replace(/<[^>]*>/g, '').substring(0, 200).trim();
                         
-                        console.log('Article:', post.title, 'Image:', thumbnail ? 'Found' : 'None');
+                        console.log('Article:', post.title, 'Image:', thumbnail ? thumbnail : 'None');
                         
                         return {
                             title: post.title,
@@ -109,7 +110,7 @@
                     container.innerHTML = '<div class="articles-grid">' + 
                         articles.map(post => `
                             <article class="blog-post" onclick="window.location.href='post.html?url=${encodeURIComponent(post.link)}'">
-                                ${post.thumbnail ? `<img src="${post.thumbnail}" alt="${post.title}" class="post-image" onerror="this.style.display='none'">` : '<div class="no-image"></div>'}
+                                ${post.thumbnail ? `<img src="${post.thumbnail}" alt="${post.title}" class="post-image" onerror="this.style.display='none';" loading="lazy">` : ''}
                                 <div class="post-content">
                                     <h2 class="post-title">${post.title}</h2>
                                     <p class="post-date">${new Date(post.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
