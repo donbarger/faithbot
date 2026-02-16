@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#1B365D"/>
+
+  <!-- Gradient overlay for depth -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1B365D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0F1F38;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Logo/Icon - simplified IMB Innovation marker -->
+  <g transform="translate(600, 100)">
+    <!-- Marker pin shape -->
+    <path d="M -20 -15 Q -20 -30 0 -40 Q 20 -30 20 -15 Q 20 0 0 20 Q -20 0 -20 -15" fill="#FFFFFF" opacity="0.9"/>
+    <!-- Inner dot -->
+    <circle cx="0" cy="-10" r="6" fill="#1B365D"/>
+  </g>
+
+  <!-- Main Heading -->
+  <text x="600" y="280" font-family="Inter, -apple-system, sans-serif" font-size="72" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="-1">
+    AI-Powered Tools
+  </text>
+  <text x="600" y="360" font-family="Inter, -apple-system, sans-serif" font-size="72" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="-1">
+    for Global Missions
+  </text>
+
+  <!-- Tagline -->
+  <text x="600" y="420" font-family="Inter, -apple-system, sans-serif" font-size="28" fill="#E8EDF5" text-anchor="middle" opacity="0.95">
+    Empowering missionaries and believers worldwide
+  </text>
+
+  <!-- Call to action text -->
+  <text x="600" y="500" font-family="Inter, -apple-system, sans-serif" font-size="20" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">
+    faithbot-pckbp.ondigitalocean.app
+  </text>
+
+  <!-- Bottom accent bar -->
+  <rect x="0" y="600" width="1200" height="30" fill="#FFFFFF" opacity="0.1"/>
+</svg>
