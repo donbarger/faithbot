@@ -94,6 +94,14 @@ body {
     color: var(--primary);
     text-decoration: none;
     transition: opacity var(--transition-fast);
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo .logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
 }
 
 .nav-logo:hover {

@@ -1,0 +1,3 @@
+The IMB Innovation logo needs to be saved as 'imb-innovation-logo.png' in this directory.
+The logo is a blue banner with white text "INNOVATION" and a location pin icon.
+Background color appears to be #2B4570 (dark blue).
