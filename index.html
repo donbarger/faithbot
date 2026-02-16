@@ -4,6 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IMB Innovation - AI-Powered Tools for Global Missions</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="AI-powered tools helping missionaries and believers share the gospel across 20 languages and 17 worldviews. Solving the world's greatest problem: lostness.">
+    <meta name="keywords" content="missions, AI, gospel, missionaries, evangelism, FaithBot, worldview engagement, Bible tools">
+    <meta name="author" content="IMB Innovation Team">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://donbarger.github.io/">
+    <meta property="og:title" content="IMB Innovation - AI-Powered Tools for Global Missions">
+    <meta property="og:description" content="AI-powered tools helping missionaries and believers share the gospel across 20 languages and 17 worldviews. Solving the world's greatest problem: lostness.">
+    <meta property="og:image" content="https://donbarger.github.io/imb-innovation-logo.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://donbarger.github.io/">
+    <meta name="twitter:title" content="IMB Innovation - AI-Powered Tools for Global Missions">
+    <meta name="twitter:description" content="AI-powered tools helping missionaries and believers share the gospel across 20 languages and 17 worldviews.">
+    <meta name="twitter:image" content="https://donbarger.github.io/imb-innovation-logo.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
     <link rel="stylesheet" href="main-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,9 +43,66 @@
 
     <style>
         /* Landing Page Specific Styles */
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             margin: 0;
             padding: 0;
+        }
+        
+        /* Skip to content link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #1B365D;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        /* Fade-in animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        /* Sticky support button */
+        .sticky-support {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .sticky-support.visible {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        .sticky-support .support-button {
+            margin: 0;
+            padding: 14px 28px;
+            font-size: 16px;
         }
 
         .hero {
@@ -70,6 +150,15 @@
         .cta-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:focus {
+            outline: 3px solid white;
+            outline-offset: 3px;
+        }
+        
+        .cta-button:active {
+            transform: translateY(0);
         }
 
         .section {
@@ -151,6 +240,15 @@
             background: #1B365D;
             color: white;
         }
+        
+        .tool-link:focus {
+            outline: 3px solid #1B365D;
+            outline-offset: 2px;
+        }
+        
+        .tool-link:active {
+            transform: scale(0.98);
+        }
 
         .support-section {
             background: #f5f5f5;
@@ -189,6 +287,15 @@
             background: #142742;
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(27, 54, 93, 0.3);
+        }
+        
+        .support-button:focus {
+            outline: 3px solid #1B365D;
+            outline-offset: 3px;
+        }
+        
+        .support-button:active {
+            transform: translateY(0);
         }
 
         footer {
@@ -243,12 +350,15 @@
     </style>
 </head>
 <body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Hero Section -->
-    <section class="hero">
-        <img src="imb-innovation-logo.png" alt="IMB Innovation" class="hero-logo">
-        <h1>AI-Powered Tools for Global Missions</h1>
-        <p>Empowering missionaries, pastors, and believers to share the gospel across cultures and languages</p>
-        <a href="faithbot.html" class="cta-button">Explore Our Tools</a>
+    <section class="hero" id="hero">
+        <img src="imb-innovation-logo.png" alt="IMB Innovation" class="hero-logo fade-in">
+        <h1 class="fade-in">AI-Powered Tools for Global Missions</h1>
+        <p class="fade-in">Empowering missionaries, pastors, and believers to share the gospel across cultures and languages</p>
+        <a href="#tools-section" class="cta-button fade-in">Explore Our Tools</a>
     </section>
 
     <!-- About Section -->
@@ -258,8 +368,8 @@
             Billions of people around the world are without the hope of Jesus. Lostness is the greatest problem because it's an eternal problem. The IMB Innovation Team leverages AI technology to remove barriers to gospel access worldwide.
 
     <!-- Tools Showcase -->
-    <section class="section">
-        <h2>Our Tools</h2>
+    <section class="section" id="tools-section">
+        <h2 id="main-content">Our Tools</h2>
 
         <div class="tools-grid">
             <!-- FaithBot -->
@@ -306,6 +416,11 @@
         <a href="https://www.imb.org/give/project/innovation-ministry/" target="_blank" rel="noopener noreferrer" class="support-button">Support This Ministry</a>
     </section>
 
+    <!-- Sticky Support Button -->
+    <div class="sticky-support" id="stickySupport">
+        <a href="https://www.imb.org/give/project/innovation-ministry/" target="_blank" rel="noopener noreferrer" class="support-button">Support This Ministry</a>
+    </div>
+    
     <!-- Footer -->
     <footer>
         <div class="footer-links">
@@ -334,5 +449,65 @@
             </div>
         <p class="footer-copyright">© 2025 IMB Innovation. All rights reserved.</p>
     </footer>
+    
+    <script>
+        // Sticky support button visibility
+        const stickySupport = document.getElementById('stickySupport');
+        const supportSection = document.querySelector('.support-section');
+        
+        window.addEventListener('scroll', () => {
+            if (supportSection) {
+                const supportRect = supportSection.getBoundingClientRect();
+                const isVisible = supportRect.top < window.innerHeight && supportRect.bottom > 0;
+                
+                // Show sticky button when support section is out of view
+                if (supportRect.top > window.innerHeight || supportRect.bottom < 0) {
+                    stickySupport.classList.add('visible');
+                } else {
+                    stickySupport.classList.remove('visible');
+                }
+            }
+        });
+        
+        // Enhanced smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for fade-in animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe tool cards and sections
+        document.querySelectorAll('.tool-card, .section-intro').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
