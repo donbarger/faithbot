@@ -7,15 +7,15 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  
+
   gtag('config', 'G-S8PE79TKZ1');
 </script>
 
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Article - Don Barger</title>
-    <link rel="stylesheet" href="tool-styles.css">
+    <title>Article - Don's Blog</title>
+    <link rel="stylesheet" href="main-styles.css">
     <link rel="stylesheet" href="post-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,35 +23,52 @@
 </head>
 <body>
 
-    <nav class="tool-nav">
+    <nav class="main-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <span class="nav-coffee">☕</span>
-                <span class="nav-brand">Don Barger</span>
+                FaithBot
             </a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
+            <button class="nav-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <div class="nav-links">
+                <div class="dropdown">
+                    <button class="dropdown-toggle" aria-label="Select FaithBot language">
+                        <span class="dropdown-label">FaithBot (English)</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="index.html">English</a>
+                        <a href="index.html">Arabic</a>
+                        <a href="index.html">Bengali</a>
+                        <a href="index.html">Burmese</a>
+                        <a href="index.html">Cantonese</a>
+                        <a href="index.html">Hindi</a>
+                        <a href="index.html">Hokkien</a>
+                        <a href="index.html">Indonesian</a>
+                        <a href="index.html">Japanese</a>
+                        <a href="index.html">Javanese</a>
+                        <a href="index.html">Khmer</a>
+                        <a href="index.html">Korean</a>
+                        <a href="index.html">Lao</a>
+                        <a href="index.html">Malay</a>
+                        <a href="index.html">Mandarin (Simplified)</a>
+                        <a href="index.html">Mandarin (Traditional)</a>
+                        <a href="index.html">Mongolian</a>
+                        <a href="index.html">Shona</a>
+                        <a href="index.html">Thai</a>
+                        <a href="index.html">Vietnamese</a>
+                    </div>
+                </div>
+                <a href="engage-lostness.html" class="nav-link">Engage Lostness</a>
+                <a href="biblepics.html" class="nav-link">Bible Pics</a>
                 <a href="blog.html" class="nav-link active">Don's Blog</a>
-                <a href="index.html#tools" class="nav-link">Missional AI Tools</a>
-                <a href="other-languages.html" class="nav-link">AI Tools in Other Languages</a>
             </div>
-                </a>
-                <a href="other-languages.html" class="nav-link">AI Tools in Other Languages</a>
-            </div>
-            <a href="index.html" class="nav-home">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                    <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-                Home
-            </a>
         </div>
     </nav>
-    
+
     <div class="post-container">
         <div class="post-wrapper">
             <a href="blog.html" class="back-link">← Back to All Articles</a>
@@ -60,59 +77,59 @@
             </article>
         </div>
     </div>
-    
+
     <div class="bmc-footer">
         <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="donbarger" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
     </div>
-    
+
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const articleUrl = urlParams.get('url');
-        
+
         async function loadArticle() {
             const container = document.getElementById('post-content');
-            
+
             if (!articleUrl) {
                 container.innerHTML = '<div class="error"><p>No article specified. <a href="blog.html">Return to blog</a></p></div>';
                 return;
             }
-            
+
             try {
                 const rssUrl = 'https://donbarger.substack.com/feed';
                 const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-                
+
                 const response = await fetch(apiUrl);
                 const data = await response.json();
-                
+
                 if (data.status === 'ok' && data.items) {
                     const article = data.items.find(item => (item.link || item.guid) === articleUrl);
-                    
+
                     if (article) {
                         // Get preview content (first ~500 characters)
                         let previewContent = article.content || article.description || '';
-                        
+
                         // Clean HTML for preview
                         const tempDiv = document.createElement('div');
                         tempDiv.innerHTML = previewContent;
-                        
+
                         // Remove unwanted elements
                         tempDiv.querySelectorAll('a[href*="subscribe"], [class*="subscribe"], [class*="paywall"], button').forEach(el => el.remove());
-                        
+
                         // Get first image if available
                         let featuredImage = '';
                         const firstImg = tempDiv.querySelector('img');
                         if (firstImg) {
                             featuredImage = firstImg.src;
                         }
-                        
+
                         // Extract text content for preview
                         let textContent = tempDiv.textContent || '';
                         textContent = textContent.trim().substring(0, 600);
-                        
+
                         // Get first few paragraphs of HTML content
                         const paragraphs = Array.from(tempDiv.querySelectorAll('p')).slice(0, 3);
                         let previewHTML = paragraphs.map(p => p.outerHTML).join('');
-                        
+
                         // Ensure images are responsive
                         const previewDiv = document.createElement('div');
                         previewDiv.innerHTML = previewHTML;
@@ -121,16 +138,16 @@
                             img.style.height = 'auto';
                         });
                         previewHTML = previewDiv.innerHTML;
-                        
+
                         container.innerHTML = `
                             <header class="post-header">
                                 ${featuredImage ? `<img src="${featuredImage}" alt="${article.title}" class="featured-image">` : ''}
                                 <h1 class="post-title">${article.title}</h1>
                                 <p class="post-meta">
-                                    <span class="post-date">${new Date(article.pubDate).toLocaleDateString('en-US', { 
-                                        year: 'numeric', 
-                                        month: 'long', 
-                                        day: 'numeric' 
+                                    <span class="post-date">${new Date(article.pubDate).toLocaleDateString('en-US', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric'
                                     })}</span>
                                     <span class="post-author">by Don Barger</span>
                                 </p>
@@ -175,19 +192,36 @@
                 `;
             }
         }
-        
+
         loadArticle();
     </script>
     <script>
+        // Dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.querySelector('.dropdown');
+            const dropdownToggle = document.querySelector('.dropdown-toggle');
+
+            if (dropdown && dropdownToggle) {
+                dropdownToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('active');
+                });
+
+                document.addEventListener('click', function() {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+
         // Mobile menu toggle
         const navToggle = document.querySelector('.nav-toggle');
         const navLinks = document.querySelector('.nav-links');
-        
+
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
-        
+
         // Close menu when clicking a link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
