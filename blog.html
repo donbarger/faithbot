@@ -135,7 +135,7 @@
 
                     container.innerHTML = '<div class="articles-grid">' +
                         articles.map(post => `
-                            <article class="blog-post" onclick="window.location.href='post.html?url=${encodeURIComponent(post.link)}'">
+                            <article class="blog-post" onclick="window.open('${post.link}', '_blank')">
                                 ${post.thumbnail ? `<img src="${post.thumbnail}" alt="${post.title}" class="post-image" onerror="this.style.display='none';" loading="lazy">` : ''}
                                 <div class="post-content">
                                     <h2 class="post-title">${post.title}</h2>
