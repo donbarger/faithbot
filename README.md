@@ -58,7 +58,7 @@ Iframe-based pages for engaging different worldviews:
 
 ### **Color Palette**
 
-- **Primary:** Sarum Blue `#003DA5`
+- **Primary:** IMB Innovation Blue `#1B365D` (RGB 27, 54, 93)
 - **Background:** White `#FFFFFF`
 - **Text:** Black `#000000`
 - **Accent:** Light Gray `#f5f5f5`
@@ -78,6 +78,20 @@ Iframe-based pages for engaging different worldviews:
 ---
 
 ## 🚀 Features
+
+### **Landing Page (index.html)**
+
+Modern IMB Innovation landing page showcasing all tools:
+
+- Hero section with gradient background and IMB logo
+- "The IMB Innovation Team" about section
+- 4-tool showcase grid (FaithBot, Engage Lostness, BiblePics, Blog)
+- "Partner With Us" support section with donation CTA
+- Sticky support button (appears on scroll when section out of view)
+- SEO meta tags, Open Graph, Twitter Card integration
+- Fade-in animations on scroll (Intersection Observer)
+- Accessibility features (skip-to-content, focus states, reduced motion support)
+- Mobile optimization with responsive breakpoints (768px, 480px)
 
 ### **FaithBot Integration**
 
@@ -266,10 +280,31 @@ Components:
 
 ## 🔄 Version History
 
-### **v2.0 - IMB Innovation Platform** (Current)
+### **v2.1 - UX & Deployment** (Current - February 2025)
+
+**Recent Updates:**
+- ✅ Deployed to Digital Ocean App Platform (`faithbot-pckbp.ondigitalocean.app`)
+- ✅ Complete landing page redesign (index.html) with hero, about, tools, support sections
+- ✅ Mission statement: "Solving the world's greatest problem... lostness"
+- ✅ Updated mission/about to "The IMB Innovation Team"
+- ✅ Reworded support section emphasizing monthly recurring donations
+- ✅ Removed all footer navigation links (clean footer)
+- ✅ Fixed mobile navigation: dropdowns now close when other dropdown opens
+- ✅ Tightened mobile menu spacing for compact display
+- ✅ Social media preview image (og-image.svg) - matches landing page design
+- ✅ Updated Open Graph and Twitter Card meta tags for all main pages
+- ✅ Mobile menu now shows all navigation items (FaithBot dropdown + links to other tools)
+- ✅ All blue colors updated to match IMB Innovation logo RGB(27, 54, 93) = #1B365D
+- ✅ SEO meta tags, Open Graph, Twitter Cards, favicon
+- ✅ Smooth scroll behavior and sticky support button
+- ✅ Fade-in animations on scroll with Intersection Observer
+- ✅ Accessibility features: skip-to-content, focus states, reduced motion support
+- ✅ Mobile optimizations (480px and 768px breakpoints, responsive buttons)
+
+### **v2.0 - IMB Innovation Platform** (January 2025)
 
 - ✅ Complete rebrand from coffee theme to IMB Innovation
-- ✅ Sarum Blue design system
+- ✅ IMB Innovation Blue design system (#1B365D)
 - ✅ Minimalist navigation with logo
 - ✅ 20 FaithBot languages
 - ✅ 17 Engage Lostness worldviews
@@ -285,7 +320,72 @@ Components:
 
 ---
 
-## 📧 Contact
+## 🚧 Future Planned Development
+
+### **High Priority**
+
+1. **Custom Domain Setup**
+   - Register domain (e.g., `faithbot.org`, `innovation.imb.org`)
+   - Configure DNS records on Digital Ocean
+   - Auto-provision SSL certificate
+   - Update meta tags with new domain
+
+2. **Square Hero Image**
+   - Design/create square version of IMB Innovation logo for hero section
+   - Replaces current rectangular logo
+   - Better visual balance on landing page
+
+3. **Enhanced Support Button**
+   - Improve visibility and styling
+   - Add hover animations
+   - Test CTR on mobile
+
+### **Medium Priority**
+
+1. **Blog Improvements**
+   - Better article preview system
+   - Featured/pinned articles
+   - Search functionality
+   - Category/tag filtering
+
+2. **Analytics Dashboard**
+   - Create custom GA dashboard for key metrics
+   - Track FaithBot language usage
+   - Monitor tool engagement by worldview
+   - Identify top traffic sources
+
+3. **Performance Optimization**
+   - Lazy load iframes
+   - Image optimization
+   - Caching strategies
+   - Core Web Vitals improvement
+
+### **Low Priority (Nice to Have)**
+
+1. **Dark Mode Toggle**
+   - Optional dark theme for accessibility
+   - User preference persistence
+
+2. **Multi-language Site**
+   - Translate UI to Spanish, Portuguese, Mandarin
+   - Language selector in main navigation
+
+3. **Tool Analytics Tracking**
+   - Custom events for tool usage
+   - Click tracking on CTAs
+   - User journey mapping
+
+4. **Email Newsletter Signup**
+   - Subscribe form for blog updates
+   - Integration with email service
+
+5. **Chat Bot for Site**
+   - FaithBot or similar for site navigation
+   - FAQ bot for common questions
+
+---
+
+##  Contact
 
 **Don Barger**
 
@@ -295,6 +395,7 @@ Components:
 
 ---
 
-*Last Updated: January 2025*  
-*Design: Sarum Blue Minimalist*  
-*Platform: GitHub Pages*
+*Last Updated: February 2025*
+*Design: IMB Innovation Blue (#1B365D) Minimalist*
+*Platform: Digital Ocean App Platform + GitHub Pages*
+*Deployment: Auto-deploy from GitHub main branch*
