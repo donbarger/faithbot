@@ -442,8 +442,15 @@ body {
         box-shadow: none;
         border: none;
         border-radius: 0;
-        max-height: none;
+        max-height: 300px;
+        overflow-y: auto;
         background: var(--gray-50);
+        margin: 0;
+    }
+
+    .dropdown-menu a {
+        padding: 0.75rem 2rem;
+        border-bottom: 1px solid var(--border);
     }
 
     .page-title {
