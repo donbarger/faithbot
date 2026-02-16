@@ -1,53 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-S8PE79TKZ1');
-</script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FaithBot - AI-Powered Faith Conversations</title>
+    <title>IMB Innovation - AI-Powered Tools for Global Missions</title>
     <link rel="stylesheet" href="main-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S8PE79TKZ1');
+    </script>
+
     <style>
-        /* Remove old dropdown styles since they're in main-styles.css now */
+        /* Landing Page Specific Styles */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(135deg, #003DA5 0%, #0052d4 100%);
+            color: white;
+        }
+
+        .hero-logo {
+            max-width: 200px;
+            height: auto;
+            margin: 0 auto 30px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 0 0 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin: 0 0 40px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #003DA5;
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0 0 20px;
+            color: #003DA5;
+            text-align: center;
+        }
+
+        .section-intro {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .tool-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .tool-card:hover {
+            border-color: #003DA5;
+            box-shadow: 0 8px 24px rgba(0, 61, 165, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .tool-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .tool-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0 12px;
+            color: #003DA5;
+        }
+
+        .tool-card p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #666;
+            margin: 0 0 20px;
+        }
+
+        .tool-link {
+            display: inline-block;
+            color: #003DA5;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 24px;
+            border: 2px solid #003DA5;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .tool-link:hover {
+            background: #003DA5;
+            color: white;
+        }
+
+        .support-section {
+            background: #f5f5f5;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .support-section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0 0 20px;
+            color: #003DA5;
+        }
+
+        .support-section p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .support-button {
+            display: inline-block;
+            background: #003DA5;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+
+        .support-button:hover {
+            background: #002d7a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 61, 165, 0.3);
+        }
+
+        footer {
+            background: #003DA5;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section h2 {
+                font-size: 28px;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="imb-innovation-logo.png" alt="IMB Innovation" class="logo-img">
-            </a>
-            <button class="nav-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div class="nav-links">
-                <div class="dropdown">
-                    <button class="dropdown-toggle active" aria-label="Select FaithBot language">
-                        <span class="dropdown-label">FaithBot (English)</span>
-                        <span class="dropdown-arrow">▼</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="#" data-lang="english" data-url="https://chat.faithbot.io" class="active">English</a>
-                        <a href="#" data-lang="arabic" data-url="https://arabic.faithbot.io">Arabic</a>
-                        <a href="#" data-lang="bengali" data-url="https://bengali.faithbot.io">Bengali</a>
-                        <a href="#" data-lang="burmese" data-url="https://burmese.faithbot.io">Burmese</a>
-                        <a href="#" data-lang="cantonese" data-url="https://cantonese.faithbot.io">Cantonese</a>
-                        <a href="#" data-lang="hindi" data-url="https://hindi.faithbot.io">Hindi</a>
-                        <a href="#" data-lang="hokkien" data-url="https://hokkien.faithbot.io">Hokkien</a>
-                        <a href="#" data-lang="indonesian" data-url="https://indonesia.faithbot.io">Indonesian</a>
-                        <a href="#" data-lang="japanese" data-url="https://japanese.faithbot.io">Japanese</a>
-                        <a href="#" data-lang="javanese" data-url="https://javanese.faithbot.io">Javanese</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="imb-innovation-logo.png" alt="IMB Innovation" class="hero-logo">
+        <h1>AI-Powered Tools for Global Missions</h1>
+        <p>Empowering missionaries, pastors, and believers to share the gospel across cultures and languages</p>
+        <a href="faithbot.html" class="cta-button">Explore Our Tools</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="section">
+        <h2>About IMB Innovation</h2>
+        <p class="section-intro">
+            At IMB Innovation, we leverage cutting-edge AI technology to remove barriers to gospel access worldwide.
+            Our team develops tools that help missionaries engage diverse cultures, train believers in contextual
+            evangelism, and make Scripture accessible in dozens of languages. Every tool we create is designed with
+            one mission in mind: seeing the gospel reach every nation, tribe, and tongue.
+        </p>
+    </section>
+
+    <!-- Tools Showcase -->
+    <section class="section">
+        <h2>Our Tools</h2>
+
+        <div class="tools-grid">
+            <!-- FaithBot -->
+            <div class="tool-card">
+                <div class="tool-icon">💬</div>
+                <h3>FaithBot</h3>
+                <p>AI-powered Biblical assistant for exploring Scripture, answering faith questions, and engaging in gospel conversations. Available in 20 languages.</p>
+                <a href="faithbot.html" class="tool-link">Try FaithBot</a>
+            </div>
+
+            <!-- Engage Lostness -->
+            <div class="tool-card">
+                <div class="tool-icon">🌍</div>
+                <h3>Engage Lostness</h3>
+                <p>Learn to engage 17 different worldviews with the gospel. Understand beliefs, practice conversations, and share Christ contextually.</p>
+                <a href="engage-lostness.html" class="tool-link">Start Learning</a>
+            </div>
+
+            <!-- BiblePics -->
+            <div class="tool-card">
+                <div class="tool-icon">🖼️</div>
+                <h3>BiblePics</h3>
+                <p>Generate AI-powered images for Bible stories and ministry. Bring Scripture to life visually for teaching and evangelism.</p>
+                <a href="biblepics.html" class="tool-link">Create Images</a>
+            </div>
+
+            <!-- Blog -->
+            <div class="tool-card">
+                <div class="tool-icon">📝</div>
+                <h3>Don's Blog</h3>
+                <p>Insights on AI, missions, innovation, and the intersection of technology and ministry. Practical thoughts for modern gospel work.</p>
+                <a href="blog.html" class="tool-link">Read Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support-section">
+        <h2>Partner With Us</h2>
+        <p>
+            These tools are free to use and will remain free for missionaries, pastors, and believers worldwide.
+            Your support helps us develop new features, expand to more languages, and continue innovating for the Great Commission.
+        </p>
+        <a href="https://www.imb.org/give/project/innovation-ministry/" target="_blank" rel="noopener noreferrer" class="support-button">Support This Ministry</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="faithbot.html">FaithBot</a>
+            <a href="engage-lostness.html">Engage Lostness</a>
+            <a href="biblepics.html">BiblePics</a>
+            <a href="blog.html">Blog</a>
+        </div>
+        <p class="footer-copyright">© 2025 IMB Innovation. All rights reserved.</p>
+    </footer>
                         <a href="#" data-lang="khmer" data-url="https://khmer.faithbot.io">Khmer</a>
                         <a href="#" data-lang="korean" data-url="https://korean.faithbot.io">Korean</a>
                         <a href="#" data-lang="lao" data-url="https://lao.faithbot.io">Lao</a>
@@ -64,79 +337,7 @@
                 <a href="biblepics.html" class="nav-link">Bible Pics</a>
                 <a href="blog.html" class="nav-link">Don's Blog</a>
             </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="content-container">
-        <iframe id="mainIframe" src="https://chat.faithbot.io" frameborder="0" title="FaithBot" allow="microphone; camera"></iframe>
-    </div>
-
-    <script>
-        // Mobile menu toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        // Dropdown functionality
-        const dropdown = document.querySelector('.dropdown');
-        const dropdownToggle = document.querySelector('.dropdown-toggle');
-        const dropdownMenu = document.querySelector('.dropdown-menu');
-        const dropdownLabel = document.querySelector('.dropdown-label');
-        const mainIframe = document.getElementById('mainIframe');
-        const languageLinks = dropdownMenu.querySelectorAll('a');
-
-        // Toggle dropdown
-        dropdownToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            dropdown.classList.toggle('active');
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('active');
-            }
-        });
-
-        // Language selection
-        languageLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-
-                // Get language data
-                const langName = link.textContent;
-                const langUrl = link.getAttribute('data-url');
-
-                // Update iframe
-                mainIframe.src = langUrl;
-
-                // Update dropdown label
-                dropdownLabel.textContent = `FaithBot (${langName})`;
-
-                // Update active states
-                languageLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-
-                // Close dropdown
-                dropdown.classList.remove('active');
-
-                // Close mobile menu if open
-                navToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Close mobile menu when other nav links are clicked
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
+        <p class="footer-copyright">© 2025 IMB Innovation. All rights reserved.</p>
+    </footer>
 </body>
+</html>

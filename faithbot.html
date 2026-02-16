@@ -7,66 +7,131 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  
+
   gtag('config', 'G-S8PE79TKZ1');
 </script>
 
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FaithBot - Don Barger</title>
-    <link rel="stylesheet" href="tool-styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>FaithBot - AI-Powered Faith Conversations</title>
+    <link rel="stylesheet" href="main-styles.css">
+    <style>
+        /* Remove old dropdown styles since they're in main-styles.css now */
+    </style>
 </head>
 <body>
-
-    <nav class="tool-nav">
+    <!-- Navigation -->
+    <nav class="main-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <span class="nav-coffee">☕</span>
-                <span class="nav-brand">Don Barger</span>
+                <img src="imb-innovation-logo.png" alt="IMB Innovation" class="logo-img">
             </a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
+            <button class="nav-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <div class="nav-links">
+                <div class="dropdown">
+                    <button class="dropdown-toggle active" aria-label="Select FaithBot language">
+                        <span class="dropdown-label">FaithBot (English)</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" data-lang="english" data-url="https://chat.faithbot.io" class="active">English</a>
+                        <a href="#" data-lang="arabic" data-url="https://arabic.faithbot.io">Arabic</a>
+                        <a href="#" data-lang="bengali" data-url="https://bengali.faithbot.io">Bengali</a>
+                        <a href="#" data-lang="burmese" data-url="https://burmese.faithbot.io">Burmese</a>
+                        <a href="#" data-lang="cantonese" data-url="https://cantonese.faithbot.io">Cantonese</a>
+                        <a href="#" data-lang="hindi" data-url="https://hindi.faithbot.io">Hindi</a>
+                        <a href="#" data-lang="hokkien" data-url="https://hokkien.faithbot.io">Hokkien</a>
+                        <a href="#" data-lang="indonesian" data-url="https://indonesia.faithbot.io">Indonesian</a>
+                        <a href="#" data-lang="japanese" data-url="https://japanese.faithbot.io">Japanese</a>
+                        <a href="#" data-lang="javanese" data-url="https://javanese.faithbot.io">Javanese</a>
+                        <a href="#" data-lang="khmer" data-url="https://khmer.faithbot.io">Khmer</a>
+                        <a href="#" data-lang="korean" data-url="https://korean.faithbot.io">Korean</a>
+                        <a href="#" data-lang="lao" data-url="https://lao.faithbot.io">Lao</a>
+                        <a href="#" data-lang="malay" data-url="https://suaraiman.faithbot.io">Malay</a>
+                        <a href="#" data-lang="mandarin-simp" data-url="https://mandarin.faithbot.io">Mandarin (Simplified)</a>
+                        <a href="#" data-lang="mandarin-trad" data-url="https://mandarin.faithbot.io">Mandarin (Traditional)</a>
+                        <a href="#" data-lang="mongolian" data-url="https://mongolian.faithbot.io">Mongolian</a>
+                        <a href="#" data-lang="shona" data-url="https://shona.faithbot.io">Shona</a>
+                        <a href="#" data-lang="thai" data-url="https://thai.faithbot.io">Thai</a>
+                        <a href="#" data-lang="vietnamese" data-url="https://vietnamese.faithbot.io">Vietnamese</a>
+                    </div>
+                </div>
+                <a href="engage-lostness.html" class="nav-link">Engage Lostness</a>
+                <a href="biblepics.html" class="nav-link">Bible Pics</a>
                 <a href="blog.html" class="nav-link">Don's Blog</a>
-                <a href="index.html#tools" class="nav-link active">Missional AI Tools</a>
-                <a href="other-languages.html" class="nav-link">AI Tools in Other Languages</a>
             </div>
-                </a>
-                <a href="other-languages.html" class="nav-link">AI Tools in Other Languages</a>
-            </div>
-            <a href="index.html" class="nav-home">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                    <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-                Home
-            </a>
         </div>
     </nav>
-    <div class="tool-container">
-        <iframe src="https://chat.faithbot.io" frameborder="0" title="FaithBot" allow="microphone; camera"></iframe>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <iframe id="mainIframe" src="https://chat.faithbot.io" frameborder="0" title="FaithBot" allow="microphone; camera"></iframe>
     </div>
-    <div class="bmc-footer">
-        <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="donbarger" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
-    </div>
+
     <script>
         // Mobile menu toggle
         const navToggle = document.querySelector('.nav-toggle');
         const navLinks = document.querySelector('.nav-links');
-        
+
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
-        
-        // Close menu when clicking a link
+
+        // Dropdown functionality
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        const dropdownLabel = document.querySelector('.dropdown-label');
+        const mainIframe = document.getElementById('mainIframe');
+        const languageLinks = dropdownMenu.querySelectorAll('a');
+
+        // Toggle dropdown
+        dropdownToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        // Language selection
+        languageLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Get language data
+                const langName = link.textContent;
+                const langUrl = link.getAttribute('data-url');
+
+                // Update iframe
+                mainIframe.src = langUrl;
+
+                // Update dropdown label
+                dropdownLabel.textContent = `FaithBot (${langName})`;
+
+                // Update active states
+                languageLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+
+                // Close dropdown
+                dropdown.classList.remove('active');
+
+                // Close mobile menu if open
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when other nav links are clicked
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
@@ -75,4 +140,3 @@
         });
     </script>
 </body>
-</html>
