@@ -7,72 +7,102 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  
+
   gtag('config', 'G-S8PE79TKZ1');
 </script>
 
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BiblePics - Don Barger</title>
-    <link rel="stylesheet" href="tool-styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>BiblePics - AI-Powered Biblical Imagery</title>
+    <link rel="stylesheet" href="main-styles.css">
 </head>
 <body>
-
-    <nav class="tool-nav">
+    <!-- Navigation -->
+    <nav class="main-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <span class="nav-coffee">☕</span>
-                <span class="nav-brand">Don Barger</span>
+                FaithBot
             </a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
+            <button class="nav-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <div class="nav-links">
+                <div class="dropdown">
+                    <button class="dropdown-toggle" aria-label="Select FaithBot language">
+                        <span class="dropdown-label">FaithBot (English)</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="index.html" data-lang="english">English</a>
+                        <a href="index.html" data-lang="arabic">Arabic</a>
+                        <a href="index.html" data-lang="bengali">Bengali</a>
+                        <a href="index.html" data-lang="burmese">Burmese</a>
+                        <a href="index.html" data-lang="cantonese">Cantonese</a>
+                        <a href="index.html" data-lang="hindi">Hindi</a>
+                        <a href="index.html" data-lang="hokkien">Hokkien</a>
+                        <a href="index.html" data-lang="indonesian">Indonesian</a>
+                        <a href="index.html" data-lang="japanese">Japanese</a>
+                        <a href="index.html" data-lang="javanese">Javanese</a>
+                        <a href="index.html" data-lang="khmer">Khmer</a>
+                        <a href="index.html" data-lang="korean">Korean</a>
+                        <a href="index.html" data-lang="lao">Lao</a>
+                        <a href="index.html" data-lang="malay">Malay</a>
+                        <a href="index.html" data-lang="mandarin-simp">Mandarin (Simplified)</a>
+                        <a href="index.html" data-lang="mandarin-trad">Mandarin (Traditional)</a>
+                        <a href="index.html" data-lang="mongolian">Mongolian</a>
+                        <a href="index.html" data-lang="shona">Shona</a>
+                        <a href="index.html" data-lang="thai">Thai</a>
+                        <a href="index.html" data-lang="vietnamese">Vietnamese</a>
+                    </div>
+                </div>
+                <a href="engage-lostness.html" class="nav-link">Engage Lostness</a>
+                <a href="biblepics.html" class="nav-link active">Bible Pics</a>
                 <a href="blog.html" class="nav-link">Don's Blog</a>
-                <a href="index.html#tools" class="nav-link active">Missional AI Tools</a>
-                <a href="other-languages.html" class="nav-link">AI Tools in Other Languages</a>
             </div>
-                </a>
-                <a href="other-languages.html" class="nav-link">AI Tools in Other Languages</a>
-            </div>
-            <a href="index.html" class="nav-home">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                    <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-                Home
-            </a>
         </div>
     </nav>
-    <div class="tool-container">
-        <iframe src="https://biblepicsbot-10020460.chipp.ai" frameborder="0" title="BiblePics Bot" allow="microphone; camera"></iframe>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <iframe src="https://biblepics.chipp.ai/app/i/fa5fd4a7-aacd-4ac9-b0de-aee5e1ef4f74" frameborder="0" title="BiblePics" allow="microphone; camera"></iframe>
     </div>
-    <div class="bmc-footer">
-        <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="donbarger" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
-    </div>
+
     <script>
         // Mobile menu toggle
         const navToggle = document.querySelector('.nav-toggle');
         const navLinks = document.querySelector('.nav-links');
-        
+
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
-        
-        // Close menu when clicking a link
+
+        // Close mobile menu when nav links are clicked
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
                 navLinks.classList.remove('active');
             });
         });
+
+        // Dropdown functionality
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+
+        if (dropdown && dropdownToggle) {
+            dropdownToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('active');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        }
     </script>
 </body>
 </html>

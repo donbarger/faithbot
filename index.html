@@ -14,126 +14,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FaithBot - AI-Powered Faith Conversations</title>
-    <link rel="stylesheet" href="tool-styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main-styles.css">
     <style>
-        /* Dropdown Menu Styles */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-toggle {
-            background: none;
-            border: none;
-            color: var(--text-primary, #3E2723);
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .dropdown-toggle:hover {
-            background: var(--foam, #F5F5F5);
-        }
-
-        .dropdown-toggle.active {
-            background: linear-gradient(135deg, var(--coffee-gold, #D4AF37) 0%, var(--coffee-amber, #C9A050) 100%);
-            color: white;
-        }
-
-        .dropdown-arrow {
-            font-size: 0.75rem;
-            transition: transform 0.3s ease;
-        }
-
-        .dropdown.active .dropdown-arrow {
-            transform: rotate(180deg);
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: calc(100% + 0.5rem);
-            left: 0;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-            min-width: 200px;
-            max-height: 400px;
-            overflow-y: auto;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1000;
-        }
-
-        .dropdown.active .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-menu a {
-            display: block;
-            padding: 0.75rem 1.25rem;
-            color: var(--text-primary, #3E2723);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-            border-bottom: 1px solid var(--cream, #EFEBE9);
-        }
-
-        .dropdown-menu a:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-menu a:hover {
-            background: var(--foam, #F5F5F5);
-            padding-left: 1.5rem;
-        }
-
-        .dropdown-menu a.active {
-            background: linear-gradient(135deg, var(--coffee-gold, #D4AF37) 0%, var(--coffee-amber, #C9A050) 100%);
-            color: white;
-        }
-
-        /* Mobile dropdown adjustments */
-        @media (max-width: 768px) {
-            .dropdown {
-                display: block;
-                width: 100%;
-            }
-
-            .dropdown-toggle {
-                width: 100%;
-                justify-content: space-between;
-            }
-
-            .dropdown-menu {
-                position: static;
-                box-shadow: none;
-                border-radius: 0;
-                max-height: none;
-                background: var(--foam, #F5F5F5);
-                margin-top: 0.5rem;
-            }
-        }
+        /* Remove old dropdown styles since they're in main-styles.css now */
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="tool-nav">
+    <nav class="main-nav">
         <div class="nav-container">
             <a href="old-home.html" class="nav-logo">
-                ☕ Don Barger
+                FaithBot
             </a>
             <button class="nav-toggle" aria-label="Toggle menu">
                 <span></span>
@@ -148,35 +39,36 @@
                     </button>
                     <div class="dropdown-menu">
                         <a href="#" data-lang="english" data-url="https://chat.faithbot.io" class="active">English</a>
-                        <a href="#" data-lang="bengali" data-url="https://bengali.faithbot.io">Bengali</a>
-                        <a href="#" data-lang="malay" data-url="https://suaraiman.faithbot.io">Malay</a>
                         <a href="#" data-lang="arabic" data-url="https://arabic.faithbot.io">Arabic</a>
-                        <a href="#" data-lang="shona" data-url="https://shona.faithbot.io">Shona</a>
-                        <a href="#" data-lang="hindi" data-url="https://hindi.faithbot.io">Hindi</a>
-                        <a href="#" data-lang="indonesian" data-url="https://indonesia.faithbot.io">Indonesian</a>
-                        <a href="#" data-lang="javanese" data-url="https://javanese.faithbot.io">Javanese</a>
-                        <a href="#" data-lang="hokkien" data-url="https://hokkien.faithbot.io">Hokkien</a>
-                        <a href="#" data-lang="mongolian" data-url="https://mongolian.faithbot.io">Mongolian</a>
-                        <a href="#" data-lang="lao" data-url="https://lao.faithbot.io">Lao</a>
-                        <a href="#" data-lang="khmer" data-url="https://khmer.faithbot.io">Khmer</a>
+                        <a href="#" data-lang="bengali" data-url="https://bengali.faithbot.io">Bengali</a>
                         <a href="#" data-lang="burmese" data-url="https://burmese.faithbot.io">Burmese</a>
                         <a href="#" data-lang="cantonese" data-url="https://cantonese.faithbot.io">Cantonese</a>
+                        <a href="#" data-lang="hindi" data-url="https://hindi.faithbot.io">Hindi</a>
+                        <a href="#" data-lang="hokkien" data-url="https://hokkien.faithbot.io">Hokkien</a>
+                        <a href="#" data-lang="indonesian" data-url="https://indonesia.faithbot.io">Indonesian</a>
+                        <a href="#" data-lang="japanese" data-url="https://japanese.faithbot.io">Japanese</a>
+                        <a href="#" data-lang="javanese" data-url="https://javanese.faithbot.io">Javanese</a>
+                        <a href="#" data-lang="khmer" data-url="https://khmer.faithbot.io">Khmer</a>
+                        <a href="#" data-lang="korean" data-url="https://korean.faithbot.io">Korean</a>
+                        <a href="#" data-lang="lao" data-url="https://lao.faithbot.io">Lao</a>
+                        <a href="#" data-lang="malay" data-url="https://suaraiman.faithbot.io">Malay</a>
+                        <a href="#" data-lang="mandarin-simp" data-url="https://mandarin.faithbot.io">Mandarin (Simplified)</a>
+                        <a href="#" data-lang="mandarin-trad" data-url="https://mandarin.faithbot.io">Mandarin (Traditional)</a>
+                        <a href="#" data-lang="mongolian" data-url="https://mongolian.faithbot.io">Mongolian</a>
+                        <a href="#" data-lang="shona" data-url="https://shona.faithbot.io">Shona</a>
                         <a href="#" data-lang="thai" data-url="https://thai.faithbot.io">Thai</a>
                         <a href="#" data-lang="vietnamese" data-url="https://vietnamese.faithbot.io">Vietnamese</a>
-                        <a href="#" data-lang="mandarin-trad" data-url="https://mandarin.faithbot.io">Traditional Mandarin</a>
-                        <a href="#" data-lang="japanese" data-url="https://japanese.faithbot.io">Japanese</a>
-                        <a href="#" data-lang="mandarin-simp" data-url="https://mandarin.faithbot.io">Simplified Mandarin</a>
-                        <a href="#" data-lang="korean" data-url="https://korean.faithbot.io">Korean</a>
                     </div>
                 </div>
                 <a href="engage-lostness.html" class="nav-link">Engage Lostness</a>
                 <a href="biblepics.html" class="nav-link">Bible Pics</a>
+                <a href="blog.html" class="nav-link">Don's Blog</a>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <div class="tool-container">
+    <div class="content-container">
         <iframe id="mainIframe" src="https://chat.faithbot.io" frameborder="0" title="FaithBot" allow="microphone; camera"></iframe>
     </div>
 
