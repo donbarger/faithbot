@@ -13,6 +13,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <title>Don's Blog</title>
     <link rel="stylesheet" href="main-styles.css">
     <link rel="stylesheet" href="blog-styles.css">
@@ -80,6 +81,23 @@
     </div>
 
     <script>
+        // Escape text for safe insertion into HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.appendChild(document.createTextNode(String(text)));
+            return div.innerHTML;
+        }
+
+        // Only allow https:// image URLs
+        function isSafeUrl(url) {
+            try {
+                const parsed = new URL(url);
+                return parsed.protocol === 'https:';
+            } catch {
+                return false;
+            }
+        }
+
         // Fetch and display Substack articles from RSS feed
         async function loadBlogPosts() {
             const container = document.getElementById('blog-articles');
@@ -91,8 +109,6 @@
 
                 const response = await fetch(apiUrl);
                 const data = await response.json();
-
-                console.log('RSS data:', data);
 
                 if (data.status === 'ok' && data.items && data.items.length > 0) {
                     const articles = data.items.map(post => {
@@ -115,10 +131,13 @@
                             }
                         }
 
+                        // Only keep thumbnails with safe https:// URLs
+                        if (thumbnail && !isSafeUrl(thumbnail)) {
+                            thumbnail = '';
+                        }
+
                         // Clean description
                         const cleanDesc = (post.description || '').replace(/<[^>]*>/g, '').substring(0, 200).trim();
-
-                        console.log('Article:', post.title, 'Image:', thumbnail ? thumbnail : 'None');
 
                         return {
                             title: post.title,
@@ -129,36 +148,60 @@
                         };
                     });
 
-                    container.innerHTML = '<div class="articles-grid">' +
-                        articles.map(post => `
-                            <article class="blog-post" onclick="window.location.href='post.html?url=${encodeURIComponent(post.link)}'">
-                                ${post.thumbnail ? `<img src="${post.thumbnail}" alt="${post.title}" class="post-image" onerror="this.style.display='none';" loading="lazy">` : ''}
-                                <div class="post-content">
-                                    <h2 class="post-title">${post.title}</h2>
-                                    <p class="post-date">${new Date(post.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                                    <p class="post-excerpt">${post.description}${post.description ? '...' : ''}</p>
-                                    <div class="read-more-btn">Read Article →</div>
-                                </div>
-                            </article>
-                        `).join('') +
-                        '</div>' +
+                    const grid = document.createElement('div');
+                    grid.className = 'articles-grid';
+
+                    articles.forEach(post => {
+                        const article = document.createElement('article');
+                        article.className = 'blog-post';
+                        const safeLink = isSafeUrl(post.link) ? post.link : '';
+                        if (safeLink) {
+                            article.setAttribute('onclick', `window.location.href='post.html?url=${encodeURIComponent(safeLink)}'`);
+                        }
+                        const safeTitle = escapeHtml(post.title || '');
+                        const safeDate = new Date(post.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                        const safeDesc = escapeHtml(post.description || '');
+                        article.innerHTML = `
+                            <div class="post-content">
+                                <h2 class="post-title">${safeTitle}</h2>
+                                <p class="post-date">${safeDate}</p>
+                                <p class="post-excerpt">${safeDesc}${post.description ? '...' : ''}</p>
+                                <div class="read-more-btn">Read Article →</div>
+                            </div>
+                        `;
+                        if (post.thumbnail) {
+                            const img = document.createElement('img');
+                            img.src = post.thumbnail;
+                            // img.alt/.className use DOM property API — no HTML escaping needed
+                            img.alt = post.title || '';
+                            img.className = 'post-image';
+                            img.loading = 'lazy';
+                            img.onerror = function() { this.style.display = 'none'; };
+                            article.insertBefore(img, article.firstChild);
+                        }
+                        grid.appendChild(article);
+                    });
+
+                    container.innerHTML = '';
+                    container.appendChild(grid);
+                    container.insertAdjacentHTML('beforeend',
                         '<div class="subscribe-cta">' +
                             '<h3>Want more?</h3>' +
                             '<p>Subscribe to get my latest articles delivered to your inbox</p>' +
                             '<a href="https://donbarger.substack.com" target="_blank" rel="noopener noreferrer" class="subscribe-button">Subscribe on Substack</a>' +
-                        '</div>';
+                        '</div>'
+                    );
                 } else {
                     throw new Error('No articles found');
                 }
             } catch (error) {
                 console.error('Blog loading error:', error);
-                container.innerHTML = `
-                    <div class="error">
-                        <h3>Articles Coming Soon!</h3>
-                        <p>I'm working on bringing my articles here. In the meantime, check out my latest writing:</p>
-                        <a href="https://donbarger.substack.com" target="_blank" rel="noopener noreferrer" class="subscribe-button">Visit My Substack →</a>
-                    </div>
-                `;
+                container.innerHTML =
+                    '<div class="error">' +
+                        '<h3>Articles Coming Soon!</h3>' +
+                        '<p>I\'m working on bringing my articles here. In the meantime, check out my latest writing:</p>' +
+                        '<a href="https://donbarger.substack.com" target="_blank" rel="noopener noreferrer" class="subscribe-button">Visit My Substack →</a>' +
+                    '</div>';
             }
         }
 

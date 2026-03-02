@@ -14,6 +14,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <title>Article - Don's Blog</title>
     <link rel="stylesheet" href="main-styles.css">
     <link rel="stylesheet" href="post-styles.css">
@@ -82,10 +83,27 @@
         const urlParams = new URLSearchParams(window.location.search);
         const articleUrl = urlParams.get('url');
 
+        // Only allow https:// URLs to prevent javascript: URI injection
+        function isSafeUrl(url) {
+            try {
+                const parsed = new URL(url);
+                return parsed.protocol === 'https:';
+            } catch {
+                return false;
+            }
+        }
+
+        // Escape text for safe insertion into HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.appendChild(document.createTextNode(String(text)));
+            return div.innerHTML;
+        }
+
         async function loadArticle() {
             const container = document.getElementById('post-content');
 
-            if (!articleUrl) {
+            if (!articleUrl || !isSafeUrl(articleUrl)) {
                 container.innerHTML = '<div class="error"><p>No article specified. <a href="blog.html">Return to blog</a></p></div>';
                 return;
             }
@@ -111,10 +129,10 @@
                         // Remove unwanted elements
                         tempDiv.querySelectorAll('a[href*="subscribe"], [class*="subscribe"], [class*="paywall"], button').forEach(el => el.remove());
 
-                        // Get first image if available
+                        // Get first image if available — validate it's a safe https:// URL
                         let featuredImage = '';
                         const firstImg = tempDiv.querySelector('img');
-                        if (firstImg) {
+                        if (firstImg && isSafeUrl(firstImg.src)) {
                             featuredImage = firstImg.src;
                         }
 
@@ -135,30 +153,49 @@
                         });
                         previewHTML = previewDiv.innerHTML;
 
-                        container.innerHTML = `
-                            <header class="post-header">
-                                ${featuredImage ? `<img src="${featuredImage}" alt="${article.title}" class="featured-image">` : ''}
-                                <h1 class="post-title">${article.title}</h1>
-                                <p class="post-meta">
-                                    <span class="post-date">${new Date(article.pubDate).toLocaleDateString('en-US', {
-                                        year: 'numeric',
-                                        month: 'long',
-                                        day: 'numeric'
-                                    })}</span>
-                                    <span class="post-author">by Don Barger</span>
-                                </p>
-                            </header>
+                        const safeTitle = escapeHtml(article.title || '');
+                        const safeDate = new Date(article.pubDate).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        });
+
+                        const headerEl = document.createElement('header');
+                        headerEl.className = 'post-header';
+                        if (featuredImage) {
+                            const img = document.createElement('img');
+                            img.src = featuredImage;
+                            // img.alt uses DOM property API — no HTML escaping needed (browser handles it)
+                            img.alt = article.title || '';
+                            img.className = 'featured-image';
+                            headerEl.appendChild(img);
+                        }
+                        headerEl.insertAdjacentHTML('beforeend', `
+                            <h1 class="post-title">${safeTitle}</h1>
+                            <p class="post-meta">
+                                <span class="post-date">${safeDate}</span>
+                                <span class="post-author">by Don Barger</span>
+                            </p>
+                        `);
+
+                        const readLink = document.createElement('a');
+                        readLink.href = articleUrl;
+                        readLink.target = '_blank';
+                        readLink.rel = 'noopener noreferrer';
+                        readLink.className = 'read-full-btn';
+                        readLink.textContent = 'Click Here';
+
+                        container.innerHTML = '';
+                        container.appendChild(headerEl);
+                        container.insertAdjacentHTML('beforeend', `
                             <div class="post-preview">
-                                ${previewHTML || `<p>${textContent}...</p>`}
+                                ${previewHTML || `<p>${escapeHtml(textContent)}...</p>`}
                             </div>
                             <div class="continue-reading">
                                 <div class="fade-overlay"></div>
                                 <div class="continue-cta">
                                     <h3>Continue Reading on Substack</h3>
                                     <p>Get the full article with all the details, examples, and insights.</p>
-                                    <a href="${articleUrl}" target="_blank" rel="noopener noreferrer" class="read-full-btn">
-                                        Click Here
-                                    </a>
                                 </div>
                             </div>
                             <footer class="post-footer">
@@ -170,7 +207,8 @@
                                     </a>
                                 </div>
                             </footer>
-                        `;
+                        `);
+                        container.querySelector('.continue-cta').appendChild(readLink);
                     } else {
                         throw new Error('Article not found');
                     }
@@ -179,13 +217,18 @@
                 }
             } catch (error) {
                 console.error('Article loading error:', error);
-                container.innerHTML = `
-                    <div class="error">
-                        <h2>Unable to Load Preview</h2>
-                        <p>Read this article directly on Substack:</p>
-                        <a href="${articleUrl}" target="_blank" rel="noopener noreferrer" class="substack-btn">Read on Substack →</a>
-                    </div>
-                `;
+                const errDiv = document.createElement('div');
+                errDiv.className = 'error';
+                errDiv.innerHTML = '<h2>Unable to Load Preview</h2><p>Read this article directly on Substack:</p>';
+                const errLink = document.createElement('a');
+                errLink.href = articleUrl;
+                errLink.target = '_blank';
+                errLink.rel = 'noopener noreferrer';
+                errLink.className = 'substack-btn';
+                errLink.textContent = 'Read on Substack →';
+                errDiv.appendChild(errLink);
+                container.innerHTML = '';
+                container.appendChild(errDiv);
             }
         }
 
