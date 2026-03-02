@@ -161,12 +161,7 @@
                         const safeTitle = escapeHtml(post.title || '');
                         const safeDate = new Date(post.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
                         const safeDesc = escapeHtml(post.description || '');
-                        let imgHtml = '';
-                        if (post.thumbnail) {
-                            imgHtml = `<img src="${post.thumbnail}" alt="${safeTitle}" class="post-image" onerror="this.style.display='none';" loading="lazy">`;
-                        }
                         article.innerHTML = `
-                            ${imgHtml}
                             <div class="post-content">
                                 <h2 class="post-title">${safeTitle}</h2>
                                 <p class="post-date">${safeDate}</p>
@@ -174,6 +169,16 @@
                                 <div class="read-more-btn">Read Article →</div>
                             </div>
                         `;
+                        if (post.thumbnail) {
+                            const img = document.createElement('img');
+                            img.src = post.thumbnail;
+                            // img.alt/.className use DOM property API — no HTML escaping needed
+                            img.alt = post.title || '';
+                            img.className = 'post-image';
+                            img.loading = 'lazy';
+                            img.onerror = function() { this.style.display = 'none'; };
+                            article.insertBefore(img, article.firstChild);
+                        }
                         grid.appendChild(article);
                     });
 

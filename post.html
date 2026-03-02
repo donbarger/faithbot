@@ -165,6 +165,7 @@
                         if (featuredImage) {
                             const img = document.createElement('img');
                             img.src = featuredImage;
+                            // img.alt uses DOM property API — no HTML escaping needed (browser handles it)
                             img.alt = article.title || '';
                             img.className = 'featured-image';
                             headerEl.appendChild(img);
