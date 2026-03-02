@@ -13,6 +13,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <title>Engage Lostness - Understanding Worldviews</title>
     <link rel="stylesheet" href="main-styles.css">
 </head>
@@ -144,6 +145,27 @@
         const worldviewLabel = document.querySelector('.worldview-label');
         const worldviewLinks = document.querySelectorAll('[data-worldview]');
 
+        // Allowed worldview page filenames (relative paths only)
+        const allowedWorldviewUrls = new Set([
+            'engage-african-traditional.html',
+            'engage-animism.html',
+            'engage-buddhists.html',
+            'engage-catholicism.html',
+            'engage-chinese-religions.html',
+            'engage-cultural-christians.html',
+            'engage-gen-alpha.html',
+            'engage-gen-z.html',
+            'engage-hindus.html',
+            'engage-japanese.html',
+            'engage-jehovah-witnesses.html',
+            'engage-latin-american-catholics.html',
+            'engage-mormons.html',
+            'engage-muslims.html',
+            'engage-orthodox.html',
+            'engage-postmoderns.html',
+            'engage-turks.html'
+        ]);
+
         worldviewLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -151,6 +173,11 @@
                 // Get worldview data
                 const worldviewName = link.textContent;
                 const worldviewUrl = link.getAttribute('data-url');
+
+                // Validate URL is an expected local page before setting iframe src
+                if (!allowedWorldviewUrls.has(worldviewUrl)) {
+                    return;
+                }
 
                 // Update iframe
                 worldviewIframe.src = worldviewUrl;

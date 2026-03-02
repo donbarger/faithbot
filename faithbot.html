@@ -13,6 +13,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <title>FaithBot - AI-Powered Faith Conversations</title>
     <link rel="stylesheet" href="main-styles.css">
     <style>
@@ -109,6 +110,29 @@
             });
         });
 
+        // Allowed FaithBot language URLs
+        const allowedLangUrls = new Set([
+            'https://chat.faithbot.io',
+            'https://arabic.faithbot.io',
+            'https://bengali.faithbot.io',
+            'https://burmese.faithbot.io',
+            'https://cantonese.faithbot.io',
+            'https://hindi.faithbot.io',
+            'https://hokkien.faithbot.io',
+            'https://indonesia.faithbot.io',
+            'https://japanese.faithbot.io',
+            'https://javanese.faithbot.io',
+            'https://khmer.faithbot.io',
+            'https://korean.faithbot.io',
+            'https://lao.faithbot.io',
+            'https://suaraiman.faithbot.io',
+            'https://mandarin.faithbot.io',
+            'https://mongolian.faithbot.io',
+            'https://shona.faithbot.io',
+            'https://thai.faithbot.io',
+            'https://vietnamese.faithbot.io'
+        ]);
+
         // Language selection
         languageLinks.forEach(link => {
             link.addEventListener('click', (e) => {
@@ -117,6 +141,11 @@
                 // Get language data
                 const langName = link.textContent;
                 const langUrl = link.getAttribute('data-url');
+
+                // Validate URL is an expected FaithBot endpoint before setting iframe src
+                if (!allowedLangUrls.has(langUrl)) {
+                    return;
+                }
 
                 // Update iframe
                 mainIframe.src = langUrl;
