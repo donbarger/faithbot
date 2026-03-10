@@ -54,40 +54,78 @@
 
         .page-header p {
             font-size: 18px;
-            margin: 0;
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        .tools-container {
-            max-width: 1000px;
+        .tools-grid-wrapper {
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 48px 20px 60px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .tool-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 32px 24px;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
             display: flex;
             flex-direction: column;
-            gap: 48px;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
         }
 
-        .tool-section {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 12px rgba(27, 54, 93, 0.1);
+        .tool-card:hover {
+            border-color: #1B365D;
+            box-shadow: 0 8px 24px rgba(27, 54, 93, 0.12);
+            transform: translateY(-4px);
         }
 
-        .tool-section-header {
-            background: #1B365D;
-            color: white;
-            padding: 16px 24px;
+        .tool-icon {
+            font-size: 44px;
+        }
+
+        .tool-card h3 {
             font-size: 20px;
             font-weight: 700;
+            margin: 0;
+            color: #1B365D;
         }
 
-        .tool-section iframe {
-            display: block;
-            width: 100%;
-            border: none;
+        .tool-card p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #666;
+            margin: 0;
+            flex: 1;
+        }
+
+        .tool-link {
+            display: inline-block;
+            color: #1B365D;
+            font-weight: 600;
+            padding: 8px 20px;
+            border: 2px solid #1B365D;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.2s;
+            margin-top: 4px;
+        }
+
+        .tool-card:hover .tool-link {
+            background: #1B365D;
+            color: white;
         }
 
         footer {
@@ -95,7 +133,6 @@
             color: white;
             padding: 30px 20px;
             text-align: center;
-            margin-top: 20px;
         }
 
         .footer-links {
@@ -114,9 +151,7 @@
             transition: opacity 0.2s;
         }
 
-        .footer-links a:hover {
-            opacity: 1;
-        }
+        .footer-links a:hover { opacity: 1; }
 
         .footer-copyright {
             font-size: 13px;
@@ -125,18 +160,10 @@
         }
 
         @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 28px;
-            }
-
-            .page-header p {
-                font-size: 16px;
-            }
-
-            .tools-container {
-                padding: 24px 16px;
-                gap: 32px;
-            }
+            .page-header h1 { font-size: 28px; }
+            .page-header p { font-size: 16px; }
+            .tools-grid { grid-template-columns: 1fr; }
+            .tools-grid-wrapper { padding: 32px 16px 48px; }
         }
     </style>
 </head>
@@ -147,43 +174,59 @@
         <p>Herramientas de IA para la fe, el ministerio y el alcance misionero</p>
     </div>
 
-    <div class="tools-container">
+    <div class="tools-grid-wrapper">
+        <div class="tools-grid">
 
-        <div class="tool-section">
-            <div class="tool-section-header">✝️ Bot de Fe</div>
-            <iframe src="https://botdefe-59281.chipp.ai" height="800" frameborder="0" title="Bot de Fe" allow="microphone; camera"></iframe>
+            <a href="spanish-bot-de-fé.html" class="tool-card">
+                <div class="tool-icon">✝️</div>
+                <h3>Bot de Fe</h3>
+                <p>Encuentra respuestas a preguntas de fe desde una perspectiva bíblica.</p>
+                <span class="tool-link">Abrir →</span>
+            </a>
+
+            <a href="spanish-copiloto-de-pastor.html" class="tool-card">
+                <div class="tool-icon">👨‍✈️</div>
+                <h3>Copiloto de Pastor</h3>
+                <p>Asistente de IA para la planificación y preparación del ministerio pastoral.</p>
+                <span class="tool-link">Abrir →</span>
+            </a>
+
+            <a href="spanish-alcanzar-a-las-naciones.html" class="tool-card">
+                <div class="tool-icon">🌎</div>
+                <h3>Alcanzar a las Naciónes</h3>
+                <p>Herramientas para el alcance misionero y evangelización global.</p>
+                <span class="tool-link">Abrir →</span>
+            </a>
+
+            <a href="spanish-habla-con-testigos-de-jehova.html" class="tool-card">
+                <div class="tool-icon">📖</div>
+                <h3>Habla con Testigos de Jehová</h3>
+                <p>Navega diferencias doctrinales y comparte el evangelio con amor.</p>
+                <span class="tool-link">Abrir →</span>
+            </a>
+
+            <a href="spanish-involucrate-con-la-generacion.html" class="tool-card">
+                <div class="tool-icon">👶</div>
+                <h3>Involúcrate con la Generación</h3>
+                <p>Conecta con la generación más joven y comparte el evangelio con ellos.</p>
+                <span class="tool-link">Abrir →</span>
+            </a>
+
+            <a href="spanish-involucrate-con-el-animismo.html" class="tool-card">
+                <div class="tool-icon">🌿</div>
+                <h3>Involúcrate con el Animismo</h3>
+                <p>Aprende a compartir tu fe con quienes practican el animismo.</p>
+                <span class="tool-link">Abrir →</span>
+            </a>
+
+            <a href="spanish-ilustraciones-biblicas.html" class="tool-card">
+                <div class="tool-icon">🖼️</div>
+                <h3>Ilustraciones bíblicas</h3>
+                <p>Genera imágenes impresionantes para historias bíblicas con IA.</p>
+                <span class="tool-link">Abrir →</span>
+            </a>
+
         </div>
-
-        <div class="tool-section">
-            <div class="tool-section-header">👨‍✈️ Copiloto de Pastor</div>
-            <iframe src="https://copilotodepastor-71441.chipp.ai" height="800" frameborder="0" title="Copiloto de Pastor" allow="microphone; camera"></iframe>
-        </div>
-
-        <div class="tool-section">
-            <div class="tool-section-header">🌎 Alcanzar a las Naciónes</div>
-            <iframe src="https://alcanzaralasnacines-71442.chipp.ai" height="800" frameborder="0" title="Alcanzar a las Naciónes" allow="microphone; camera"></iframe>
-        </div>
-
-        <div class="tool-section">
-            <div class="tool-section-header">📖 Habla con Testigos de Jehová</div>
-            <iframe src="https://hablacontestigosdejehov-10005238.chipp.ai" height="800" frameborder="0" title="Habla con Testigos de Jehová" allow="microphone; camera"></iframe>
-        </div>
-
-        <div class="tool-section">
-            <div class="tool-section-header">👶 Involúcrate con la Generación</div>
-            <iframe src="https://involcrateconlageneracin-10005240.chipp.ai" height="800" frameborder="0" title="Involúcrate con la Generación" allow="microphone; camera"></iframe>
-        </div>
-
-        <div class="tool-section">
-            <div class="tool-section-header">🌿 Involúcrate con el Animismo</div>
-            <iframe src="https://involcrateconelanimismo-10005239.chipp.ai" height="800" frameborder="0" title="Involúcrate con el Animismo" allow="microphone; camera"></iframe>
-        </div>
-
-        <div class="tool-section">
-            <div class="tool-section-header">🖼️ Ilustraciones bíblicas</div>
-            <iframe src="https://ilustracionesbblicas-71429.chipp.ai" height="800" frameborder="0" title="Ilustraciones bíblicas" allow="microphone; camera"></iframe>
-        </div>
-
     </div>
 
     <footer>
