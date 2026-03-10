@@ -92,85 +92,95 @@
     </div>
 
     <script>
-        // Fetch and display Substack articles from RSS feed
+        const RSS_URL = 'https://donbarger.substack.com/feed';
+
+        function extractThumbnail(item) {
+            // Try <media:content> or <enclosure>
+            const media = item.querySelector('content') || item.querySelector('enclosure');
+            if (media) {
+                const url = media.getAttribute('url') || media.getAttribute('medium');
+                if (url && url.startsWith('http')) return url;
+            }
+            // Try first <img> in description
+            const desc = item.querySelector('description')?.textContent || '';
+            const match = desc.match(/<img[^>]+src=["']([^"'>]+)["']/i);
+            return match ? match[1] : '';
+        }
+
+        function renderPosts(posts) {
+            const container = document.getElementById('blog-articles');
+            if (!posts.length) { throw new Error('empty'); }
+            container.innerHTML =
+                '<div class="articles-grid">' +
+                posts.map(p => `
+                    <article class="blog-post" onclick="window.location.href='post.html?url=${encodeURIComponent(p.link)}'">
+                        ${p.thumbnail ? `<img src="${p.thumbnail}" alt="${p.title}" class="post-image" onerror="this.style.display='none';" loading="lazy">` : ''}
+                        <div class="post-content">
+                            <h2 class="post-title">${p.title}</h2>
+                            <p class="post-date">${new Date(p.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                            <p class="post-excerpt">${p.description}${p.description ? '...' : ''}</p>
+                            <div class="read-more-btn">Read Article →</div>
+                        </div>
+                    </article>`).join('') +
+                '</div>' +
+                '<div class="subscribe-cta">' +
+                    '<h3>Want more?</h3>' +
+                    '<p>Subscribe to get my latest articles delivered to your inbox</p>' +
+                    '<a href="https://donbarger.substack.com" target="_blank" rel="noopener noreferrer" class="subscribe-button">Subscribe on Substack</a>' +
+                '</div>';
+        }
+
+        function parseRssXml(xmlText) {
+            const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
+            return Array.from(xml.querySelectorAll('item')).map(item => {
+                const rawDesc = item.querySelector('description')?.textContent || '';
+                const cleanDesc = rawDesc.replace(/<[^>]*>/g, '').substring(0, 200).trim();
+                return {
+                    title: item.querySelector('title')?.textContent || '',
+                    link: item.querySelector('link')?.nextSibling?.nodeValue?.trim() ||
+                          item.querySelector('guid')?.textContent || '',
+                    pubDate: item.querySelector('pubDate')?.textContent || '',
+                    description: cleanDesc,
+                    thumbnail: extractThumbnail(item)
+                };
+            });
+        }
+
         async function loadBlogPosts() {
             const container = document.getElementById('blog-articles');
-
             try {
-                // Use RSS2JSON - faster and more reliable
-                const rssUrl = 'https://donbarger.substack.com/feed';
-                const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+                // Try rss2json first
+                let posts = null;
+                try {
+                    const r = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`);
+                    const d = await r.json();
+                    if (d.status === 'ok' && d.items?.length) {
+                        posts = d.items.map(p => ({
+                            title: p.title,
+                            link: p.link || p.guid,
+                            pubDate: p.pubDate,
+                            description: (p.description || '').replace(/<[^>]*>/g, '').substring(0, 200).trim(),
+                            thumbnail: p.thumbnail || p.enclosure?.link || ''
+                        }));
+                    }
+                } catch (_) {}
 
-                const response = await fetch(apiUrl);
-                const data = await response.json();
-
-                console.log('RSS data:', data);
-
-                if (data.status === 'ok' && data.items && data.items.length > 0) {
-                    const articles = data.items.map(post => {
-                        // Extract thumbnail from multiple sources
-                        let thumbnail = post.thumbnail || post.enclosure?.link || '';
-
-                        // Try content field
-                        if (!thumbnail && post.content) {
-                            const imgMatch = post.content.match(/<img[^>]+src=["']([^"'>]+)["']/i);
-                            if (imgMatch && imgMatch[1]) {
-                                thumbnail = imgMatch[1];
-                            }
-                        }
-
-                        // Try description field
-                        if (!thumbnail && post.description) {
-                            const imgMatch = post.description.match(/<img[^>]+src=["']([^"'>]+)["']/i);
-                            if (imgMatch && imgMatch[1]) {
-                                thumbnail = imgMatch[1];
-                            }
-                        }
-
-                        // Clean description
-                        const cleanDesc = (post.description || '').replace(/<[^>]*>/g, '').substring(0, 200).trim();
-
-                        console.log('Article:', post.title, 'Image:', thumbnail ? thumbnail : 'None');
-
-                        return {
-                            title: post.title,
-                            link: post.link || post.guid,
-                            pubDate: post.pubDate,
-                            description: cleanDesc,
-                            thumbnail: thumbnail
-                        };
-                    });
-
-                    container.innerHTML = '<div class="articles-grid">' +
-                        articles.map(post => `
-                            <article class="blog-post" onclick="window.location.href='post.html?url=${encodeURIComponent(post.link)}'">
-                                ${post.thumbnail ? `<img src="${post.thumbnail}" alt="${post.title}" class="post-image" onerror="this.style.display='none';" loading="lazy">` : ''}
-                                <div class="post-content">
-                                    <h2 class="post-title">${post.title}</h2>
-                                    <p class="post-date">${new Date(post.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                                    <p class="post-excerpt">${post.description}${post.description ? '...' : ''}</p>
-                                    <div class="read-more-btn">Read Article →</div>
-                                </div>
-                            </article>
-                        `).join('') +
-                        '</div>' +
-                        '<div class="subscribe-cta">' +
-                            '<h3>Want more?</h3>' +
-                            '<p>Subscribe to get my latest articles delivered to your inbox</p>' +
-                            '<a href="https://donbarger.substack.com" target="_blank" rel="noopener noreferrer" class="subscribe-button">Subscribe on Substack</a>' +
-                        '</div>';
-                } else {
-                    throw new Error('No articles found');
+                // Fallback: fetch RSS directly via CORS proxy
+                if (!posts) {
+                    const r = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(RSS_URL)}`);
+                    const d = await r.json();
+                    posts = parseRssXml(d.contents);
                 }
+
+                renderPosts(posts);
             } catch (error) {
                 console.error('Blog loading error:', error);
                 container.innerHTML = `
                     <div class="error">
                         <h3>Articles Coming Soon!</h3>
-                        <p>I'm working on bringing my articles here. In the meantime, check out my latest writing:</p>
+                        <p>In the meantime, check out my latest writing on Substack:</p>
                         <a href="https://donbarger.substack.com" target="_blank" rel="noopener noreferrer" class="subscribe-button">Visit My Substack →</a>
-                    </div>
-                `;
+                    </div>`;
             }
         }
 
