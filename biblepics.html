@@ -2,19 +2,34 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-S8PE79TKZ1');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S8PE79TKZ1');
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiblePics - AI-Powered Biblical Imagery</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="main-styles.css">
+    <style>
+        .biblepics-wrap {
+            margin-top: 64px;
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 64px);
+        }
+        .biblepics-wrap iframe {
+            flex: 1;
+            width: 100%;
+            min-height: 800px;
+            border: none;
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -24,39 +39,10 @@
                 <img src="imb-innovation-logo.png" alt="IMB Innovation" class="logo-img">
             </a>
             <button class="nav-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
             <div class="nav-links">
-                <div class="dropdown">
-                    <button class="dropdown-toggle" aria-label="Select FaithBot language">
-                        <span class="dropdown-label">FaithBot (English)</span>
-                        <span class="dropdown-arrow">▼</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="index.html" data-lang="english">English</a>
-                        <a href="index.html" data-lang="arabic">Arabic</a>
-                        <a href="index.html" data-lang="bengali">Bengali</a>
-                        <a href="index.html" data-lang="burmese">Burmese</a>
-                        <a href="index.html" data-lang="cantonese">Cantonese</a>
-                        <a href="index.html" data-lang="hindi">Hindi</a>
-                        <a href="index.html" data-lang="hokkien">Hokkien</a>
-                        <a href="index.html" data-lang="indonesian">Indonesian</a>
-                        <a href="index.html" data-lang="japanese">Japanese</a>
-                        <a href="index.html" data-lang="javanese">Javanese</a>
-                        <a href="index.html" data-lang="khmer">Khmer</a>
-                        <a href="index.html" data-lang="korean">Korean</a>
-                        <a href="index.html" data-lang="lao">Lao</a>
-                        <a href="index.html" data-lang="malay">Malay</a>
-                        <a href="index.html" data-lang="mandarin-simp">Mandarin (Simplified)</a>
-                        <a href="index.html" data-lang="mandarin-trad">Mandarin (Traditional)</a>
-                        <a href="index.html" data-lang="mongolian">Mongolian</a>
-                        <a href="index.html" data-lang="shona">Shona</a>
-                        <a href="index.html" data-lang="thai">Thai</a>
-                        <a href="index.html" data-lang="vietnamese">Vietnamese</a>
-                    </div>
-                </div>
+                <a href="faithbot.html" class="nav-link">FaithBot</a>
                 <a href="engage-lostness.html" class="nav-link">Engage Lostness</a>
                 <a href="biblepics.html" class="nav-link active">Bible Pics</a>
                 <a href="blog.html" class="nav-link">Don's Blog</a>
@@ -64,49 +50,31 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="content-container">
-        <iframe src="https://biblepicsbot-10020460.chipp.ai" height="800px" width="100%" frameborder="0" title="BiblePics Bot" allow="microphone; camera"></iframe>
+    <div class="biblepics-wrap">
+        <iframe src="https://biblepicsbot-10020460.chipp.ai" title="BiblePics Bot" allow="microphone; camera"></iframe>
+
+        <footer style="background:#1B365D;color:white;padding:40px 20px;text-align:center;">
+            <div style="display:flex;justify-content:center;gap:30px;margin-bottom:20px;flex-wrap:wrap;">
+                <a href="privacy-policy.html" style="color:white;text-decoration:none;font-size:16px;opacity:0.9;">Privacy Policy</a>
+                <a href="terms-of-use.html" style="color:white;text-decoration:none;font-size:16px;opacity:0.9;">Terms of Use</a>
+            </div>
+            <p style="font-size:14px;opacity:0.8;margin:0;">© 2026 IMB Innovation. All rights reserved.</p>
+        </footer>
     </div>
 
     <script>
-        // Mobile menu toggle
         const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
+        const navLinks  = document.querySelector('.nav-links');
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
-
-        // Close mobile menu when nav links are clicked
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
+        document.querySelectorAll('.nav-link').forEach(l => {
+            l.addEventListener('click', () => {
                 navToggle.classList.remove('active');
                 navLinks.classList.remove('active');
             });
         });
-
-        // Dropdown functionality
-        const dropdowns = document.querySelectorAll('.dropdown');
-        const dropdown = dropdowns[0];
-        const dropdownToggle = document.querySelector('.dropdown-toggle');
-
-        if (dropdown && dropdownToggle) {
-            dropdownToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                dropdowns.forEach(d => {
-                    if (d !== dropdown) d.classList.remove('active');
-                });
-                dropdown.classList.toggle('active');
-            });
-
-            document.addEventListener('click', (e) => {
-                if (!dropdown.contains(e.target)) {
-                    dropdown.classList.remove('active');
-                }
-            });
-        }
     </script>
 </body>
 </html>
