@@ -2,19 +2,147 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-S8PE79TKZ1');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S8PE79TKZ1');
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engage Lostness - Understanding Worldviews</title>
+    <title>Engage Lostness - Who Do You Want to Reach?</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="main-styles.css">
+    <style>
+        /* ── Picker screen ── */
+        .picker-screen {
+            margin-top: 64px;
+            padding: 3rem 2rem 4rem;
+            max-width: 1040px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .picker-screen.hidden { display: none; }
+
+        .picker-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .picker-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--sarum-blue);
+            margin-bottom: 0.5rem;
+        }
+        .picker-header p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+        }
+
+        .worldview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .worldview-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.875rem;
+            padding: 1.125rem 1.25rem;
+            background: var(--white);
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            text-align: left;
+            transition: all var(--transition-base);
+        }
+        .worldview-card:hover {
+            border-color: var(--sarum-blue);
+            background: #f0f4fa;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .worldview-card .wv-icon {
+            font-size: 1.625rem;
+            line-height: 1;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+        .worldview-card .wv-text { flex: 1; min-width: 0; }
+        .worldview-card .wv-name {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+            display: block;
+        }
+        .worldview-card .wv-desc {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        /* ── Content screen ── */
+        .content-screen { display: none; }
+        .content-screen.visible { display: block; }
+
+        .content-bar {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: var(--gray-50);
+            border-bottom: 1px solid var(--border);
+            padding: 0.5rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.875rem;
+            height: 38px;
+        }
+        .content-bar-back {
+            background: none;
+            border: none;
+            color: var(--sarum-blue);
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            font-family: inherit;
+        }
+        .content-bar-back:hover { text-decoration: underline; }
+        .content-bar-sep { color: var(--gray-300); }
+        .content-bar-label { color: var(--text-secondary); }
+
+        .content-iframe-wrap {
+            position: fixed;
+            top: calc(64px + 38px);
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .content-iframe-wrap iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .picker-screen { padding: 2rem 1rem 3rem; }
+            .picker-header h1 { font-size: 1.5rem; }
+            .worldview-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+        }
+        @media (max-width: 480px) {
+            .worldview-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -24,156 +152,112 @@
                 <img src="imb-innovation-logo.png" alt="IMB Innovation" class="logo-img">
             </a>
             <button class="nav-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
             <div class="nav-links">
-                <div class="dropdown">
-                    <button class="dropdown-toggle" aria-label="Select FaithBot language">
-                        <span class="dropdown-label">FaithBot (English)</span>
-                        <span class="dropdown-arrow">▼</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="#" data-lang="english" data-url="https://chat.faithbot.io" class="active">English</a>
-                        <a href="#" data-lang="arabic" data-url="https://arabic.faithbot.io">Arabic</a>
-                        <a href="#" data-lang="bengali" data-url="https://bengali.faithbot.io">Bengali</a>
-                        <a href="#" data-lang="burmese" data-url="https://burmese.faithbot.io">Burmese</a>
-                        <a href="#" data-lang="cantonese" data-url="https://cantonese.faithbot.io">Cantonese</a>
-                        <a href="#" data-lang="hindi" data-url="https://hindi.faithbot.io">Hindi</a>
-                        <a href="#" data-lang="hokkien" data-url="https://hokkien.faithbot.io">Hokkien</a>
-                        <a href="#" data-lang="indonesian" data-url="https://indonesia.faithbot.io">Indonesian</a>
-                        <a href="#" data-lang="japanese" data-url="https://japanese.faithbot.io">Japanese</a>
-                        <a href="#" data-lang="javanese" data-url="https://javanese.faithbot.io">Javanese</a>
-                        <a href="#" data-lang="khmer" data-url="https://khmer.faithbot.io">Khmer</a>
-                        <a href="#" data-lang="korean" data-url="https://korean.faithbot.io">Korean</a>
-                        <a href="#" data-lang="lao" data-url="https://lao.faithbot.io">Lao</a>
-                        <a href="#" data-lang="malay" data-url="https://suaraiman.faithbot.io">Malay</a>
-                        <a href="#" data-lang="mandarin-simp" data-url="https://mandarin.faithbot.io">Mandarin (Simplified)</a>
-                        <a href="#" data-lang="mandarin-trad" data-url="https://mandarin.faithbot.io">Mandarin (Traditional)</a>
-                        <a href="#" data-lang="mongolian" data-url="https://mongolian.faithbot.io">Mongolian</a>
-                        <a href="#" data-lang="shona" data-url="https://shona.faithbot.io">Shona</a>
-                        <a href="#" data-lang="thai" data-url="https://thai.faithbot.io">Thai</a>
-                        <a href="#" data-lang="vietnamese" data-url="https://vietnamese.faithbot.io">Vietnamese</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="dropdown-toggle active" aria-label="Select worldview">
-                        <span class="worldview-label">Engage (Cultural Christians)</span>
-                        <span class="dropdown-arrow">▼</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="#" data-worldview="african-traditional" data-url="engage-african-traditional.html">African Traditional Religions</a>
-                        <a href="#" data-worldview="animism" data-url="engage-animism.html">Animism</a>
-                        <a href="#" data-worldview="buddhists" data-url="engage-buddhists.html">Buddhists</a>
-                        <a href="#" data-worldview="catholicism" data-url="engage-catholicism.html">Catholicism</a>
-                        <a href="#" data-worldview="chinese" data-url="engage-chinese-religions.html">Chinese Religions</a>
-                        <a href="#" data-worldview="cultural-christians" data-url="engage-cultural-christians.html" class="active">Cultural Christians</a>
-                        <a href="#" data-worldview="gen-alpha" data-url="engage-gen-alpha.html">Gen Alpha</a>
-                        <a href="#" data-worldview="gen-z" data-url="engage-gen-z.html">Gen Z</a>
-                        <a href="#" data-worldview="hindus" data-url="engage-hindus.html">Hindus</a>
-                        <a href="#" data-worldview="japanese" data-url="engage-japanese.html">Japanese</a>
-                        <a href="#" data-worldview="jehovah" data-url="engage-jehovah-witnesses.html">Jehovah's Witnesses</a>
-                        <a href="#" data-worldview="latin-catholic" data-url="engage-latin-american-catholics.html">Latin American Catholics</a>
-                        <a href="#" data-worldview="mormons" data-url="engage-mormons.html">Mormons</a>
-                        <a href="#" data-worldview="muslims" data-url="engage-muslims.html">Muslims</a>
-                        <a href="#" data-worldview="orthodox" data-url="engage-orthodox.html">Orthodox</a>
-                        <a href="#" data-worldview="postmoderns" data-url="engage-postmoderns.html">Postmoderns</a>
-                        <a href="#" data-worldview="turks" data-url="engage-turks.html">Turks</a>
-                    </div>
-                </div>
+                <a href="faithbot.html" class="nav-link">FaithBot</a>
+                <a href="engage-lostness.html" class="nav-link active">Engage Lostness</a>
                 <a href="biblepics.html" class="nav-link">Bible Pics</a>
                 <a href="blog.html" class="nav-link">Don's Blog</a>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="content-container">
-        <iframe id="worldviewIframe" src="engage-cultural-christians.html" frameborder="0" title="Engage Lostness" allow="microphone; camera"></iframe>
+    <!-- Picker Screen (shown by default) -->
+    <div id="pickerScreen" class="picker-screen">
+        <div class="picker-header">
+            <h1>Who do you want to reach?</h1>
+            <p>Choose a worldview or people group to get practical guidance for gospel conversations.</p>
+        </div>
+        <div class="worldview-grid" id="worldviewGrid"></div>
+    </div>
+
+    <!-- Content Screen (shown after selection) -->
+    <div id="contentScreen" class="content-screen">
+        <div class="content-bar">
+            <button class="content-bar-back" id="backBtn">← All worldviews</button>
+            <span class="content-bar-sep">|</span>
+            <span class="content-bar-label" id="selectedLabel"></span>
+        </div>
+        <div class="content-iframe-wrap">
+            <iframe id="worldviewIframe" src="" title="Engage Lostness" allow="microphone; camera"></iframe>
+        </div>
     </div>
 
     <script>
-        // Mobile menu toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
+        const WORLDVIEWS = [
+            { label: 'African Traditional Religions', icon: '🪘', desc: 'Ancestor spirits, nature forces, and community-based practices', url: 'engage-african-traditional.html' },
+            { label: 'Animism',                       icon: '🌿', desc: 'Belief that all living and non-living things have spiritual power', url: 'engage-animism.html' },
+            { label: 'Buddhists',                     icon: '☸️',  desc: 'Path to enlightenment through releasing attachment and desire', url: 'engage-buddhists.html' },
+            { label: 'Catholicism',                   icon: '⛪',  desc: 'Christianity centered on sacraments, tradition, and papal authority', url: 'engage-catholicism.html' },
+            { label: 'Chinese Religions',             icon: '🏮', desc: 'Blend of Confucianism, Taoism, Buddhism, and folk religion', url: 'engage-chinese-religions.html' },
+            { label: 'Cultural Christians',           icon: '✝️',  desc: 'Identify as Christian but lack personal faith or commitment', url: 'engage-cultural-christians.html' },
+            { label: 'Gen Alpha',                     icon: '📱', desc: 'Born after 2010, digital natives shaped by AI and screens', url: 'engage-gen-alpha.html' },
+            { label: 'Gen Z',                         icon: '🌐', desc: 'Born 1997-2012, skeptical, justice-oriented, spiritually open', url: 'engage-gen-z.html' },
+            { label: 'Hindus',                        icon: '🪔', desc: 'Ancient faith with countless deities, karma, and dharma', url: 'engage-hindus.html' },
+            { label: 'Japanese',                      icon: '🗾', desc: 'Syncretistic blend of Shinto, Buddhism, and cultural values', url: 'engage-japanese.html' },
+            { label: "Jehovah's Witnesses",           icon: '📖', desc: 'Bible-based group with distinct theology on the Trinity and salvation', url: 'engage-jehovah-witnesses.html' },
+            { label: 'Latin American Catholics',      icon: '🌎', desc: 'Deeply devotional Catholic practice with indigenous roots', url: 'engage-latin-american-catholics.html' },
+            { label: 'Mormons',                       icon: '📜', desc: 'LDS faith adding scripture beyond the Bible with unique theology', url: 'engage-mormons.html' },
+            { label: 'Muslims',                       icon: '🕌', desc: 'Submission to Allah through the Five Pillars and the Quran', url: 'engage-muslims.html' },
+            { label: 'Orthodox',                      icon: '🕍', desc: 'Ancient Eastern Christianity with liturgy, icons, and tradition', url: 'engage-orthodox.html' },
+            { label: 'Postmoderns',                   icon: '🔍', desc: 'Question absolute truth; value experience and story over doctrine', url: 'engage-postmoderns.html' },
+            { label: 'Turks',                         icon: '🌙', desc: 'Secular and devout Muslims shaped by Ottoman and Turkish identity', url: 'engage-turks.html' },
+        ];
 
+        const pickerScreen   = document.getElementById('pickerScreen');
+        const contentScreen  = document.getElementById('contentScreen');
+        const worldviewIframe = document.getElementById('worldviewIframe');
+        const selectedLabel  = document.getElementById('selectedLabel');
+        const backBtn        = document.getElementById('backBtn');
+        const worldviewGrid  = document.getElementById('worldviewGrid');
+
+        // Build worldview cards
+        WORLDVIEWS.forEach(wv => {
+            const btn = document.createElement('button');
+            btn.className = 'worldview-card';
+            btn.innerHTML = `
+                <span class="wv-icon">${wv.icon}</span>
+                <span class="wv-text">
+                    <span class="wv-name">${wv.label}</span>
+                    <span class="wv-desc">${wv.desc}</span>
+                </span>`;
+            btn.addEventListener('click', () => selectWorldview(wv));
+            worldviewGrid.appendChild(btn);
+        });
+
+        function selectWorldview(wv) {
+            worldviewIframe.src = wv.url;
+            selectedLabel.textContent = wv.icon + ' ' + wv.label;
+            pickerScreen.classList.add('hidden');
+            contentScreen.classList.add('visible');
+            try { sessionStorage.setItem('engage-worldview', JSON.stringify(wv)); } catch {}
+        }
+
+        function showPicker() {
+            contentScreen.classList.remove('visible');
+            pickerScreen.classList.remove('hidden');
+            worldviewIframe.src = '';
+            try { sessionStorage.removeItem('engage-worldview'); } catch {}
+        }
+
+        backBtn.addEventListener('click', showPicker);
+
+        // Restore last selection on page reload
+        try {
+            const saved = JSON.parse(sessionStorage.getItem('engage-worldview'));
+            if (saved && saved.url && saved.label) selectWorldview(saved);
+        } catch {}
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks  = document.querySelector('.nav-links');
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
-
-        // Dropdown functionality for both dropdowns
-        const dropdowns = document.querySelectorAll('.dropdown');
-
-        dropdowns.forEach(dropdown => {
-            const toggle = dropdown.querySelector('.dropdown-toggle');
-
-            toggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                // Close other dropdowns
-                dropdowns.forEach(d => {
-                    if (d !== dropdown) d.classList.remove('active');
-                });
-                dropdown.classList.toggle('active');
-            });
-        });
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', (e) => {
-            dropdowns.forEach(dropdown => {
-                if (!dropdown.contains(e.target)) {
-                    dropdown.classList.remove('active');
-                }
-            });
-        });
-
-        // FaithBot language selection - redirects to index.html
-        const languageLinks = document.querySelectorAll('[data-lang]');
-
-        languageLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                // Redirect to index.html which will handle the language
-                window.location.href = 'index.html';
-            });
-        });
-
-        // Worldview selection
-        const worldviewIframe = document.getElementById('worldviewIframe');
-        const worldviewLabel = document.querySelector('.worldview-label');
-        const worldviewLinks = document.querySelectorAll('[data-worldview]');
-
-        worldviewLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-
-                // Get worldview data
-                const worldviewName = link.textContent;
-                const worldviewUrl = link.getAttribute('data-url');
-
-                // Update iframe
-                worldviewIframe.src = worldviewUrl;
-
-                // Update dropdown label
-                worldviewLabel.textContent = `Engage (${worldviewName})`;
-
-                // Update active states
-                worldviewLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-
-                // Close dropdown
-                link.closest('.dropdown').classList.remove('active');
-
-                // Close mobile menu if open
-                navToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Close mobile menu when other nav links are clicked
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
+        document.querySelectorAll('.nav-link').forEach(l => {
+            l.addEventListener('click', () => {
                 navToggle.classList.remove('active');
                 navLinks.classList.remove('active');
             });

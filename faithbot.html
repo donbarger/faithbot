@@ -2,21 +2,132 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-S8PE79TKZ1');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S8PE79TKZ1');
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FaithBot - AI-Powered Faith Conversations</title>
+    <title>FaithBot - Choose Your Language</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="main-styles.css">
     <style>
-        /* Remove old dropdown styles since they're in main-styles.css now */
+        /* ── Picker screen ── */
+        .picker-screen {
+            margin-top: 64px;
+            padding: 3rem 2rem 4rem;
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .picker-screen.hidden { display: none; }
+
+        .picker-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .picker-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--sarum-blue);
+            margin-bottom: 0.5rem;
+        }
+        .picker-header p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+        }
+
+        .lang-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+        }
+
+        .lang-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 1.1rem 0.5rem;
+            background: var(--white);
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: all var(--transition-base);
+            text-align: center;
+            line-height: 1.3;
+        }
+        .lang-card:hover {
+            border-color: var(--sarum-blue);
+            background: #f0f4fa;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .lang-card .flag { font-size: 1.75rem; line-height: 1; }
+        .lang-card .lang-name { font-size: 0.8125rem; }
+
+        /* ── Chat screen ── */
+        .chat-screen { display: none; }
+        .chat-screen.visible { display: block; }
+
+        .chat-bar {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: var(--gray-50);
+            border-bottom: 1px solid var(--border);
+            padding: 0.5rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.875rem;
+            height: 38px;
+        }
+        .chat-bar-back {
+            background: none;
+            border: none;
+            color: var(--sarum-blue);
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            font-family: inherit;
+        }
+        .chat-bar-back:hover { text-decoration: underline; }
+        .chat-bar-sep { color: var(--gray-300); }
+        .chat-bar-label { color: var(--text-secondary); }
+
+        .chat-iframe-wrap {
+            position: fixed;
+            top: calc(64px + 38px);
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .chat-iframe-wrap iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 640px) {
+            .picker-screen { padding: 2rem 1rem 3rem; }
+            .picker-header h1 { font-size: 1.5rem; }
+            .lang-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+            .lang-card { padding: 0.9rem 0.4rem; }
+        }
     </style>
 </head>
 <body>
@@ -27,39 +138,10 @@
                 <img src="imb-innovation-logo.png" alt="IMB Innovation" class="logo-img">
             </a>
             <button class="nav-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
             <div class="nav-links">
-                <div class="dropdown">
-                    <button class="dropdown-toggle active" aria-label="Select FaithBot language">
-                        <span class="dropdown-label">FaithBot (English)</span>
-                        <span class="dropdown-arrow">▼</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="#" data-lang="english" data-url="https://chat.faithbot.io" class="active">English</a>
-                        <a href="#" data-lang="arabic" data-url="https://arabic.faithbot.io">Arabic</a>
-                        <a href="#" data-lang="bengali" data-url="https://bengali.faithbot.io">Bengali</a>
-                        <a href="#" data-lang="burmese" data-url="https://burmese.faithbot.io">Burmese</a>
-                        <a href="#" data-lang="cantonese" data-url="https://cantonese.faithbot.io">Cantonese</a>
-                        <a href="#" data-lang="hindi" data-url="https://hindi.faithbot.io">Hindi</a>
-                        <a href="#" data-lang="hokkien" data-url="https://hokkien.faithbot.io">Hokkien</a>
-                        <a href="#" data-lang="indonesian" data-url="https://indonesia.faithbot.io">Indonesian</a>
-                        <a href="#" data-lang="japanese" data-url="https://japanese.faithbot.io">Japanese</a>
-                        <a href="#" data-lang="javanese" data-url="https://javanese.faithbot.io">Javanese</a>
-                        <a href="#" data-lang="khmer" data-url="https://khmer.faithbot.io">Khmer</a>
-                        <a href="#" data-lang="korean" data-url="https://korean.faithbot.io">Korean</a>
-                        <a href="#" data-lang="lao" data-url="https://lao.faithbot.io">Lao</a>
-                        <a href="#" data-lang="malay" data-url="https://suaraiman.faithbot.io">Malay</a>
-                        <a href="#" data-lang="mandarin-simp" data-url="https://mandarin.faithbot.io">Mandarin (Simplified)</a>
-                        <a href="#" data-lang="mandarin-trad" data-url="https://mandarin.faithbot.io">Mandarin (Traditional)</a>
-                        <a href="#" data-lang="mongolian" data-url="https://mongolian.faithbot.io">Mongolian</a>
-                        <a href="#" data-lang="shona" data-url="https://shona.faithbot.io">Shona</a>
-                        <a href="#" data-lang="thai" data-url="https://thai.faithbot.io">Thai</a>
-                        <a href="#" data-lang="vietnamese" data-url="https://vietnamese.faithbot.io">Vietnamese</a>
-                    </div>
-                </div>
+                <a href="faithbot.html" class="nav-link active">FaithBot</a>
                 <a href="engage-lostness.html" class="nav-link">Engage Lostness</a>
                 <a href="biblepics.html" class="nav-link">Bible Pics</a>
                 <a href="blog.html" class="nav-link">Don's Blog</a>
@@ -67,82 +149,103 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="content-container">
-        <iframe id="mainIframe" src="https://chat.faithbot.io" frameborder="0" title="FaithBot" allow="microphone; camera"></iframe>
+    <!-- Picker Screen (shown by default) -->
+    <div id="pickerScreen" class="picker-screen">
+        <div class="picker-header">
+            <h1>Choose your language</h1>
+            <p>FaithBot is ready to talk about faith and Scripture in 20 languages.</p>
+        </div>
+        <div class="lang-grid" id="langGrid"></div>
+    </div>
+
+    <!-- Chat Screen (shown after selection) -->
+    <div id="chatScreen" class="chat-screen">
+        <div class="chat-bar">
+            <button class="chat-bar-back" id="backBtn">← All languages</button>
+            <span class="chat-bar-sep">|</span>
+            <span class="chat-bar-label" id="selectedLabel"></span>
+        </div>
+        <div class="chat-iframe-wrap">
+            <iframe id="mainIframe" src="" title="FaithBot" allow="microphone; camera"></iframe>
+        </div>
     </div>
 
     <script>
-        // Mobile menu toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
+        const LANGUAGES = [
+            { label: 'English',                flag: '🇺🇸', url: 'https://chat.faithbot.io' },
+            { label: 'Arabic',                 flag: '🇸🇦', url: 'https://arabic.faithbot.io' },
+            { label: 'Bengali',                flag: '🇧🇩', url: 'https://bengali.faithbot.io' },
+            { label: 'Burmese',                flag: '🇲🇲', url: 'https://burmese.faithbot.io' },
+            { label: 'Cantonese',              flag: '🇭🇰', url: 'https://cantonese.faithbot.io' },
+            { label: 'Hindi',                  flag: '🇮🇳', url: 'https://hindi.faithbot.io' },
+            { label: 'Hokkien',                flag: '🇹🇼', url: 'https://hokkien.faithbot.io' },
+            { label: 'Indonesian',             flag: '🇮🇩', url: 'https://indonesia.faithbot.io' },
+            { label: 'Japanese',               flag: '🇯🇵', url: 'https://japanese.faithbot.io' },
+            { label: 'Javanese',               flag: '🇮🇩', url: 'https://javanese.faithbot.io' },
+            { label: 'Khmer',                  flag: '🇰🇭', url: 'https://khmer.faithbot.io' },
+            { label: 'Korean',                 flag: '🇰🇷', url: 'https://korean.faithbot.io' },
+            { label: 'Lao',                    flag: '🇱🇦', url: 'https://lao.faithbot.io' },
+            { label: 'Malay',                  flag: '🇲🇾', url: 'https://suaraiman.faithbot.io' },
+            { label: 'Mandarin (Simplified)',  flag: '🇨🇳', url: 'https://mandarin.faithbot.io' },
+            { label: 'Mandarin (Traditional)', flag: '🇹🇼', url: 'https://mandarin.faithbot.io' },
+            { label: 'Mongolian',              flag: '🇲🇳', url: 'https://mongolian.faithbot.io' },
+            { label: 'Shona',                  flag: '🇿🇼', url: 'https://shona.faithbot.io' },
+            { label: 'Thai',                   flag: '🇹🇭', url: 'https://thai.faithbot.io' },
+            { label: 'Vietnamese',             flag: '🇻🇳', url: 'https://vietnamese.faithbot.io' },
+        ];
 
+        const pickerScreen  = document.getElementById('pickerScreen');
+        const chatScreen    = document.getElementById('chatScreen');
+        const mainIframe    = document.getElementById('mainIframe');
+        const selectedLabel = document.getElementById('selectedLabel');
+        const backBtn       = document.getElementById('backBtn');
+        const langGrid      = document.getElementById('langGrid');
+
+        // Build language cards
+        LANGUAGES.forEach(lang => {
+            const btn = document.createElement('button');
+            btn.className = 'lang-card';
+            btn.innerHTML = `<span class="flag">${lang.flag}</span><span class="lang-name">${lang.label}</span>`;
+            btn.addEventListener('click', () => selectLanguage(lang));
+            langGrid.appendChild(btn);
+        });
+
+        function selectLanguage(lang) {
+            mainIframe.src = lang.url;
+            selectedLabel.textContent = lang.flag + ' ' + lang.label;
+            pickerScreen.classList.add('hidden');
+            chatScreen.classList.add('visible');
+            try { sessionStorage.setItem('faithbot-lang', JSON.stringify(lang)); } catch {}
+        }
+
+        function showPicker() {
+            chatScreen.classList.remove('visible');
+            pickerScreen.classList.remove('hidden');
+            mainIframe.src = '';
+            try { sessionStorage.removeItem('faithbot-lang'); } catch {}
+        }
+
+        backBtn.addEventListener('click', showPicker);
+
+        // Restore last selection on page reload
+        try {
+            const saved = JSON.parse(sessionStorage.getItem('faithbot-lang'));
+            if (saved && saved.url && saved.label) selectLanguage(saved);
+        } catch {}
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks  = document.querySelector('.nav-links');
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
-
-        // Dropdown functionality
-        const dropdowns = document.querySelectorAll('.dropdown');
-        const dropdown = dropdowns[0];
-        const dropdownToggle = document.querySelector('.dropdown-toggle');
-        const dropdownMenu = document.querySelector('.dropdown-menu');
-        const dropdownLabel = document.querySelector('.dropdown-label');
-        const mainIframe = document.getElementById('mainIframe');
-        const languageLinks = dropdownMenu.querySelectorAll('a');
-
-        // Toggle dropdown and close others
-        dropdownToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            dropdowns.forEach(d => {
-                if (d !== dropdown) d.classList.remove('active');
-            });
-            dropdown.classList.toggle('active');
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            dropdowns.forEach(d => {
-                if (!d.contains(e.target)) {
-                    d.classList.remove('active');
-                }
-            });
-        });
-
-        // Language selection
-        languageLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-
-                // Get language data
-                const langName = link.textContent;
-                const langUrl = link.getAttribute('data-url');
-
-                // Update iframe
-                mainIframe.src = langUrl;
-
-                // Update dropdown label
-                dropdownLabel.textContent = `FaithBot (${langName})`;
-
-                // Update active states
-                languageLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-
-                // Close dropdown
-                dropdown.classList.remove('active');
-
-                // Close mobile menu if open
-                navToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Close mobile menu when other nav links are clicked
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
+        document.querySelectorAll('.nav-link').forEach(l => {
+            l.addEventListener('click', () => {
                 navToggle.classList.remove('active');
                 navLinks.classList.remove('active');
             });
         });
     </script>
 </body>
+</html>
