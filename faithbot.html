@@ -14,68 +14,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FaithBot</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="main-styles.css">
-    <style>
-        /* Full-page embed of the FaithBot engine (faithbot.donbarger.com).
-           The engine serves its own landing page with a built-in language
-           chooser for all 50+ languages, so no picker is needed here. */
-        html, body { height: 100%; overflow: hidden; }
 
-        .faithbot-frame-wrap {
-            position: fixed;
-            top: 64px;      /* below the site nav */
-            left: 0;
-            right: 0;
-            bottom: 0;
+    <!-- FaithBot now runs on its own site (self-hosted engine, 50+ languages). We open it directly
+         rather than in an iframe so it runs first-party: chat, Cloudflare Turnstile, and Google
+         sign-in all work with no cross-site cookie problems. (An embedded version via a same-site
+         subdomain is a later enhancement.) location.replace keeps it out of history so Back returns
+         to the site, not a redirect loop. -->
+    <link rel="canonical" href="https://faithbot.donbarger.com/">
+    <meta http-equiv="refresh" content="0; url=https://faithbot.donbarger.com/">
+    <script>window.location.replace('https://faithbot.donbarger.com/');</script>
+
+    <style>
+        html, body { height: 100%; margin: 0; }
+        body {
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1B365D; background: #f7f9fc; text-align: center; padding: 2rem;
         }
-        .faithbot-frame-wrap iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-        }
+        a { color: #1B365D; font-weight: 600; }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="imb-innovation-logo.png" alt="IMB Innovation" class="logo-img">
-            </a>
-            <button class="nav-toggle" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
-            <div class="nav-links">
-                <a href="faithbot.html" class="nav-link active">FaithBot</a>
-                <a href="engage-lostness.html" class="nav-link">Engage Lostness</a>
-                <a href="biblepics.html" class="nav-link">Bible Pics</a>
-                <a href="blog.html" class="nav-link">Don's Blog</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- FaithBot engine (self-hosted, 50+ languages, built-in language chooser) -->
-    <div class="faithbot-frame-wrap">
-        <iframe src="https://faithbot.donbarger.com/"
-                title="FaithBot"
-                allow="microphone"></iframe>
-    </div>
-
-    <script>
-        // Mobile nav toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks  = document.querySelector('.nav-links');
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-        document.querySelectorAll('.nav-link').forEach(l => {
-            l.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
+    <p>Opening FaithBot… If it doesn’t load,
+       <a href="https://faithbot.donbarger.com/">continue to FaithBot</a>.</p>
 </body>
 </html>
