@@ -12,121 +12,27 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FaithBot - Choose Your Language</title>
+    <title>FaithBot</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="main-styles.css">
     <style>
-        /* ── Picker screen ── */
-        .picker-screen {
-            margin-top: 64px;
-            padding: 3rem 2rem 4rem;
-            max-width: 960px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .picker-screen.hidden { display: none; }
+        /* Full-page embed of the FaithBot engine (faithbot.donbarger.com).
+           The engine serves its own landing page with a built-in language
+           chooser for all 50+ languages, so no picker is needed here. */
+        html, body { height: 100%; overflow: hidden; }
 
-        .picker-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-        .picker-header h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--sarum-blue);
-            margin-bottom: 0.5rem;
-        }
-        .picker-header p {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-        }
-
-        .lang-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.75rem;
-        }
-
-        .lang-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 1.1rem 0.5rem;
-            background: var(--white);
-            border: 1.5px solid var(--border);
-            border-radius: 10px;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            transition: all var(--transition-base);
-            text-align: center;
-            line-height: 1.3;
-        }
-        .lang-card:hover {
-            border-color: var(--sarum-blue);
-            background: #f0f4fa;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-        .lang-card .flag { font-size: 1.75rem; line-height: 1; }
-        .lang-card .lang-name { font-size: 0.8125rem; }
-
-        /* ── Chat screen ── */
-        .chat-screen { display: none; }
-        .chat-screen.visible { display: block; }
-
-        .chat-bar {
+        .faithbot-frame-wrap {
             position: fixed;
-            top: 64px;
-            left: 0;
-            right: 0;
-            z-index: 999;
-            background: var(--gray-50);
-            border-bottom: 1px solid var(--border);
-            padding: 0.5rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 0.875rem;
-            height: 38px;
-        }
-        .chat-bar-back {
-            background: none;
-            border: none;
-            color: var(--sarum-blue);
-            font-size: 0.875rem;
-            font-weight: 600;
-            cursor: pointer;
-            padding: 0;
-            font-family: inherit;
-        }
-        .chat-bar-back:hover { text-decoration: underline; }
-        .chat-bar-sep { color: var(--gray-300); }
-        .chat-bar-label { color: var(--text-secondary); }
-
-        .chat-iframe-wrap {
-            position: fixed;
-            top: calc(64px + 38px);
+            top: 64px;      /* below the site nav */
             left: 0;
             right: 0;
             bottom: 0;
         }
-        .chat-iframe-wrap iframe {
+        .faithbot-frame-wrap iframe {
             width: 100%;
             height: 100%;
             border: none;
             display: block;
-        }
-
-        /* ── Mobile ── */
-        @media (max-width: 640px) {
-            .picker-screen { padding: 2rem 1rem 3rem; }
-            .picker-header h1 { font-size: 1.5rem; }
-            .lang-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
-            .lang-card { padding: 0.9rem 0.4rem; }
         }
     </style>
 </head>
@@ -149,100 +55,14 @@
         </div>
     </nav>
 
-    <!-- Picker Screen (shown by default) -->
-    <div id="pickerScreen" class="picker-screen">
-        <div class="picker-header">
-            <h1>Choose your language</h1>
-            <p>FaithBot is ready to talk about faith and Scripture in 20 languages.</p>
-        </div>
-        <div class="lang-grid" id="langGrid"></div>
-
-        <footer style="margin-top:4rem;border-top:1px solid var(--border);padding-top:2rem;text-align:center;">
-            <div style="display:flex;justify-content:center;gap:30px;margin-bottom:12px;flex-wrap:wrap;">
-                <a href="privacy-policy.html" style="color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">Privacy Policy</a>
-                <a href="terms-of-use.html" style="color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">Terms of Use</a>
-            </div>
-            <p style="font-size:0.8125rem;color:var(--text-secondary);margin:0;">© 2026 IMB Innovation. All rights reserved.</p>
-        </footer>
-    </div>
-
-    <!-- Chat Screen (shown after selection) -->
-    <div id="chatScreen" class="chat-screen">
-        <div class="chat-bar">
-            <button class="chat-bar-back" id="backBtn">← All languages</button>
-            <span class="chat-bar-sep">|</span>
-            <span class="chat-bar-label" id="selectedLabel"></span>
-        </div>
-        <div class="chat-iframe-wrap">
-            <iframe id="mainIframe" src="" title="FaithBot" allow="microphone; camera"></iframe>
-        </div>
+    <!-- FaithBot engine (self-hosted, 50+ languages, built-in language chooser) -->
+    <div class="faithbot-frame-wrap">
+        <iframe src="https://faithbot.donbarger.com/"
+                title="FaithBot"
+                allow="microphone"></iframe>
     </div>
 
     <script>
-        const LANGUAGES = [
-            { label: 'English',                flag: '🇺🇸', url: 'https://chat.faithbot.io' },
-            { label: 'Arabic',                 flag: '🇸🇦', url: 'https://arabic.faithbot.io' },
-            { label: 'Bengali',                flag: '🇧🇩', url: 'https://bengali.faithbot.io' },
-            { label: 'Burmese',                flag: '🇲🇲', url: 'https://burmese.faithbot.io' },
-            { label: 'Cantonese',              flag: '🇭🇰', url: 'https://cantonese.faithbot.io' },
-            { label: 'Cebuano',                flag: '🇵🇭', url: 'https://cebuano.on.chipp.ai' },
-            { label: 'Hindi',                  flag: '🇮🇳', url: 'https://hindi.faithbot.io' },
-            { label: 'Hokkien',                flag: '🇹🇼', url: 'https://hokkien.faithbot.io' },
-            { label: 'Indonesian',             flag: '🇮🇩', url: 'https://indonesia.faithbot.io' },
-            { label: 'Japanese',               flag: '🇯🇵', url: 'https://japanese.faithbot.io' },
-            { label: 'Javanese',               flag: '🇮🇩', url: 'https://javanese.faithbot.io' },
-            { label: 'Khmer',                  flag: '🇰🇭', url: 'https://khmer.faithbot.io' },
-            { label: 'Korean',                 flag: '🇰🇷', url: 'https://korean.faithbot.io' },
-            { label: 'Lao',                    flag: '🇱🇦', url: 'https://lao.faithbot.io' },
-            { label: 'Malay',                  flag: '🇲🇾', url: 'https://suaraiman.faithbot.io' },
-            { label: 'Mandarin (Simplified)',  flag: '🇨🇳', url: 'https://mandarin.faithbot.io' },
-            { label: 'Mandarin (Traditional)', flag: '🇹🇼', url: 'https://mandarin.faithbot.io' },
-            { label: 'Mongolian',              flag: '🇲🇳', url: 'https://mongolian.faithbot.io' },
-            { label: 'Shona',                  flag: '🇿🇼', url: 'https://shona.faithbot.io' },
-            { label: 'Tagalog/Filipino',       flag: '🇵🇭', url: 'https://tagalog.on.chipp.ai' },
-            { label: 'Thai',                   flag: '🇹🇭', url: 'https://thai.faithbot.io' },
-            { label: 'Vietnamese',             flag: '🇻🇳', url: 'https://vietnamese.faithbot.io' },
-        ];
-
-        const pickerScreen  = document.getElementById('pickerScreen');
-        const chatScreen    = document.getElementById('chatScreen');
-        const mainIframe    = document.getElementById('mainIframe');
-        const selectedLabel = document.getElementById('selectedLabel');
-        const backBtn       = document.getElementById('backBtn');
-        const langGrid      = document.getElementById('langGrid');
-
-        // Build language cards
-        LANGUAGES.forEach(lang => {
-            const btn = document.createElement('button');
-            btn.className = 'lang-card';
-            btn.innerHTML = `<span class="flag">${lang.flag}</span><span class="lang-name">${lang.label}</span>`;
-            btn.addEventListener('click', () => selectLanguage(lang));
-            langGrid.appendChild(btn);
-        });
-
-        function selectLanguage(lang) {
-            mainIframe.src = lang.url;
-            selectedLabel.textContent = lang.flag + ' ' + lang.label;
-            pickerScreen.classList.add('hidden');
-            chatScreen.classList.add('visible');
-            try { sessionStorage.setItem('faithbot-lang', JSON.stringify(lang)); } catch {}
-        }
-
-        function showPicker() {
-            chatScreen.classList.remove('visible');
-            pickerScreen.classList.remove('hidden');
-            mainIframe.src = '';
-            try { sessionStorage.removeItem('faithbot-lang'); } catch {}
-        }
-
-        backBtn.addEventListener('click', showPicker);
-
-        // Restore last selection on page reload
-        try {
-            const saved = JSON.parse(sessionStorage.getItem('faithbot-lang'));
-            if (saved && saved.url && saved.label) selectLanguage(saved);
-        } catch {}
-
         // Mobile nav toggle
         const navToggle = document.querySelector('.nav-toggle');
         const navLinks  = document.querySelector('.nav-links');
