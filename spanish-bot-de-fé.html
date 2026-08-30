@@ -2,70 +2,41 @@
 <html lang="es">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  
-  gtag('config', 'G-S8PE79TKZ1');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S8PE79TKZ1');
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bot de Fé - Don Barger</title>
-    <link rel="stylesheet" href="tool-styles.css">
-    <link rel="stylesheet" href="spanish-nav-override.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Bot de Fé</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Bot de Fé has moved off Chipp onto the self-hosted FaithBot v3 engine. Same pattern as
+         faithbot.html: we open it directly rather than in an iframe so it runs first-party — chat,
+         Cloudflare Turnstile, and Google sign-in all work with no cross-site cookie problems.
+         ?lang=es selects the Spanish pack. This page is kept as a redirect so existing links,
+         bookmarks, and printed QR codes to /spanish-bot-de-fé.html keep working. location.replace
+         keeps it out of history so Back returns to the site, not a redirect loop. -->
+    <link rel="canonical" href="https://faithbot.donbarger.com/?lang=es">
+    <meta http-equiv="refresh" content="0; url=https://faithbot.donbarger.com/?lang=es">
+    <script>window.location.replace('https://faithbot.donbarger.com/?lang=es');</script>
+
+    <style>
+        html, body { height: 100%; margin: 0; }
+        body {
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1B365D; background: #f7f9fc; text-align: center; padding: 2rem;
+        }
+        a { color: #1B365D; font-weight: 600; }
+    </style>
 </head>
 <body>
-    <nav class="tool-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <span class="nav-coffee">☕</span>
-                <span class="nav-brand">Don Barger</span>
-            </a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div class="nav-links">
-                <a href="blog.html" class="nav-link">Don's Blog</a>
-                <a href="index.html#tools" class="nav-link">Missional AI Tools</a>
-                <a href="other-languages.html" class="nav-link active">AI Tools in Other Languages</a>
-            </div>
-            <a href="index.html" class="nav-home">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                    <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-                Home
-            </a>
-        </div>
-    </nav>
-    
-    <div class="tool-container">
-        <iframe src="https://botdefe-59281.chipp.ai" height="800px" width="100%" frameborder="0" title="Bot de Fé" allow="microphone; camera"></iframe>
-    </div>
-    
-    <script>
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-        
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
+    <p>Abriendo Bot de Fé… Si no carga,
+       <a href="https://faithbot.donbarger.com/?lang=es">continúa a Bot de Fé</a>.</p>
 </body>
 </html>
