@@ -145,6 +145,62 @@
             margin-right: auto;
         }
 
+        /* FaithBot Version 3 announcement */
+        .announce {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 20px 26px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-left: 4px solid #487A7B;
+            border-radius: 10px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .announce-badge {
+            flex: none;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #fff;
+            background: #487A7B;
+            padding: 6px 12px;
+            border-radius: 999px;
+        }
+
+        .hero .announce-text {
+            flex: 1 1 340px;
+            font-size: 17px;
+            line-height: 1.55;
+            margin: 0;
+            max-width: none;
+            opacity: 1;
+        }
+
+        .announce-link {
+            flex: none;
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+            border-bottom: 2px solid #487A7B;
+            padding-bottom: 2px;
+        }
+
+        .announce-link:hover {
+            border-bottom-color: #fff;
+        }
+
+        .announce-link:focus-visible {
+            outline: 3px solid #fff;
+            outline-offset: 3px;
+        }
+
         .cta-button {
             display: inline-block;
             background: white;
@@ -355,6 +411,15 @@
                 font-size: 16px;
             }
 
+            .announce {
+                padding: 18px 20px;
+                gap: 14px;
+            }
+
+            .hero .announce-text {
+                font-size: 15px;
+            }
+
             .section h2 {
                 font-size: 28px;
             }
@@ -375,6 +440,12 @@
         <img src="imb-innovation-logo.png" alt="IMB Innovation" class="hero-logo fade-in">
         <h1 class="fade-in">AI-Powered Tools for Global Missions</h1>
         <p class="fade-in">Empowering missionaries, pastors, and believers to share the gospel across cultures and languages</p>
+
+        <div class="announce fade-in">
+            <span class="announce-badge">New</span>
+            <p class="announce-text">After more than <strong>2,000,000 users</strong> across the first two iterations of FaithBot, we’re excited to announce <strong>FaithBot Version&nbsp;3</strong> — with greatly improved support for over <strong>50 languages</strong>.</p>
+            <a href="faithbot.html" class="announce-link">Try Version&nbsp;3 &rarr;</a>
+        </div>
 
     </section>
 
