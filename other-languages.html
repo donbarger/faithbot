@@ -2,365 +2,45 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  
-  gtag('config', 'G-S8PE79TKZ1');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S8PE79TKZ1');
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Other Languages - Don Barger</title>
-    <link rel="stylesheet" href="tool-styles.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>AI Tools in Other Languages</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Deprecated. This page was a grid of one card per language, from when each language was its
+         own bot. FaithBot v3 handles 50+ languages behind a single picker, so the grid no longer
+         earns its place and "Other Languages" has been dropped from the site nav.
+
+         The per-language redirect stubs (lang-*.html) are deliberately KEPT: each is a one-line
+         redirect carrying a ?lang= code, and printed QR codes and bookmarks still point at them.
+         Nothing links to them any more, which is fine — that is what they are for.
+
+         Kept as a redirect itself so existing links keep working. location.replace keeps it out of
+         history so Back returns to the site, not a redirect loop. -->
+    <link rel="canonical" href="https://faithbot.donbarger.com/">
+    <meta http-equiv="refresh" content="0; url=https://faithbot.donbarger.com/">
+    <script>window.location.replace('https://faithbot.donbarger.com/');</script>
+
     <style>
+        html, body { height: 100%; margin: 0; }
         body {
-            overflow: auto;
-            height: auto;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1B365D; background: #f7f9fc; text-align: center; padding: 2rem;
         }
-        
-        .lang-hero {
-            background: linear-gradient(135deg, var(--espresso) 0%, var(--dark-roast) 100%);
-            padding: 3rem 2rem;
-            text-align: center;
-            color: var(--white);
-        }
-        
-        .lang-hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .lang-hero p {
-            font-size: 1.25rem;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-            color: var(--cream);
-        }
-        
-        .languages-section {
-            padding: 4rem 2rem;
-            background: var(--foam);
-            min-height: calc(100vh - 200px);
-        }
-        
-        .languages-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .lang-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 2px 8px rgba(62, 39, 35, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            text-align: center;
-        }
-        
-        .lang-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(62, 39, 35, 0.15);
-        }
-        
-        .lang-flag {
-            font-size: 3rem;
-        }
-        
-        .lang-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--espresso);
-            margin: 0;
-        }
-        
-        .lang-subtitle {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            font-style: italic;
-        }
-        
-        .lang-count {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            flex: 1;
-        }
-        
-        .lang-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            padding: 0.875rem 1.75rem;
-            background: linear-gradient(135deg, var(--espresso), var(--dark-roast));
-            color: var(--white);
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(62, 39, 35, 0.2);
-            margin-top: auto;
-        }
-        
-        .lang-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(62, 39, 35, 0.3);
-            background: linear-gradient(135deg, var(--dark-roast), var(--medium-roast));
-        }
-        
-        @media (max-width: 768px) {
-            .lang-hero h1 {
-                font-size: 2rem;
-            }
-            
-            .lang-hero p {
-                font-size: 1.1rem;
-            }
-            
-            .languages-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        a { color: #1B365D; font-weight: 600; }
     </style>
-    <link rel="stylesheet" href="site-nav.css">
 </head>
 <body>
-    <nav class="site-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="imb-innovation-logo.png" alt="IMB Innovation" class="logo-img">
-            </a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div class="nav-links">
-                <a href="faithbot.html" class="nav-link">FaithBot</a>
-                <a href="https://www.engagelostness.com" class="nav-link" target="_blank" rel="noopener noreferrer">Engage Lostness</a>
-                <a href="https://biblepics.donbarger.com" class="nav-link" target="_blank" rel="noopener noreferrer">Bible Pics</a>
-                <a href="other-languages.html" class="nav-link active">Other Languages</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-            </div>
-        </div>
-    </nav>
-    <div class="lang-hero">
-        <h1>Other Languages</h1>
-        <p>Access AI-powered faith tools in 19+ languages. From Spanish resources to Asian and African languages, share the gospel in the heart language of those you serve.</p>
-    </div>
-    
-    <section class="languages-section">
-        <div class="languages-grid">
-            <a href="recursos-en-espanol.html" class="lang-card">
-                <div class="lang-flag">🇪🇸</div>
-                <h3 class="lang-title">Español</h3>
-                <p class="lang-subtitle">Spanish</p>
-                <p class="lang-count">3 Tools Available</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-arabic.html" class="lang-card">
-                <div class="lang-flag">🇸🇦</div>
-                <h3 class="lang-title">العربية</h3>
-                <p class="lang-subtitle">Arabic</p>
-                <p class="lang-count">بوت الإيمان</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-bengali.html" class="lang-card">
-                <div class="lang-flag">🇧🇩</div>
-                <h3 class="lang-title">বাংলা</h3>
-                <p class="lang-subtitle">Bengali</p>
-                <p class="lang-count">বিশ্বাস-সহায়ক</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-burmese.html" class="lang-card">
-                <div class="lang-flag">🇲🇲</div>
-                <h3 class="lang-title">ဗမာ</h3>
-                <p class="lang-subtitle">Burmese</p>
-                <p class="lang-count">ယုံကြည်ခြင်းဘော့</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-cantonese.html" class="lang-card">
-                <div class="lang-flag">🇭🇰</div>
-                <h3 class="lang-title">粵語</h3>
-                <p class="lang-subtitle">Cantonese</p>
-                <p class="lang-count">信仰小助手</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-hindi.html" class="lang-card">
-                <div class="lang-flag">🇮🇳</div>
-                <h3 class="lang-title">हिन्दी</h3>
-                <p class="lang-subtitle">Hindi</p>
-                <p class="lang-count">विश्वास मित्र</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-hokkien.html" class="lang-card">
-                <div class="lang-flag">🇹🇼</div>
-                <h3 class="lang-title">閩南語</h3>
-                <p class="lang-subtitle">Hokkien</p>
-                <p class="lang-count">Sìn-ông Ló͘-bó</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-indonesian.html" class="lang-card">
-                <div class="lang-flag">🇮🇩</div>
-                <h3 class="lang-title">Indonesia</h3>
-                <p class="lang-subtitle">Indonesian</p>
-                <p class="lang-count">ImanBot</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-japanese.html" class="lang-card">
-                <div class="lang-flag">🇯🇵</div>
-                <h3 class="lang-title">日本語</h3>
-                <p class="lang-subtitle">Japanese</p>
-                <p class="lang-count">フェイスボット</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-javanese.html" class="lang-card">
-                <div class="lang-flag">🇮🇩</div>
-                <h3 class="lang-title">Basa Jawa</h3>
-                <p class="lang-subtitle">Javanese</p>
-                <p class="lang-count">ImaneBot</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-korean.html" class="lang-card">
-                <div class="lang-flag">🇰🇷</div>
-                <h3 class="lang-title">한국어</h3>
-                <p class="lang-subtitle">Korean</p>
-                <p class="lang-count">페이스봇</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-khmer.html" class="lang-card">
-                <div class="lang-flag">🇰🇭</div>
-                <h3 class="lang-title">ខ្មែរ</h3>
-                <p class="lang-subtitle">Khmer</p>
-                <p class="lang-count">បុតជំនឿ</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-lao.html" class="lang-card">
-                <div class="lang-flag">🇱🇦</div>
-                <h3 class="lang-title">ລາວ</h3>
-                <p class="lang-subtitle">Lao</p>
-                <p class="lang-count">ຟ້າຍບອດ</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-mandarin.html" class="lang-card">
-                <div class="lang-flag">🇨🇳</div>
-                <h3 class="lang-title">普通话</h3>
-                <p class="lang-subtitle">Mandarin (Simplified)</p>
-                <p class="lang-count">真理伙伴</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-malay.html" class="lang-card">
-                <div class="lang-flag">🇲🇾</div>
-                <h3 class="lang-title">Bahasa Melayu</h3>
-                <p class="lang-subtitle">Malay</p>
-                <p class="lang-count">Suara Iman</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-mongolian.html" class="lang-card">
-                <div class="lang-flag">🇲🇳</div>
-                <h3 class="lang-title">Монгол</h3>
-                <p class="lang-subtitle">Mongolian</p>
-                <p class="lang-count">ИтгэлБот</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-filipino.html" class="lang-card">
-                <div class="lang-flag">🇵🇭</div>
-                <h3 class="lang-title">Tagalog/Filipino</h3>
-                <p class="lang-subtitle">Tagalog / Pilipino</p>
-                <p class="lang-count">Gabay sa Pananampalataya</p>
-                <span class="lang-button">Explore</span>
-            </a>
-
-            <a href="lang-cebuano.html" class="lang-card">
-                <div class="lang-flag">🇵🇭</div>
-                <h3 class="lang-title">Cebuano</h3>
-                <p class="lang-subtitle">Bisaya / Cebuano</p>
-                <p class="lang-count">FaithBot</p>
-                <span class="lang-button">Explore</span>
-            </a>
-
-            <a href="lang-shona.html" class="lang-card">
-                <div class="lang-flag">🇿🇼</div>
-                <h3 class="lang-title">chiShona</h3>
-                <p class="lang-subtitle">Shona</p>
-                <p class="lang-count">Mubatsiri weKutenda</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-thai.html" class="lang-card">
-                <div class="lang-flag">🇹🇭</div>
-                <h3 class="lang-title">ไทย</h3>
-                <p class="lang-subtitle">Thai</p>
-                <p class="lang-count">เพื่อนคริสเตียน</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-            <a href="lang-vietnamese.html" class="lang-card">
-                <div class="lang-flag">🇻🇳</div>
-                <h3 class="lang-title">Tiếng Việt</h3>
-                <p class="lang-subtitle">Vietnamese</p>
-                <p class="lang-count">Bạn Đức Tin</p>
-                <span class="lang-button">Explore</span>
-            </a>
-            
-        </div>
-    </section>
-    
-    <div class="bmc-footer">
-        <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="donbarger" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
-    </div>
-    
-    <script>
-        // Mobile menu toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-        
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
+    <p>Opening FaithBot, now in 50+ languages… If it doesn't load,
+       <a href="https://faithbot.donbarger.com/">continue to FaithBot</a>.</p>
 </body>
 </html>
