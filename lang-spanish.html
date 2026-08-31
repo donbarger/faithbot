@@ -2,196 +2,41 @@
 <html lang="es">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  
-  gtag('config', 'G-S8PE79TKZ1');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S8PE79TKZ1');
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recursos en Español - Don Barger</title>
-    <link rel="stylesheet" href="tool-styles.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Recursos en Español</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- There were two Spanish hubs with identical card sets — this one and
+         recursos-en-espanol.html — which meant every Spanish change had to be made twice, and
+         they would drift the moment someone edited only one. recursos-en-espanol.html is now
+         canonical (Spanish-language slug, linked from the home page and from other-languages.html).
+         Kept as a redirect so existing links, bookmarks, and printed QR codes keep working, and
+         location.replace keeps it out of history so Back returns to the site, not a redirect loop. -->
+    <link rel="canonical" href="https://www.faithbot.tools/recursos-en-espanol.html">
+    <meta http-equiv="refresh" content="0; url=recursos-en-espanol.html">
+    <script>window.location.replace('recursos-en-espanol.html');</script>
+
     <style>
+        html, body { height: 100%; margin: 0; }
         body {
-            overflow: auto;
-            height: auto;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1B365D; background: #f7f9fc; text-align: center; padding: 2rem;
         }
-        
-        .lang-hero {
-            background: linear-gradient(135deg, var(--espresso) 0%, var(--dark-roast) 100%);
-            padding: 3rem 2rem;
-            text-align: center;
-            color: var(--white);
-        }
-        
-        .lang-hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .lang-hero p {
-            font-size: 1.25rem;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-            color: var(--cream);
-        }
-        
-        .tools-section {
-            padding: 4rem 2rem;
-            background: var(--foam);
-            min-height: calc(100vh - 200px);
-        }
-        
-        .tools-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .tool-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 2px 8px rgba(62, 39, 35, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .tool-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(62, 39, 35, 0.15);
-        }
-        
-        .tool-icon {
-            font-size: 2.5rem;
-            text-align: center;
-        }
-        
-        .tool-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--espresso);
-            margin: 0;
-        }
-        
-        .tool-description {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            flex: 1;
-        }
-        
-        .tool-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--coffee-gold);
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        
-        @media (max-width: 768px) {
-            .lang-hero h1 {
-                font-size: 2rem;
-            }
-            
-            .lang-hero p {
-                font-size: 1.1rem;
-            }
-            
-            .tools-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        a { color: #1B365D; font-weight: 600; }
     </style>
-    <link rel="stylesheet" href="site-nav.css">
 </head>
 <body>
-    <nav class="site-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="imb-innovation-logo.png" alt="IMB Innovation" class="logo-img">
-            </a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div class="nav-links">
-                <a href="faithbot.html" class="nav-link">FaithBot</a>
-                <a href="https://www.engagelostness.com" class="nav-link" target="_blank" rel="noopener noreferrer">Engage Lostness</a>
-                <a href="https://biblepics.donbarger.com" class="nav-link" target="_blank" rel="noopener noreferrer">Bible Pics</a>
-                <a href="other-languages.html" class="nav-link active">Other Languages</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-            </div>
-        </div>
-    </nav>
-    <div class="lang-hero">
-        <h1>Recursos en Español</h1>
-        <p>Herramientas impulsadas por IA para la fe, el ministerio y el alcance. Recursos diseñados para el mundo hispanohablante.</p>
-    </div>
-    
-    <section class="tools-section">
-        <div class="tools-grid">
-            <a href="https://faithbot.donbarger.com/?lang=es" class="tool-card" target="_blank" rel="noopener noreferrer">
-                <div class="tool-icon">✝️</div>
-                <h3 class="tool-title">Bot de Fé</h3>
-                <p class="tool-description">Encuentra respuestas a preguntas de fe desde una perspectiva bíblica.</p>
-                <span class="tool-link">Explorar →</span>
-            </a>
-
-            <a href="https://www.engagelostness.com/?lang=es" class="tool-card" target="_blank" rel="noopener noreferrer">
-                <div class="tool-icon">🌍</div>
-                <h3 class="tool-title">Alcanza a los Perdidos</h3>
-                <p class="tool-description">Practica compartir tu fe con alguien que no la comparte, y luego descubre cómo te fue.</p>
-                <span class="tool-link">Explorar →</span>
-            </a>
-
-            <a href="spanish-copiloto-de-pastor.html" class="tool-card">
-                <div class="tool-icon">👨‍✈️</div>
-                <h3 class="tool-title">Copiloto de Pastor</h3>
-                <p class="tool-description">Asistente de IA para la planificación y preparación del ministerio pastoral.</p>
-                <span class="tool-link">Explorar →</span>
-            </a>
-        </div>
-    </section>
-    
-    <div class="bmc-footer">
-        <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="donbarger" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
-    </div>
-    
-    <script>
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-        
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
+    <p>Abriendo Recursos en Español… Si no carga,
+       <a href="recursos-en-espanol.html">continúa a Recursos en Español</a>.</p>
 </body>
 </html>
