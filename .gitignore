@@ -19,3 +19,6 @@ node_modules/
 *.tmp
 *.temp
 *~
+
+# Local planning notes (this repo is served as a public static site)
+tasks/
