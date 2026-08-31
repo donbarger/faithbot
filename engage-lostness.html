@@ -14,262 +14,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Engage Lostness - Who Do You Want to Reach?</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="main-styles.css">
+
+    <!-- Engage Lostness now lives at its own site, www.engagelostness.com, which replaces both this
+         page and the worldview card grid it came from — you pick the worldview there instead. That
+         also retires the Chipp bots these pages used to embed. Same redirect pattern as the language
+         pages: kept as a stub so existing links, bookmarks, and printed QR codes keep working, and
+         location.replace keeps it out of history so Back returns to the site, not a redirect loop. -->
+    <link rel="canonical" href="https://www.engagelostness.com/">
+    <meta http-equiv="refresh" content="0; url=https://www.engagelostness.com/">
+    <script>window.location.replace('https://www.engagelostness.com/');</script>
+
     <style>
-        /* ── Picker screen ── */
-        .picker-screen {
-            margin-top: 64px;
-            padding: 3rem 2rem 4rem;
-            max-width: 1040px;
-            margin-left: auto;
-            margin-right: auto;
+        html, body { height: 100%; margin: 0; }
+        body {
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1B365D; background: #f7f9fc; text-align: center; padding: 2rem;
         }
-        .picker-screen.hidden { display: none; }
-
-        .picker-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-        .picker-header h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--sarum-blue);
-            margin-bottom: 0.5rem;
-        }
-        .picker-header p {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-        }
-
-        .worldview-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-
-        .worldview-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.875rem;
-            padding: 1.125rem 1.25rem;
-            background: var(--white);
-            border: 1.5px solid var(--border);
-            border-radius: 10px;
-            cursor: pointer;
-            font-family: inherit;
-            text-align: left;
-            transition: all var(--transition-base);
-        }
-        .worldview-card:hover {
-            border-color: var(--sarum-blue);
-            background: #f0f4fa;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-        .worldview-card .wv-icon {
-            font-size: 1.625rem;
-            line-height: 1;
-            flex-shrink: 0;
-            margin-top: 0.1rem;
-        }
-        .worldview-card .wv-text { flex: 1; min-width: 0; }
-        .worldview-card .wv-name {
-            font-size: 0.9375rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.2rem;
-            display: block;
-        }
-        .worldview-card .wv-desc {
-            font-size: 0.8125rem;
-            color: var(--text-secondary);
-            line-height: 1.45;
-        }
-
-        /* ── Content screen ── */
-        .content-screen { display: none; }
-        .content-screen.visible { display: block; }
-
-        .content-bar {
-            position: fixed;
-            top: 64px;
-            left: 0;
-            right: 0;
-            z-index: 999;
-            background: var(--gray-50);
-            border-bottom: 1px solid var(--border);
-            padding: 0.5rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 0.875rem;
-            height: 38px;
-        }
-        .content-bar-back {
-            background: none;
-            border: none;
-            color: var(--sarum-blue);
-            font-size: 0.875rem;
-            font-weight: 600;
-            cursor: pointer;
-            padding: 0;
-            font-family: inherit;
-        }
-        .content-bar-back:hover { text-decoration: underline; }
-        .content-bar-sep { color: var(--gray-300); }
-        .content-bar-label { color: var(--text-secondary); }
-
-        .content-iframe-wrap {
-            position: fixed;
-            top: calc(64px + 38px);
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-        .content-iframe-wrap iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-        }
-
-        /* ── Mobile ── */
-        @media (max-width: 768px) {
-            .picker-screen { padding: 2rem 1rem 3rem; }
-            .picker-header h1 { font-size: 1.5rem; }
-            .worldview-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-        }
-        @media (max-width: 480px) {
-            .worldview-grid { grid-template-columns: 1fr; }
-        }
+        a { color: #1B365D; font-weight: 600; }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="imb-innovation-logo.png" alt="IMB Innovation" class="logo-img">
-            </a>
-            <button class="nav-toggle" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
-            <div class="nav-links">
-                <a href="faithbot.html" class="nav-link">FaithBot</a>
-                <a href="engage-lostness.html" class="nav-link active">Engage Lostness</a>
-                <a href="https://biblepics.donbarger.com" class="nav-link" target="_blank" rel="noopener noreferrer">Bible Pics</a>
-                <a href="blog.html" class="nav-link">Don's Blog</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Picker Screen (shown by default) -->
-    <div id="pickerScreen" class="picker-screen">
-        <div class="picker-header">
-            <h1>Who do you want to reach?</h1>
-            <p>Choose a worldview or people group to get practical guidance for gospel conversations.</p>
-        </div>
-        <div class="worldview-grid" id="worldviewGrid"></div>
-
-        <footer style="margin-top:4rem;border-top:1px solid var(--border);padding-top:2rem;text-align:center;">
-            <div style="display:flex;justify-content:center;gap:30px;margin-bottom:12px;flex-wrap:wrap;">
-                <a href="privacy-policy.html" style="color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">Privacy Policy</a>
-                <a href="terms-of-use.html" style="color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">Terms of Use</a>
-            </div>
-            <p style="font-size:0.8125rem;color:var(--text-secondary);margin:0;">© 2026 IMB Innovation. All rights reserved.</p>
-        </footer>
-    </div>
-
-    <!-- Content Screen (shown after selection) -->
-    <div id="contentScreen" class="content-screen">
-        <div class="content-bar">
-            <button class="content-bar-back" id="backBtn">← All worldviews</button>
-            <span class="content-bar-sep">|</span>
-            <span class="content-bar-label" id="selectedLabel"></span>
-        </div>
-        <div class="content-iframe-wrap">
-            <iframe id="worldviewIframe" src="" title="Engage Lostness" allow="microphone; camera"></iframe>
-        </div>
-    </div>
-
-    <script>
-        const WORLDVIEWS = [
-            { label: 'African Traditional Religions', icon: '🪘', desc: 'Ancestor spirits, nature forces, and community-based practices', url: 'engage-african-traditional.html' },
-            { label: 'Animism',                       icon: '🌿', desc: 'Belief that all living and non-living things have spiritual power', url: 'engage-animism.html' },
-            { label: 'Buddhists',                     icon: '☸️',  desc: 'Path to enlightenment through releasing attachment and desire', url: 'engage-buddhists.html' },
-            { label: 'Catholicism',                   icon: '⛪',  desc: 'Christianity centered on sacraments, tradition, and papal authority', url: 'engage-catholicism.html' },
-            { label: 'Chinese Religions',             icon: '🏮', desc: 'Blend of Confucianism, Taoism, Buddhism, and folk religion', url: 'engage-chinese-religions.html' },
-            { label: 'Cultural Christians',           icon: '✝️',  desc: 'Identify as Christian but lack personal faith or commitment', url: 'engage-cultural-christians.html' },
-            { label: 'Gen Alpha',                     icon: '📱', desc: 'Born after 2010, digital natives shaped by AI and screens', url: 'engage-gen-alpha.html' },
-            { label: 'Gen Z',                         icon: '🌐', desc: 'Born 1997-2012, skeptical, justice-oriented, spiritually open', url: 'engage-gen-z.html' },
-            { label: 'Hindus',                        icon: '🪔', desc: 'Ancient faith with countless deities, karma, and dharma', url: 'engage-hindus.html' },
-            { label: 'Japanese',                      icon: '🗾', desc: 'Syncretistic blend of Shinto, Buddhism, and cultural values', url: 'engage-japanese.html' },
-            { label: "Jehovah's Witnesses",           icon: '📖', desc: 'Bible-based group with distinct theology on the Trinity and salvation', url: 'engage-jehovah-witnesses.html' },
-            { label: 'Latin American Catholics',      icon: '🌎', desc: 'Deeply devotional Catholic practice with indigenous roots', url: 'engage-latin-american-catholics.html' },
-            { label: 'Mormons',                       icon: '📜', desc: 'LDS faith adding scripture beyond the Bible with unique theology', url: 'engage-mormons.html' },
-            { label: 'Muslims',                       icon: '🕌', desc: 'Submission to Allah through the Five Pillars and the Quran', url: 'engage-muslims.html' },
-            { label: 'Orthodox',                      icon: '🕍', desc: 'Ancient Eastern Christianity with liturgy, icons, and tradition', url: 'engage-orthodox.html' },
-            { label: 'Postmoderns',                   icon: '🔍', desc: 'Question absolute truth; value experience and story over doctrine', url: 'engage-postmoderns.html' },
-            { label: 'Turks',                         icon: '🌙', desc: 'Secular and devout Muslims shaped by Ottoman and Turkish identity', url: 'engage-turks.html' },
-        ];
-
-        const pickerScreen   = document.getElementById('pickerScreen');
-        const contentScreen  = document.getElementById('contentScreen');
-        const worldviewIframe = document.getElementById('worldviewIframe');
-        const selectedLabel  = document.getElementById('selectedLabel');
-        const backBtn        = document.getElementById('backBtn');
-        const worldviewGrid  = document.getElementById('worldviewGrid');
-
-        // Build worldview cards
-        WORLDVIEWS.forEach(wv => {
-            const btn = document.createElement('button');
-            btn.className = 'worldview-card';
-            btn.innerHTML = `
-                <span class="wv-icon">${wv.icon}</span>
-                <span class="wv-text">
-                    <span class="wv-name">${wv.label}</span>
-                    <span class="wv-desc">${wv.desc}</span>
-                </span>`;
-            btn.addEventListener('click', () => selectWorldview(wv));
-            worldviewGrid.appendChild(btn);
-        });
-
-        function selectWorldview(wv) {
-            worldviewIframe.src = wv.url;
-            selectedLabel.textContent = wv.icon + ' ' + wv.label;
-            pickerScreen.classList.add('hidden');
-            contentScreen.classList.add('visible');
-            try { sessionStorage.setItem('engage-worldview', JSON.stringify(wv)); } catch {}
-        }
-
-        function showPicker() {
-            contentScreen.classList.remove('visible');
-            pickerScreen.classList.remove('hidden');
-            worldviewIframe.src = '';
-            try { sessionStorage.removeItem('engage-worldview'); } catch {}
-        }
-
-        backBtn.addEventListener('click', showPicker);
-
-        // Restore last selection on page reload
-        try {
-            const saved = JSON.parse(sessionStorage.getItem('engage-worldview'));
-            if (saved && saved.url && saved.label) selectWorldview(saved);
-        } catch {}
-
-        // Mobile nav toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks  = document.querySelector('.nav-links');
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-        document.querySelectorAll('.nav-link').forEach(l => {
-            l.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
+    <p>Opening Engage Lostness… If it doesn't load,
+       <a href="https://www.engagelostness.com/">continue to Engage Lostness</a>.</p>
 </body>
 </html>
