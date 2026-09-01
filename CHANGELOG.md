@@ -9,6 +9,34 @@ day the change went live — pushing to `main` publishes immediately.
 
 ## 2026-08-31
 
+### Changed
+- **The 17 `engage-*.html` stubs now carry their worldview across.** They already
+  redirected to www.engagelostness.com, but every one landed on the bare root, so
+  someone who clicked "Engage Muslims" got a cold picker asking who they'd like to
+  practise with. Each now deep-links to the audience it used to embed
+  (`?worldview=muslims`). Three are not one-to-one: `engage-turks` and
+  `engage-latin-american-catholics` were folded into a parent worldview's region
+  and carry `&region=` as well, and `engage-postmoderns` points at `secular` —
+  that worldview was renamed *and* rewritten on the other side.
+  Generated from `spec/wrapper-redirects.mjs` in `donbarger/engage-lostness-v3`
+  by `scripts/write-wrappers.mjs`, so the mapping lives in one place and is
+  covered by a test there; a worldview renamed over there would otherwise orphan
+  a printed QR code here in silence.
+  `rel=canonical` deliberately stays on the bare app root: seventeen stubs
+  pointing into one single-page app should consolidate onto one canonical URL,
+  not declare seventeen query-string variants of the same document.
+
+### Fixed
+- **`verify-site.py` stub-integrity check** adjusted for the above, keeping every
+  bug it was written to catch. meta-refresh and `location.replace` must still
+  agree **exactly** — they are the two things that actually navigate, and a
+  disagreement lands JS-off and JS-on visitors in different places. `canonical`
+  is now compared ignoring the query string, so it still fails on a wrong scheme,
+  host or path. Verified by reintroducing all three bug classes.
+  The check also has to unescape the two HTML attributes but *not* the JavaScript
+  string literal: `html.unescape` applies the legacy no-semicolon rule, so
+  `&region=` in a bare string silently becomes `®ion=`.
+
 ### Removed
 - **"Other Languages" retired.** Dropped from the site nav on every page, and
   `other-languages.html` is now a redirect stub to the FaithBot engine. The page

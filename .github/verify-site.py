@@ -17,8 +17,8 @@ Deliberately NOT checked:
     into one file; a Linux runner checks out both. The check is correct but would be red until
     issue #2 is fixed, and a permanently-red check is decoration. Add it when #2 closes.
 """
-import glob, os, re, sys, unicodedata
-from urllib.parse import urljoin
+import glob, html, os, re, sys, unicodedata
+from urllib.parse import urljoin, urlsplit
 
 BASE = 'https://www.faithbot.tools/'
 ASSET_CEILING = 150 * 1024
@@ -69,7 +69,26 @@ def check_stub_integrity():
     """52 of 68 pages are hand-written redirect stubs. Each carries the destination THREE
     times (canonical, meta-refresh, location.replace). One typo and a stub silently sends
     people somewhere else, or nowhere. Compared as resolved absolute URLs, because a relative
-    refresh alongside an absolute canonical is correct, not a mismatch."""
+    refresh alongside an absolute canonical is correct, not a mismatch.
+
+    Two wrinkles, both of which produce false failures if ignored:
+
+      * meta-refresh and location.replace must agree EXACTLY — they are the two things that
+        actually navigate, and a disagreement between them means JS-on and JS-off visitors
+        land in different places. That is the bug this check was written for.
+      * canonical is compared IGNORING the query string. It is an SEO declaration, not a
+        navigation path. The seventeen engage-* stubs deep-link into a single-page app
+        (?worldview=muslims, and two carry &region= as well); their canonical deliberately
+        stays on the bare app root so seventeen near-identical stubs consolidate onto one
+        canonical URL instead of declaring seventeen query-string variants of one document.
+        A typo in the scheme, host or path still fails, which is what the check is for.
+
+    The refresh URL is an HTML attribute and so carries `&amp;`, while location.replace holds
+    a JavaScript string literal carrying a bare `&`. Both are correct in context, so the two
+    attribute-sourced values are unescaped and the JS literal is not. Unescaping the JS string
+    too is a trap: html.unescape applies the legacy no-semicolon rule, so `&region=` in a
+    bare string becomes `®ion=` and the two region-carrying stubs fail spuriously."""
+    same_doc = lambda u: urlsplit(u)._replace(query='', fragment='').geturl()
     for p in stubs:
         s = docs[p]
         found = {
@@ -81,9 +100,18 @@ def check_stub_integrity():
         if missing:
             fail('stub-integrity', f'missing {", ".join(missing)}', p)
             continue
-        resolved = {k: urljoin(BASE, v.group(1)) for k, v in found.items()}
-        if len(set(resolved.values())) != 1:
-            fail('stub-integrity', f'destinations disagree: {resolved}', p)
+        # canonical and refresh come out of HTML attributes; replace is a JS string literal.
+        resolved = {k: urljoin(BASE, html.unescape(v.group(1)) if k != 'replace' else v.group(1))
+                    for k, v in found.items()}
+        if resolved['refresh'] != resolved['replace']:
+            fail('stub-integrity',
+                 f"refresh and replace disagree, so JS-off and JS-on visitors land differently: "
+                 f"{resolved['refresh']} vs {resolved['replace']}", p)
+            continue
+        if same_doc(resolved['canonical']) != same_doc(resolved['refresh']):
+            fail('stub-integrity',
+                 f"canonical names a different document than the redirect: "
+                 f"{resolved['canonical']} vs {resolved['refresh']}", p)
 
 
 def check_nav_consistency():
