@@ -9,6 +9,25 @@ day the change went live — pushing to `main` publishes immediately.
 
 ## 2026-09-01
 
+### Changed
+- **The site now lives in `docs/`, which is the web root.** `source_dir` was `/`, so every
+  tracked file was fetchable at faithbot.tools — `README.md`, `SBOM.md`, `CHANGELOG.md` and
+  `.github/verify-site.py` all returned 200. DigitalOcean `source_dir` and the GitHub Pages
+  source both point at `/docs` now, and those four all return **404** on both live URLs.
+
+  `/docs` specifically because GitHub Pages only accepts `/` or `/docs`, and Pages is staying
+  (#8). Done in two steps — `docs/` added as a copy first, root removed only after both
+  platforms were confirmed serving from it — so the site was never down. Safe to relocate at
+  all because every link is relative with no absolute `/...` paths.
+
+  Two traps found doing it, both now in the README:
+  - **Setting the Pages source does not trigger a rebuild.** The API accepted `/docs` and
+    reported `status: built`, but the live artifact still came from the root until a build was
+    forced with `POST /pages/builds`.
+  - **`docs/` was a byte-identical copy of the root, so most checks could not tell them
+    apart.** "index.html is 200 with the right nav" was true either way. The only
+    discriminating probe is `/docs/index.html` returning 404.
+
 ### Fixed
 - **The "identical" nav was not identical.** Scoping `site-nav.css` under `.site-nav` was
   not enough: `tool-styles.css` defines *bare* `.nav-links { flex: 1; justify-content:
