@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S8PE79TKZ1');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiblePics - AI-Powered Biblical Imagery</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="main-styles.css">
+    <style>
+        .biblepics-wrap {
+            margin-top: 64px;
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 64px);
+        }
+    </style>
+    <link rel="stylesheet" href="site-nav.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="imb-innovation-logo-navy.png" alt="IMB Innovation" class="logo-img">
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="faithbot.html" class="nav-link">FaithBot</a>
+                <a href="https://www.engagelostness.com" class="nav-link" target="_blank" rel="noopener noreferrer">Engage Lostness</a>
+                <a href="https://biblepics.donbarger.com" class="nav-link active" target="_blank" rel="noopener noreferrer">Bible Pics</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+            </div>
+        </div>
+    </nav>
+    <div class="biblepics-wrap">
+        <div class="page-content">
+            <div class="page-hero">
+                <h1 class="page-title">BiblePics</h1>
+                <p class="page-subtitle">Generate AI-powered images for Bible stories and ministry. Bring Scripture to life visually for teaching and evangelism.</p>
+                <p style="margin-top: 2rem;">
+                    <a href="https://biblepics.donbarger.com" class="card-button" target="_blank" rel="noopener noreferrer">
+                        <span>Launch BiblePics</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <footer style="background:#1B365D;color:white;padding:40px 20px;text-align:center;">
+            <div style="display:flex;justify-content:center;gap:30px;margin-bottom:20px;flex-wrap:wrap;">
+                <a href="privacy-policy.html" style="color:white;text-decoration:none;font-size:16px;opacity:0.9;">Privacy Policy</a>
+                <a href="terms-of-use.html" style="color:white;text-decoration:none;font-size:16px;opacity:0.9;">Terms of Use</a>
+            </div>
+            <p style="font-size:14px;opacity:0.8;margin:0;">© 2026 IMB Innovation. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks  = document.querySelector('.nav-links');
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-link').forEach(l => {
+            l.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

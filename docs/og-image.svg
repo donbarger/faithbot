@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1B365D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1B365D;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Logo Section -->
+  <g transform="translate(600, 70)">
+    <!-- Logo text "INNOVATION" with pin icon -->
+    <path d="M -35 -15 Q -35 -25 -25 -32 Q -15 -25 -15 -15 Q -15 -5 -25 5 Q -35 -5 -35 -15" fill="white" opacity="0.9"/>
+    <circle cx="-25" cy="-15" r="4" fill="#1B365D"/>
+
+    <text x="5" y="5" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="white" letter-spacing="2">
+      INNOVATION
+    </text>
+  </g>
+
+  <!-- Main Heading -->
+  <text x="600" y="200" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="700" fill="white" text-anchor="middle" line-height="1.2">
+    AI-Powered Tools
+  </text>
+  <text x="600" y="275" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="700" fill="white" text-anchor="middle">
+    for Global Missions
+  </text>
+
+  <!-- Subheading -->
+  <text x="600" y="340" font-family="Inter, Arial, sans-serif" font-size="20" fill="#E8EDF5" text-anchor="middle" opacity="0.95">
+    Empowering missionaries, pastors, and believers to share
+  </text>
+  <text x="600" y="368" font-family="Inter, Arial, sans-serif" font-size="20" fill="#E8EDF5" text-anchor="middle" opacity="0.95">
+    the gospel across cultures and languages
+  </text>
+
+  <!-- Button -->
+  <rect x="420" y="410" width="360" height="50" rx="8" fill="white"/>
+  <text x="600" y="445" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#1B365D" text-anchor="middle">
+    Explore Our Tools
+  </text>

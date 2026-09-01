@@ -17,6 +17,13 @@ Deliberately NOT checked:
 import glob, html, os, re, sys, unicodedata
 from urllib.parse import urljoin, urlsplit
 
+# The served root is docs/ — DigitalOcean's source_dir and GitHub Pages both point there. That is
+# what gets checked. Falls back to the repo root, where the site used to live, so this script still
+# works on older commits and during the transition while both trees exist.
+if os.path.isdir('docs') and os.path.exists(os.path.join('docs', 'index.html')):
+    os.chdir('docs')
+    print('checking docs/ (the served root)\n')
+
 BASE = 'https://www.faithbot.tools/'
 ASSET_CEILING = 150 * 1024
 # Chipp is reachable two ways: chipp.ai directly, and *.faithbot.io vanity domains that
