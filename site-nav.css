@@ -47,10 +47,20 @@
     display: block;
 }
 
+/* These pages load main-styles.css, tool-styles.css, or neither, and BOTH of those define bare
+   .nav-links / .nav-link rules that still match inside .site-nav. Scoping this file was not enough
+   on its own: tool-styles' `.nav-links { flex: 1; justify-content: center }` and
+   `.nav-link { padding: .5rem .875rem; border-radius: 6px }` leaked through, so the "identical"
+   nav rendered centred and pill-padded on its ten pages and flush-right elsewhere. Every property
+   either stylesheet sets is therefore restated here, even where the value looks redundant. */
 .site-nav .nav-links {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    flex: 0 1 auto;
     gap: 1.75rem;
+    padding: 0;
+    margin: 0;
 }
 
 .site-nav .nav-link {
@@ -61,10 +71,13 @@
     font-weight: 500;
     white-space: nowrap;
     transition: color 0.15s ease;
+    padding: 0;
+    border-radius: 0;
+    background: none;
 }
 
 .site-nav .nav-link:hover,
-.site-nav .nav-link.active { color: #1B365D; }
+.site-nav .nav-link.active { color: #1B365D; background: none; }
 
 .site-nav .nav-link::after {
     content: '';
