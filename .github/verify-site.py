@@ -19,7 +19,11 @@ from urllib.parse import urljoin, urlsplit
 
 BASE = 'https://www.faithbot.tools/'
 ASSET_CEILING = 150 * 1024
-CHIPP_BUDGET = 4
+# Chipp is reachable two ways: chipp.ai directly, and *.faithbot.io vanity domains that
+# 308-redirect to /w/chat/<Bot>-<id>/. A check that greps only chipp.ai misses the vanity ones —
+# youversion.html embeds youversionplan.faithbot.io and went uncounted.
+CHIPP_HOSTS = r'(?:chipp\.ai|[a-z0-9-]+\.faithbot\.io)'
+CHIPP_BUDGET = 5
 EXPECTED_NAV = ['FaithBot', 'Engage Lostness', 'Bible Pics', 'Blog']
 NO_NAV = {'old-home.html'}          # dead archive, queued for deletion in #5
 
@@ -138,8 +142,12 @@ def check_asset_sizes():
 
 def check_chipp_budget():
     """Migration off Chipp is nearly done. This pins the remaining count so it can only go
-    down: re-adding an embed is a deliberate act that has to change this number."""
-    hits = [p for p in pages if re.search(r'(src|href)="[^"]*chipp\.ai', docs[p])]
+    down: re-adding an embed is a deliberate act that has to change this number.
+
+    Counts BOTH chipp.ai and the *.faithbot.io vanity domains. The first version of this check
+    grepped chipp.ai alone and reported 4 while the real figure was 5 — youversion.html embeds
+    youversionplan.faithbot.io, which 308s straight into Chipp."""
+    hits = [p for p in pages if re.search(r'(src|href)="[^"]*' + CHIPP_HOSTS, docs[p])]
     if len(hits) > CHIPP_BUDGET:
         fail('chipp-budget', f'{len(hits)} embeds > budget {CHIPP_BUDGET}: {hits}')
 

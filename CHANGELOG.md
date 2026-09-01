@@ -7,6 +7,36 @@ day the change went live — pushing to `main` publishes immediately.
 
 ---
 
+## 2026-09-01
+
+### Fixed
+- **The "identical" nav was not identical.** Scoping `site-nav.css` under `.site-nav` was
+  not enough: `tool-styles.css` defines *bare* `.nav-links { flex: 1; justify-content:
+  center }` and `.nav-link { padding: .5rem .875rem; border-radius: 6px }`, which still
+  match inside `.site-nav` and were never reset. So on its ten pages the nav rendered
+  stretched, centred and pill-padded, while elsewhere it was flush right. Measured in the
+  browser: `flex-grow: 1`, `justify-content: center`, `padding: 8px 14px`.
+  Phase 1 was verified on markup only, which could not see this.
+- **The Chipp check had a blind spot.** It grepped `chipp.ai` and reported 4 embeds. Chipp is
+  also reachable through `*.faithbot.io` vanity domains that 308 into `/w/chat/<Bot>-<id>/`,
+  and `youversion.html` embeds `youversionplan.faithbot.io`. The real count was 5. The check
+  now matches both and the budget is 5.
+
+### Known broken (not yet fixed — see #5)
+- `goals.html`, `ripen.html` and `coffeecoach.html` embed `goals1.donbarger.com`,
+  `ripen1.donbarger.com` and `coffeecoach.donbarger.com`. **None of those hosts resolve in
+  DNS.** All three pages are live and render an empty grey frame. They are unreachable from
+  the nav, so nobody arrives except by old link or QR code.
+
+### Noted
+- The nav logo asset is a white wordmark on a **baked-in navy plate** (60% of the image), so
+  on the white nav bar it reads as a navy sticker. It looks correct only on the navy hero,
+  where the plate blends in. `CLAUDE.md` specifies a navy-on-transparent master and says not
+  to put a box or pill behind the mark. Pre-existing — the pixels are identical before and
+  after the 2026-08-31 downscale.
+
+---
+
 ## 2026-08-31
 
 ### Changed
