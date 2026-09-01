@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:            # so a branch is checked BEFORE it reaches main
+  workflow_dispatch:
+
+# Verification only — there is deliberately no deploy job. DigitalOcean App Platform already
+# deploys this repo itself via deploy_on_push on main, so a deploy step here would either
+# duplicate that or need credentials the repo has no reason to hold.
+#
+# NOTE: CI does not gate the deploy. deploy_on_push publishes the moment a push lands,
+# regardless of whether this workflow is still running or has gone red. These checks tell you
+# something broke; they cannot stop it reaching production. Branch protection plus PR-only
+# merges to main is what would actually gate it — worth doing, not done yet.
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # No setup step: this site is HTML and CSS served from the repo root. No package.json,
+      # no build, no dependencies. Ubuntu runners ship python3, which is all the checks need.
+      - name: Verify site
+        run: python3 .github/verify-site.py

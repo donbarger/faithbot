@@ -120,6 +120,13 @@ Consolidation is tracked in issue #7.
 - **CDN:** Cloudflare
 - **`deploy_on_push: true`** on `main`
 
+**There is a second live copy.** GitHub Pages is also enabled on this repo
+(source `main` / `/`) and publishes the whole site to
+**https://donbarger.github.io/faithbot/**. Every push goes to both. They are
+currently identical, but it is a duplicate of the site at a second indexable URL
+with no canonical pointing back here. Turn Pages off, or add a canonical —
+tracked in the issues.
+
 ```bash
 git add -A && git commit -m "..." && git push origin main
 ```
@@ -145,6 +152,25 @@ Two rules, both learned the hard way:
    ```
 
 Builds usually finish in under a minute, occasionally ~6.
+
+### CI
+
+`.github/workflows/ci.yml` runs `.github/verify-site.py` on push and on pull
+requests. **Run it by hand too** — it needs nothing but `python3`:
+
+```bash
+python3 .github/verify-site.py
+```
+
+Seven checks, each guarding a class of bug that has actually shipped here: tag
+balance, broken internal links, redirect-stub integrity, nav consistency, asset
+size ceiling, a pinned Chipp-embed budget, and required `<head>` tags. The script
+documents what is deliberately *not* checked, and why.
+
+**CI does not gate the deploy.** `deploy_on_push` publishes the moment a push
+lands, whether or not CI has finished or gone red. These checks tell you
+something broke; they cannot stop it reaching production. Branch protection with
+PR-only merges is what would actually gate it, and is not set up.
 
 ### This repo is public
 

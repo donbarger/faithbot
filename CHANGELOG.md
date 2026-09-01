@@ -45,7 +45,20 @@ day the change went live — pushing to `main` publishes immediately.
 - Malformed nav markup in `other-languages.html` — a stray `</a>`, a duplicated
   nav link outside the container, and an unbalanced `</div>`.
 
+### Added
+- **CI** (`.github/workflows/ci.yml` + `.github/verify-site.py`) — seven static-site
+  checks on push and pull request, each guarding a bug class that has actually shipped
+  here. Every check was verified by deliberately breaking the thing it guards and
+  watching it go red. Note CI does *not* gate the deploy: `deploy_on_push` publishes
+  regardless.
+- **`SBOM.md`** — no build or runtime dependencies; documents the four third-party
+  origins the browser contacts (GA, Google Fonts, chipp.ai, rss2json).
+
 ### Documentation
+- **Discovered a second live copy of the site**: GitHub Pages is still enabled and
+  publishes to `https://donbarger.github.io/faithbot/` on every push. The old README's
+  "Platform: GitHub Pages" line was not stale as assumed — it was incomplete. Both are
+  real. Now documented.
 - `README.md` rewritten. The previous version described GitHub Pages deployment,
   `chat.faithbot.io` iframes, and a live Engage Lostness hub — none of which had
   been true for some time.
