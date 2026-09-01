@@ -87,6 +87,18 @@ day the change went live — pushing to `main` publishes immediately.
   regardless.
 - **`SBOM.md`** — no build or runtime dependencies; documents the four third-party
   origins the browser contacts (GA, Google Fonts, chipp.ai, rss2json).
+- **Branch protection on `main`**, so CI actually gates the deploy. Until now
+  `deploy_on_push` published the instant a push landed, red CI or not. `main` now
+  requires the `verify` check, blocks force-pushes and deletions, and sets
+  `enforce_admins: true` — so it applies to everyone, including repo admins.
+
+  **Direct pushes to `main` no longer work. Every change goes via a pull request.**
+  Verified by attempting a direct push and confirming it was rejected, rather than
+  trusting the settings. To lift it in an emergency:
+  `gh api -X DELETE repos/donbarger/faithbot/branches/main/protection`.
+- **Eighth CI check: duplicate Unicode filenames**, unblocked by the #2 fix below. It
+  can only observe a duplicate on a normalisation-sensitive filesystem, so it is
+  meaningful on the Linux runner and vacuous on macOS.
 
 ### Documentation
 - **Discovered a second live copy of the site**: GitHub Pages is still enabled and
