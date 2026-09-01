@@ -1,0 +1,28 @@
+/* Override tool-styles.css nav colors to match IMB Innovation blue theme */
+
+.tool-nav {
+    background: #1B365D;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.nav-home:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        background: #1B365D;
+        border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-link.active {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+    }
+}
