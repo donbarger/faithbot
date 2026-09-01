@@ -22,7 +22,28 @@ day the change went live — pushing to `main` publishes immediately.
   and `youversion.html` embeds `youversionplan.faithbot.io`. The real count was 5. The check
   now matches both and the budget is 5.
 
-### Known broken (not yet fixed — see #5)
+### Changed
+- **Logo now uses the right asset for each background.** The single logo file was a white
+  wordmark on a baked-in navy plate (60% of the image), so it read as a navy sticker on the
+  white nav bar and only looked correct on the navy hero. Replaced with two plate-free
+  variants generated from the `CLAUDE.md` canonical master (navy on transparent, 5.72:1):
+  `imb-innovation-logo-navy.png` for the light nav bar and
+  `imb-innovation-logo-white.png` (white knockout) for the navy hero. Both 1201×210, which
+  is the size `CLAUDE.md` prescribes for a nav bar and covers the 200px hero too.
+  Verified in the browser rather than assumed.
+
+### Fixed (dead embeds)
+- **`goals.html`, `ripen.html` and `coffeecoach.html` embedded hosts that no longer exist.**
+  `goals1`/`ripen1`/`coffeecoach.donbarger.com` have no DNS record, no Caddy vhost among the
+  45 on the shared droplet, no systemd unit and no DigitalOcean app. All three rendered an
+  empty grey frame with no error. Each now shows a short retirement notice with a link to the
+  current tools, keeping the shared nav.
+
+  Deliberately not deleted and not silently redirected: nothing links to these pages, so the
+  only arrivals are old links and printed QR codes, and those people asked for that tool
+  specifically.
+
+### Previously known broken (now fixed above — was #5)
 - `goals.html`, `ripen.html` and `coffeecoach.html` embed `goals1.donbarger.com`,
   `ripen1.donbarger.com` and `coffeecoach.donbarger.com`. **None of those hosts resolve in
   DNS.** All three pages are live and render an empty grey frame. They are unreachable from
