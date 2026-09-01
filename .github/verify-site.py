@@ -13,9 +13,6 @@ Deliberately NOT checked:
   * Inline <script>/<style>. engage-lostness-v3 forbids these because its production Caddy
     sends a CSP without 'unsafe-inline'. faithbot.tools sends no CSP, and 58 of 68 pages use
     inline <style> — the GA tag itself is inline. That check would be red on arrival.
-  * NFC/NFD duplicate filenames. macOS collapses the two spellings of spanish-bot-de-fé.html
-    into one file; a Linux runner checks out both. The check is correct but would be red until
-    issue #2 is fixed, and a permanently-red check is decoration. Add it when #2 closes.
 """
 import glob, html, os, re, sys, unicodedata
 from urllib.parse import urljoin, urlsplit
@@ -160,6 +157,21 @@ def check_head_essentials():
             fail('head', 'no GA tag', p)
 
 
+def check_unicode_duplicate_filenames():
+    """Issue #2: spanish-bot-de-fé.html was committed under BOTH Unicode spellings of "é" — NFC
+    (U+00E9) and NFD (e + combining acute). macOS normalises them to one file so the duplicate is
+    invisible locally; Linux serves two URLs, and CI counted 69 pages where a Mac counted 68.
+
+    This check only works on a case- and normalisation-sensitive filesystem, i.e. the CI runner.
+    On macOS it passes vacuously because the duplicate cannot be observed."""
+    seen = {}
+    for p in pages:
+        key = unicodedata.normalize('NFC', p)
+        if key in seen:
+            fail('unicode-filename', f'duplicate of {seen[key]} under a different Unicode spelling', p)
+        seen[key] = p
+
+
 CHECKS = [
     ('tag balance',        check_tag_balance),
     ('internal links',     check_internal_links),
@@ -168,6 +180,7 @@ CHECKS = [
     ('asset sizes',        check_asset_sizes),
     ('chipp budget',       check_chipp_budget),
     ('head essentials',    check_head_essentials),
+    ('unicode filenames',  check_unicode_duplicate_filenames),
 ]
 
 print(f'{len(pages)} pages: {len(real)} real, {len(stubs)} redirect stubs\n')

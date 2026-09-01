@@ -70,6 +70,12 @@ day the change went live — pushing to `main` publishes immediately.
   naming pattern.
 
 ### Fixed
+- **`spanish-bot-de-fé.html` was committed under two Unicode spellings of "é"** (#2). Both
+  blobs were byte-identical, and no `href` in any commit ever used the NFD spelling — it was
+  an upload artifact from 2026-01-18. The NFD entry is removed; the NFC one, which every link
+  has always pointed at, stays. CI now has a check to stop it recurring.
+  (Note for anyone repeating this: `core.precomposeunicode=true` rewrites an NFD path argument
+  to NFC, so `git rm` on the NFD path removes the *NFC* entry. Disable it for that one command.)
 - Malformed nav markup in `other-languages.html` — a stray `</a>`, a duplicated
   nav link outside the container, and an unbalanced `</div>`.
 
