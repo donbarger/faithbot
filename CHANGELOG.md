@@ -10,6 +10,18 @@ day the change went live — pushing to `main` publishes immediately.
 ## 2026-09-01
 
 ### Changed
+- **One Inter weight-set across the site** (#6). Pages requested three different sets
+  (`400;500;600;700`, `400;600;700`, `300;400;500;600;700;800`), so different pages pulled
+  different font files instead of sharing one cached request. All 13 live pages that use Inter
+  now request `400;500;600;700`, and a ninth CI check keeps it that way.
+
+  Chosen from what is actually used, not by picking the middle option: 500, 600 and 700 are
+  used 9, 75 and 17 times. The two outliers turned out not to be Inter problems at all —
+  `font-weight: 300` is a **Merriweather** weight in `post-styles.css` (post.html legitimately
+  uses a serif body, and keeps its Merriweather request), and `font-weight: 800` lives in
+  `styles.css`, which only `old-home.html` loads. That page is exempt: it is unreachable,
+  nothing links to it, and standardising it would drop its one 800 heading for no benefit.
+
 - **The site now lives in `docs/`, which is the web root.** `source_dir` was `/`, so every
   tracked file was fetchable at faithbot.tools — `README.md`, `SBOM.md`, `CHANGELOG.md` and
   `.github/verify-site.py` all returned 200. DigitalOcean `source_dir` and the GitHub Pages

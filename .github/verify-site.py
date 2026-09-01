@@ -33,6 +33,7 @@ CHIPP_HOSTS = r'(?:chipp\.ai|[a-z0-9-]+\.faithbot\.io)'
 CHIPP_BUDGET = 5
 EXPECTED_NAV = ['FaithBot', 'Engage Lostness', 'Bible Pics', 'Blog']
 NO_NAV = {'old-home.html'}          # dead archive, queued for deletion in #5
+FONT_EXEMPT = {'old-home.html'}     # ditto — sole user of styles.css and its font-weight: 800
 
 failures = []
 
@@ -187,6 +188,25 @@ def check_unicode_duplicate_filenames():
         seen[key] = p
 
 
+def check_font_consistency():
+    """Pages once requested three different Inter weight-sets (400;500;600;700 / 400;600;700 /
+    300;400;500;600;700;800), so different pages pulled different font files instead of sharing one
+    cached request. Every page that asks for Inter must ask for the same weights.
+
+    old-home.html is exempt: it is an unreachable archive (deletion proposed in #5) and the only
+    page loading styles.css, whose .hero-title is the site's sole font-weight: 800.
+
+    Merriweather is not a violation — post.html genuinely uses it for serif body copy — so only the
+    Inter portion of the URL is compared."""
+    canonical = '400;500;600;700'
+    for p in pages:
+        if p in FONT_EXEMPT:
+            continue
+        for weights in re.findall(r'family=Inter:wght@([^&"]*)', docs[p]):
+            if weights != canonical:
+                fail('fonts', f'Inter:wght@{weights} != {canonical}', p)
+
+
 CHECKS = [
     ('tag balance',        check_tag_balance),
     ('internal links',     check_internal_links),
@@ -196,6 +216,7 @@ CHECKS = [
     ('chipp budget',       check_chipp_budget),
     ('head essentials',    check_head_essentials),
     ('unicode filenames',  check_unicode_duplicate_filenames),
+    ('font consistency',   check_font_consistency),
 ]
 
 print(f'{len(pages)} pages: {len(real)} real, {len(stubs)} redirect stubs\n')
