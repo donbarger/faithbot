@@ -54,9 +54,9 @@ Outbound only — these receive visitors, not data from this site.
 
 | | |
 |---|---|
-| **Platform** | DigitalOcean App Platform, app `c7a42ca2-46d8-49c8-aef6-b9d4c7a4ed3c` |
+| **Platform** | DigitalOcean App Platform, app `c7a42ca2-46d8-49c8-aef6-b9d4c7a4ed3c`, `source_dir: /docs` |
 | **CDN** | Cloudflare |
-| **Also published** | GitHub Pages, `https://donbarger.github.io/faithbot/` — a second live copy of the whole site |
+| **Also published** | GitHub Pages, `https://donbarger.github.io/faithbot/`, source `main` / `/docs` — a second live copy of the whole site |
 | **Deploy** | `deploy_on_push: true` on `main`, no staging |
 
 ---
@@ -66,6 +66,7 @@ Outbound only — these receive visitors, not data from this site.
 **None in this repo, and none needed.** No API keys, no tokens, no `.env`. The
 GA measurement ID is a public identifier, not a credential.
 
-The repo root is served publicly — `https://www.faithbot.tools/README.md`
-returns 200 — so anything committed here is world-readable by design. Local
-planning notes live in `tasks/`, which is gitignored.
+Only `docs/` is served. This file, `README.md`, `CHANGELOG.md` and `.github/`
+return 404 on both live URLs. The repo is public on GitHub regardless, so that
+is tidiness rather than a security boundary. Local planning notes live in
+`tasks/`, which is gitignored.
