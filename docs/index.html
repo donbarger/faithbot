@@ -378,6 +378,30 @@
             text-align: center;
         }
 
+        .contact-button {
+            display: inline-block;
+            border: 2px solid white;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.05em;
+            margin-bottom: 30px;
+            transition: all 0.2s;
+        }
+
+        .contact-button:hover {
+            background: white;
+            color: #1B365D;
+        }
+
+        .contact-button:focus {
+            outline: 3px solid white;
+            outline-offset: 3px;
+        }
+
         .footer-links {
             display: flex;
             justify-content: center;
@@ -551,6 +575,7 @@
 
     <!-- Footer -->
     <footer>
+        <a href="mailto:innovation@imb.org" class="contact-button">CONTACT US</a>
         <div class="footer-links">
             <a href="privacy-policy.html">Privacy Policy</a>
             <a href="terms-of-use.html">Terms of Use</a>
