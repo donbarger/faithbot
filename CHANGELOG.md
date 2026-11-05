@@ -7,6 +7,12 @@ day the change went live — pushing to `main` publishes immediately.
 
 ---
 
+## 2026-11-05
+
+### Added
+- **CONTACT US button in the home-page footer.** An outlined white button above the
+  Privacy / Terms links, opening a `mailto:innovation@imb.org`.
+
 ## 2026-09-01
 
 ### Changed
