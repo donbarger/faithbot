@@ -10,6 +10,9 @@ day the change went live — pushing to `main` publishes immediately.
 ## 2026-11-05
 
 ### Added
+- **Two new home-page cards**, after Christian Games: **Bible Coding**
+  (https://biblecoding.net, a tool for Sign Language Bible Translation) and **PhD Workspace**
+  (https://phd.donbarger.com, helps PhD students track their research). Both open in a new tab.
 - **Contact page** (`contact.html`): name, email and message, posted to the new
   `faithbot-contact` service at contact.faithbot.tools, which emails it to innovation@imb.org
   with Reply-To set to the visitor. Inline validation, a honeypot field, and a fallback
