@@ -9,6 +9,9 @@ day the change went live — pushing to `main` publishes immediately.
 
 ## 2026-11-05
 
+### Changed
+- The PhD Workspace card links to its new address, https://phdworkspace.com (phd.donbarger.com now redirects there).
+
 ### Added
 - **Two new home-page cards**, after Christian Games: **Bible Coding**
   (https://biblecoding.net, a tool for Sign Language Bible Translation) and **PhD Workspace**
