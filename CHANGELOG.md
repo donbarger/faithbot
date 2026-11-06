@@ -14,6 +14,9 @@ day the change went live — pushing to `main` publishes immediately.
   (https://claudecode.donbarger.com, an 11-lesson curriculum) and **Copilot Training**
   (https://copilot.donbarger.com, hands-on Microsoft Copilot training). Both open in a new tab.
 
+### Changed
+- The FaithBot v3 announcement now says more than **2,500,000 users** (was 2,000,000).
+
 ## 2026-11-05
 
 ### Changed
