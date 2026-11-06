@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us – IMB Innovation</title>
+    <meta name="description" content="Contact the IMB Innovation team about FaithBot and our other AI tools.">
+    <link rel="canonical" href="https://www.faithbot.tools/contact.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="main-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S8PE79TKZ1');
+    </script>
+
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; color: #333; }
+
+        .page-header {
+            background: #1B365D;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .page-header h1 { margin: 0 0 8px; font-size: 36px; }
+        .page-header p { margin: 0; opacity: 0.85; font-size: 15px; }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px 80px;
+        }
+
+        .content h2 {
+            font-size: 22px;
+            color: #1B365D;
+            margin: 36px 0 10px;
+        }
+
+        .content p, .content li {
+            font-size: 16px;
+            line-height: 1.7;
+            margin: 0 0 14px;
+        }
+
+        .content ul { padding-left: 22px; }
+
+        .content { max-width: 640px; }
+
+        .intro { font-size: 17px; line-height: 1.6; margin: 0 0 28px; }
+
+        .field { margin: 0 0 20px; }
+        .field label { display: block; font-weight: 600; color: #1B365D; margin: 0 0 6px; font-size: 15px; }
+        .field input, .field textarea {
+            width: 100%;
+            box-sizing: border-box;
+            font: inherit;
+            font-size: 16px;
+            padding: 12px 14px;
+            border: 1px solid #c7ccd4;
+            border-radius: 8px;
+            background: #fff;
+            color: #333;
+        }
+        .field textarea { min-height: 180px; resize: vertical; line-height: 1.5; }
+        .field input:focus, .field textarea:focus { outline: 3px solid rgba(27, 54, 93, 0.25); border-color: #1B365D; }
+        .field .error { color: #b3261e; font-size: 14px; margin: 6px 0 0; min-height: 0; }
+        .field.invalid input, .field.invalid textarea { border-color: #b3261e; }
+
+        /* Honeypot: off-screen rather than display:none, which some bots skip. */
+        .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+        .submit-button {
+            display: inline-block;
+            background: #1B365D;
+            color: white;
+            border: 0;
+            padding: 14px 36px;
+            border-radius: 8px;
+            font: inherit;
+            font-weight: 600;
+            font-size: 17px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .submit-button:hover { background: #142742; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(27, 54, 93, 0.3); }
+        .submit-button:focus { outline: 3px solid #1B365D; outline-offset: 3px; }
+        .submit-button:disabled { opacity: 0.6; cursor: wait; transform: none; box-shadow: none; }
+
+        .form-status { margin: 18px 0 0; font-size: 15px; }
+        .form-status.error { color: #b3261e; }
+
+        .thanks { display: none; text-align: center; padding: 30px 0; }
+        .thanks h2 { color: #1B365D; font-size: 26px; margin: 0 0 10px; }
+        .thanks p { font-size: 17px; line-height: 1.6; }
+        .sent .thanks { display: block; }
+        .sent form, .sent .intro { display: none; }
+
+        footer {
+            background: #1B365D;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover { opacity: 0.75; }
+
+        .footer-copyright { font-size: 14px; opacity: 0.8; margin: 0; }
+    </style>
+    <link rel="stylesheet" href="site-nav.css">
+</head>
+<body>
+
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="imb-innovation-logo-navy.png" alt="IMB Innovation" class="logo-img">
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="faithbot.html" class="nav-link">FaithBot</a>
+                <a href="https://www.engagelostness.com" class="nav-link" target="_blank" rel="noopener noreferrer">Engage Lostness</a>
+                <a href="https://biblepics.donbarger.com" class="nav-link" target="_blank" rel="noopener noreferrer">Bible Pics</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+            </div>
+        </div>
+    </nav>
+    <header class="page-header">
+        <h1>Contact Us</h1>
+        <p>Questions, feedback, or ideas? We'd love to hear from you.</p>
+    </header>
+
+    <main class="content" id="contact">
+        <p class="intro">Send a note to the IMB Innovation team about FaithBot or any of our tools. We read every message and reply by email.</p>
+
+        <form id="contactForm" novalidate>
+            <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" maxlength="100" required>
+                <p class="error" id="name-error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+                <p class="error" id="email-error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" maxlength="5000" required></textarea>
+                <p class="error" id="message-error" aria-live="polite"></p>
+            </div>
+            <div class="hp" aria-hidden="true">
+                <label for="company">Company</label>
+                <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <button type="submit" class="submit-button" id="submitBtn">Send Message</button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="thanks" id="thanks" tabindex="-1">
+            <h2>Thank you!</h2>
+            <p>Your message is on its way to our team. We'll reply to the email address you gave us.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-use.html">Terms of Use</a>
+        </div>
+        <p class="footer-copyright">© 2026 IMB Innovation. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+
+    <script>
+        // Posts to the faithbot-contact service (repo donbarger/faithbot-contact), which
+        // emails the message to the Innovation team.
+        (() => {
+            const ENDPOINT = 'https://contact.faithbot.tools/api/contact';
+            const openedAt = Date.now();
+            const main = document.getElementById('contact');
+            const form = document.getElementById('contactForm');
+            const btn = document.getElementById('submitBtn');
+            const status = document.getElementById('formStatus');
+            const FIELDS = ['name', 'email', 'message'];
+
+            function showErrors(errors) {
+                FIELDS.forEach((f) => {
+                    const msg = errors[f] || '';
+                    document.getElementById(f + '-error').textContent = msg;
+                    document.getElementById(f).closest('.field').classList.toggle('invalid', Boolean(msg));
+                    document.getElementById(f).setAttribute('aria-invalid', msg ? 'true' : 'false');
+                });
+                const first = FIELDS.find((f) => errors[f]);
+                if (first) document.getElementById(first).focus();
+            }
+
+            function checkLocally(data) {
+                const errors = {};
+                if (!data.name) errors.name = 'Please tell us your name.';
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(data.email)) errors.email = 'Please enter a valid email address.';
+                if (data.message.length < 2) errors.message = 'Please write a message.';
+                return errors;
+            }
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                status.textContent = '';
+                status.classList.remove('error');
+                // getElementById, not form.name: that is the form's own name attribute.
+                const val = (id) => document.getElementById(id).value;
+                const data = {
+                    name: val('name').trim(),
+                    email: val('email').trim(),
+                    message: val('message').trim(),
+                    company: val('company'),
+                    elapsed: Date.now() - openedAt,
+                };
+                const local = checkLocally(data);
+                showErrors(local);
+                if (Object.keys(local).length) return;
+
+                btn.disabled = true;
+                btn.textContent = 'Sending…';
+                try {
+                    const res = await fetch(ENDPOINT, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data),
+                    });
+                    const body = await res.json().catch(() => ({}));
+                    if (res.ok && body.ok) {
+                        main.classList.add('sent');
+                        document.getElementById('thanks').focus();
+                        return;
+                    }
+                    if (body.errors) { showErrors(body.errors); return; }
+                    throw new Error(body.error || 'We could not send your message.');
+                } catch (err) {
+                    status.textContent = (err.message || 'We could not send your message.') + ' You can also email us at innovation@imb.org.';
+                    status.classList.add('error');
+                } finally {
+                    btn.disabled = false;
+                    btn.textContent = 'Send Message';
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

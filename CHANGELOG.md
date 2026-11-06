@@ -10,6 +10,13 @@ day the change went live — pushing to `main` publishes immediately.
 ## 2026-11-05
 
 ### Added
+- **Contact page** (`contact.html`): name, email and message, posted to the new
+  `faithbot-contact` service at contact.faithbot.tools, which emails it to innovation@imb.org
+  with Reply-To set to the visitor. Inline validation, a honeypot field, and a fallback
+  message naming the address if sending fails. The footer CONTACT US button now opens this
+  page instead of a `mailto:` link, which did nothing for visitors without a desktop mail app.
+- Privacy Policy: the contact form and Resend are now listed under what we collect and who
+  processes it; section 10 points at the form. Last-updated date bumped.
 - **CONTACT US button in the home-page footer.** An outlined white button above the
   Privacy / Terms links, opening a `mailto:innovation@imb.org`.
 
