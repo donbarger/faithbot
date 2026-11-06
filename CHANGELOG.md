@@ -7,6 +7,13 @@ day the change went live — pushing to `main` publishes immediately.
 
 ---
 
+## 2026-11-06
+
+### Added
+- **Two training cards on the home page**, after PhD Workspace: **Claude Code Training**
+  (https://claudecode.donbarger.com, an 11-lesson curriculum) and **Copilot Training**
+  (https://copilot.donbarger.com, hands-on Microsoft Copilot training). Both open in a new tab.
+
 ## 2026-11-05
 
 ### Changed
