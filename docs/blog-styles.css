@@ -4,8 +4,6 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: calc(100vh - 64px);
-    overflow: auto;
 }
 
 .blog-header {
@@ -197,10 +195,6 @@
 }
 
 @media (max-width: 480px) {
-    .blog-container {
-        height: calc(100vh - 56px);
-    }
-    
     .blog-header {
         padding: 1.5rem 1rem;
     }
