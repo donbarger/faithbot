@@ -65,7 +65,7 @@ the site instead of bouncing through the redirect again.
 |---|---|---|
 | FaithBot v3 | `faithbot.donbarger.com` | `?lang=<code>`, 50+ languages |
 | Engage Lostness | `www.engagelostness.com` | `?lang=es` for Spanish |
-| Bible Pics | `biblepics.donbarger.com` | — |
+| Bible Pics | `biblepics.faithbot.tools` | — |
 | Don's Blog | `blog.html` here, via Substack RSS | — |
 
 **FaithBot v3 replaced the per-language pages.** There used to be one page per
