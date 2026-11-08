@@ -14,6 +14,11 @@ day the change went live — pushing to `main` publishes immediately.
   official Claude symbol) instead of the 🧠 emoji.
 - **Copilot Training card** now shows the Microsoft Copilot logo (`docs/copilot-logo.svg`, the
   current full-color mark) instead of the 🚀 emoji.
+- **Every app card now shows that app's own icon** instead of an emoji: FaithBot, Engage
+  Lostness, BiblePics, Bible Coding, Check My Story and PhD Workspace. Christian Games shows both
+  The Great Pursuit and TOLD icons side by side. Each icon is a copy of the app's own favicon
+  (`docs/*-logo.svg`, plus `phd-workspace-logo.png`, which has no SVG). Don's Blog and Recursos en
+  Español keep their emoji, since neither has a logo.
 
 ## 2026-11-06
 
