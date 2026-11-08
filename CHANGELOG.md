@@ -19,6 +19,12 @@ day the change went live — pushing to `main` publishes immediately.
   The Great Pursuit and TOLD icons side by side. Each icon is a copy of the app's own favicon
   (`docs/*-logo.svg`, plus `phd-workspace-logo.png`, which has no SVG). Don's Blog and Recursos en
   Español keep their emoji, since neither has a logo.
+- **"Don's Blog" is now "Innovation Substack"** on its home-page card and on `blog.html` and
+  `post.html`. The card shows the Substack logo (`docs/substack-logo.svg`).
+- **Recursos en Español card** has its own icon (`docs/recursos-logo.svg`): a globe with an
+  "ES" speech bubble, in the site's navy and teal. That replaces the last emoji on the home page.
+- **"Subscribe on Substack" on `blog.html` opens the subscribe form** (`/subscribe`) instead of
+  the Substack home page, matching the button on `post.html`.
 
 ## 2026-11-06
 
