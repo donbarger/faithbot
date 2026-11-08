@@ -164,6 +164,22 @@
     text-align: center;
 }
 
+.post-subscribe-top {
+    background: var(--white);
+    padding: 1.75rem 2rem 0.5rem;
+    border-bottom: 1px solid var(--cream);
+}
+
+.newsletter-signup.post-subscribe-top h3 {
+    font-size: 1.35rem;
+    color: #1B365D;
+    margin-bottom: 0.25rem;
+}
+
+.newsletter-signup.post-subscribe-top p {
+    margin-bottom: 0.5rem;
+}
+
 .newsletter-signup h3 {
     font-size: 1.75rem;
     color: var(--espresso);

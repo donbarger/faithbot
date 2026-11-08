@@ -109,6 +109,11 @@
                         previewHTML = previewDiv.innerHTML;
 
                         container.innerHTML = `
+                            <section class="post-subscribe-top newsletter-signup">
+                                <h3>Get new articles in your inbox</h3>
+                                <p>Free. Enter your email and you're subscribed.</p>
+                                <iframe src="https://www.donbarger.com/embed" title="Subscribe to Innovation Substack" scrolling="no" style="display:block;width:100%;max-width:480px;height:150px;margin:0 auto;border:0;background:#fff;"></iframe>
+                            </section>
                             <header class="post-header">
                                 ${featuredImage ? `<img src="${featuredImage}" alt="${article.title}" class="featured-image">` : ''}
                                 <h1 class="post-title">${article.title}</h1>
@@ -134,13 +139,6 @@
                                     </a>
                                 </div>
                             </div>
-                            <footer class="post-footer">
-                                <div class="newsletter-signup">
-                                    <h3>Want articles like this in your inbox?</h3>
-                                    <p>Subscribe to get my latest writing on Innovation, AI, Faith, and Coffee.</p>
-                                    <iframe src="https://www.donbarger.com/embed" title="Subscribe to Innovation Substack" scrolling="no" loading="lazy" style="display:block;width:100%;max-width:480px;height:150px;margin:1rem auto 0;border:0;background:#fff;border-radius:8px;"></iframe>
-                                </div>
-                            </footer>
                         `;
                     } else {
                         throw new Error('Article not found');
