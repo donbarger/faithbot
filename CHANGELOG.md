@@ -7,6 +7,12 @@ day the change went live — pushing to `main` publishes immediately.
 
 ---
 
+## 2026-11-08
+
+### Changed
+- **Claude Code Training card** now shows the Claude logo (`docs/claude-code-logo.svg`, the
+  official Claude symbol) instead of the 🧠 emoji.
+
 ## 2026-11-06
 
 ### Added
