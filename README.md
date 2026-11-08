@@ -35,7 +35,7 @@ That shows up in the file count: of 68 HTML files, **16 are real pages** and
 | Destination | Stubs |
 |---|---|
 | `https://www.engagelostness.com/` | 28 |
-| `https://faithbot.donbarger.com/` | 23 |
+| `https://chat.faithbot.tools/` | 23 |
 | `recursos-en-espanol.html` | 1 |
 
 A stub is not dead weight. Each one exists so that an old link, a bookmark, or a
@@ -63,7 +63,7 @@ the site instead of bouncing through the redirect again.
 
 | Tool | Runs at | Language handling |
 |---|---|---|
-| FaithBot v3 | `faithbot.donbarger.com` | `?lang=<code>`, 50+ languages |
+| FaithBot v3 | `chat.faithbot.tools` | `?lang=<code>`, 50+ languages |
 | Engage Lostness | `www.engagelostness.com` | `?lang=es` for Spanish |
 | Bible Pics | `biblepics.faithbot.tools` | — |
 | Don's Blog | `blog.html` here, via Substack RSS | — |
@@ -99,7 +99,7 @@ One shared bar on every real page: **FaithBot · Engage Lostness · Bible Pics �
 two, which had to be edited in tandem; don't reintroduce a second one.
 
 Its three cards link straight out, no stub hop:
-Bot de Fe → `faithbot.donbarger.com/?lang=es`,
+Bot de Fe → `chat.faithbot.tools/?lang=es`,
 **Alcanza a los Perdidos** → `www.engagelostness.com/?lang=es`,
 Copiloto de Pastor → `spanish-copiloto-de-pastor.html`.
 

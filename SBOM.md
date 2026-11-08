@@ -41,7 +41,7 @@ Outbound only — these receive visitors, not data from this site.
 
 | Destination | From |
 |---|---|
-| `faithbot.donbarger.com` | nav, 23 redirect stubs |
+| `chat.faithbot.tools` | nav, 23 redirect stubs |
 | `www.engagelostness.com` | nav, 28 redirect stubs |
 | `biblepics.faithbot.tools` | nav, home card |
 | `donbarger.substack.com` | blog articles |
