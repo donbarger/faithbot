@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0a2748"/>
+  <!-- The two speech bubbles from the wordmark: the conversation this tool is about. -->
+  <path d="M12 18h22a5 5 0 0 1 5 5v11a5 5 0 0 1-5 5H22l-7 6v-6h-3a5 5 0 0 1-5-5V23a5 5 0 0 1 5-5z" fill="#e8760c"/>
+  <path d="M34 26h18a5 5 0 0 1 5 5v11a5 5 0 0 1-5 5h-3v6l-7-6H34a5 5 0 0 1-5-5V31a5 5 0 0 1 5-5z" fill="#f7f7f5"/>
+  <path d="M42 31v12M37.5 35.5h9" stroke="#0a2748" stroke-width="3.4" stroke-linecap="round"/>
+</svg>

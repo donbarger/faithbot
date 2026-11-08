@@ -274,7 +274,25 @@
 
         .tool-icon {
             font-size: 48px;
+            height: 48px;
+            line-height: 48px;
             margin-bottom: 20px;
+        }
+
+        .tool-icon img {
+            display: block;
+            margin: 0 auto;
+            object-fit: contain;
+        }
+
+        .tool-icon-pair {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .tool-icon-pair img {
+            margin: 0;
         }
 
         .tool-card h3 {
@@ -500,7 +518,7 @@
         <div class="tools-grid">
             <!-- FaithBot -->
             <div class="tool-card">
-                <div class="tool-icon">💬</div>
+                <div class="tool-icon"><img src="faithbot-logo.svg" alt="FaithBot" width="48" height="48"></div>
                 <h3>FaithBot <span style="font-size:0.7rem;font-weight:600;color:#fff;background:#1B365D;padding:2px 8px;border-radius:999px;vertical-align:middle;letter-spacing:0.03em;">VERSION 3</span></h3>
                 <p>AI-powered Biblical assistant for exploring Scripture, answering faith questions, and engaging in gospel conversations. Available in 50+ languages.</p>
                 <a href="faithbot.html" class="tool-link">Try FaithBot</a>
@@ -508,7 +526,7 @@
 
             <!-- Engage Lostness -->
             <div class="tool-card">
-                <div class="tool-icon">🌍</div>
+                <div class="tool-icon"><img src="engage-lostness-logo.svg" alt="Engage Lostness" width="48" height="48"></div>
                 <h3>Engage Lostness</h3>
                 <p>Learn to engage 17 different worldviews with the gospel. Understand beliefs, practice conversations, and share Christ contextually.</p>
                 <a href="https://www.engagelostness.com" class="tool-link" target="_blank" rel="noopener noreferrer">Start Learning</a>
@@ -516,7 +534,7 @@
 
             <!-- BiblePics -->
             <div class="tool-card">
-                <div class="tool-icon">🖼️</div>
+                <div class="tool-icon"><img src="biblepics-logo.svg" alt="BiblePics" width="48" height="48"></div>
                 <h3>BiblePics</h3>
                 <p>Generate AI-powered images for Bible stories and ministry. Bring Scripture to life visually for teaching and evangelism.</p>
                 <a href="https://biblepics.donbarger.com" class="tool-link" target="_blank" rel="noopener noreferrer">Create Images</a>
@@ -540,7 +558,7 @@
 
             <!-- Christian Games -->
             <div class="tool-card">
-                <div class="tool-icon">🎮</div>
+                <div class="tool-icon tool-icon-pair"><img src="great-pursuit-logo.svg" alt="The Great Pursuit" width="48" height="48"><img src="told-logo.svg" alt="TOLD" width="48" height="48"></div>
                 <h3>Christian Games</h3>
                 <p>Engage with Scripture and missions through interactive games designed to deepen faith and inspire gospel conversations.</p>
                 <div class="tool-links-group">
@@ -551,7 +569,7 @@
 
             <!-- Bible Coding -->
             <div class="tool-card">
-                <div class="tool-icon">🤟</div>
+                <div class="tool-icon"><img src="bible-coding-logo.svg" alt="Bible Coding" width="48" height="48"></div>
                 <h3>Bible Coding</h3>
                 <p>A tool for Sign Language Bible Translation. AI color-codes Scripture, tagging people, places, and actions and showing who every pronoun refers to.</p>
                 <a href="https://biblecoding.net" class="tool-link" target="_blank" rel="noopener noreferrer">Start Coding</a>
@@ -559,7 +577,7 @@
 
             <!-- Check My Story -->
             <div class="tool-card">
-                <div class="tool-icon">🎙️</div>
+                <div class="tool-icon"><img src="check-my-story-logo.svg" alt="Check My Story" width="48" height="48"></div>
                 <h3>Check My Story</h3>
                 <p>For oral Bible storytellers. Upload a recording of your telling and get back a workbook that sets it beside the passage verse by verse, flags every departure, and leaves the reasons for you to write.</p>
                 <a href="https://checkmystory.faithbot.tools" class="tool-link" target="_blank" rel="noopener noreferrer">Check a Story</a>
@@ -567,7 +585,7 @@
 
             <!-- PhD Workspace -->
             <div class="tool-card">
-                <div class="tool-icon">🎓</div>
+                <div class="tool-icon"><img src="phd-workspace-logo.png" alt="PhD Workspace" width="48" height="48"></div>
                 <h3>PhD Workspace</h3>
                 <p>Helps PhD students track their research: daily check-ins, research sprints, time logged against the thesis, and a library you can ask questions of.</p>
                 <a href="https://phdworkspace.com" class="tool-link" target="_blank" rel="noopener noreferrer">Open Workspace</a>
