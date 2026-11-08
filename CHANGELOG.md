@@ -14,6 +14,7 @@ day the change went live — pushing to `main` publishes immediately.
   under the header (type an email, done, no trip to Substack). The Innovation Substack card on
   the home page has a **Subscribe** button that jumps to it (`blog.html#subscribe`), and article
   pages show the same form in place of the old link button.
+- **Article pages put the sign-up form at the top**, above the article, instead of at the end.
 
 ### Fixed
 - **`blog.html` scrolls like a normal page again.** The article area was locked to the window
