@@ -12,6 +12,8 @@ day the change went live — pushing to `main` publishes immediately.
 ### Changed
 - **Claude Code Training card** now shows the Claude logo (`docs/claude-code-logo.svg`, the
   official Claude symbol) instead of the 🧠 emoji.
+- **Copilot Training card** now shows the Microsoft Copilot logo (`docs/copilot-logo.svg`, the
+  current full-color mark) instead of the 🚀 emoji.
 
 ## 2026-11-06
 
