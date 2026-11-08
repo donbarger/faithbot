@@ -10,6 +10,15 @@ day the change went live — pushing to `main` publishes immediately.
 ## 2026-11-08
 
 ### Changed
+- **Subscribing is now easy to find.** `blog.html` opens with Substack's own sign-up form right
+  under the header (type an email, done, no trip to Substack). The Innovation Substack card on
+  the home page has a **Subscribe** button that jumps to it (`blog.html#subscribe`), and article
+  pages show the same form in place of the old link button.
+
+### Fixed
+- **`blog.html` scrolls like a normal page again.** The article area was locked to the window
+  height and scrolled inside itself, and sat under a 64px empty band. Both were left over from
+  the old fixed nav. The inner scroller also made the `#subscribe` jump overshoot past the form.
 - **Claude Code Training card** now shows the Claude logo (`docs/claude-code-logo.svg`, the
   official Claude symbol) instead of the 🧠 emoji.
 - **Copilot Training card** now shows the Microsoft Copilot logo (`docs/copilot-logo.svg`, the

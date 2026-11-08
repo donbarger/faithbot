@@ -27,8 +27,30 @@
             --text-secondary: #555555;
             --text-light: #888888;
         }
-        .blog-container {
-            margin-top: 64px;
+        .subscribe-band {
+            background: #fff;
+            border-bottom: 1px solid #e3e3e3;
+            padding: 1.5rem 1rem 0.5rem;
+            text-align: center;
+            scroll-margin-top: 80px;
+        }
+        .subscribe-band h2 {
+            color: #1B365D;
+            font-size: 1.35rem;
+            margin: 0 0 0.25rem;
+        }
+        .subscribe-band p {
+            color: #555;
+            margin: 0;
+        }
+        .subscribe-band iframe {
+            display: block;
+            width: 100%;
+            max-width: 480px;
+            height: 150px;
+            margin: 0 auto;
+            border: 0;
+            background: #fff;
         }
     </style>
     <link rel="stylesheet" href="site-nav.css">
@@ -58,6 +80,12 @@
             <h1>Innovation Substack</h1>
             <p>Thoughts on Innovation, AI, Faith, and Coffee</p>
         </div>
+
+        <section class="subscribe-band" id="subscribe">
+            <h2>Get new articles in your inbox</h2>
+            <p>Free. Enter your email and you're subscribed.</p>
+            <iframe src="https://www.donbarger.com/embed" title="Subscribe to Innovation Substack" scrolling="no" loading="lazy"></iframe>
+        </section>
 
         <div class="blog-content" id="blog-articles">
             <div class="loading">Loading articles...</div>
