@@ -43,7 +43,7 @@ Outbound only — these receive visitors, not data from this site.
 |---|---|
 | `faithbot.donbarger.com` | nav, 23 redirect stubs |
 | `www.engagelostness.com` | nav, 28 redirect stubs |
-| `biblepics.donbarger.com` | nav, home card |
+| `biblepics.faithbot.tools` | nav, home card |
 | `donbarger.substack.com` | blog articles |
 | `imb.org/give` | home page support CTA |
 | `thegreatpursuit.faith`, `told.thegreatpursuit.faith` | home cards |
