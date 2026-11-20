@@ -15,6 +15,10 @@ day the change went live — pushing to `main` publishes immediately.
   card links straight there in a new tab, like Bot de Fe. `spanish-copiloto-de-pastor.html` no longer
   iframes the Chipp bot. It is a redirect stub, so old links and QR codes still land in the right
   place. The card and the home page now use the app's name, "Copiloto del Pastor".
+- **Recursos en Español cards show each app's own icon** instead of an emoji, matching the home
+  page: Bot de Fe uses the FaithBot mark (`faithbot-logo.svg`), Alcanza a los Perdidos the Engage
+  Lostness mark (`engage-lostness-logo.svg`), and Copiloto del Pastor a new `copiloto-logo.svg`: the
+  FaithBot bubble and cross on a deeper green, with a gold open-Bible badge.
 
 ## 2026-11-08
 

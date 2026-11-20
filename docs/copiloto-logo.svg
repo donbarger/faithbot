@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Copiloto del Pastor: the FaithBot bubble and cross (same family, same green), with an open
+       Bible badge for the pastor's study and preaching. Deeper green tile so it reads as its own app
+       next to FaithBot. -->
+  <rect width="64" height="64" rx="14" fill="#245c40"/>
+  <path d="M12 14h30a4 4 0 0 1 4 4v15a4 4 0 0 1-4 4H26l-8 7v-7h-6a4 4 0 0 1-4-4V18a4 4 0 0 1 4-4z" fill="#fff"/>
+  <path d="M27 18.5v11M21.5 24h11" stroke="#245c40" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="46" cy="46" r="14" fill="#e3b23c" stroke="#245c40" stroke-width="2.5"/>
+  <path d="M46 41.5c-2.6-1.6-5.4-2-8-1.4v11c2.6-.6 5.4-.2 8 1.4 2.6-1.6 5.4-2 8-1.4v-11c-2.6-.6-5.4-.2-8 1.4z" fill="#fff" stroke="#245c40" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M46 41.5v11" stroke="#245c40" stroke-width="1.6"/>
+</svg>
