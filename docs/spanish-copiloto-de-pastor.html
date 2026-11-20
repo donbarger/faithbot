@@ -2,63 +2,41 @@
 <html lang="es">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  
-  gtag('config', 'G-S8PE79TKZ1');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S8PE79TKZ1');
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copiloto de Pastor - Don Barger</title>
-    <link rel="stylesheet" href="tool-styles.css">
-    <link rel="stylesheet" href="spanish-nav-override.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="site-nav.css">
+    <title>Copiloto del Pastor</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Copiloto del Pastor now lives at its own address, https://copiloto.faithbot.tools/, on the
+         FaithBot engine (2026-11-20). That replaces the Chipp bot this page used to iframe. It is opened
+         directly rather than embedded, because it requires Google sign-in, and sign-in (like
+         Turnstile) only works first-party. Same redirect pattern as the other retired pages: kept as a
+         stub so existing links, bookmarks, and printed QR codes keep working, and location.replace
+         keeps it out of history so Back returns to the site, not a redirect loop. -->
+    <link rel="canonical" href="https://copiloto.faithbot.tools/">
+    <meta http-equiv="refresh" content="0; url=https://copiloto.faithbot.tools/">
+    <script>window.location.replace('https://copiloto.faithbot.tools/');</script>
+
+    <style>
+        html, body { height: 100%; margin: 0; }
+        body {
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1B365D; background: #f7f9fc; text-align: center; padding: 2rem;
+        }
+        a { color: #1B365D; font-weight: 600; }
+    </style>
 </head>
 <body>
-    <nav class="site-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="imb-innovation-logo-navy.png" alt="IMB Innovation" class="logo-img">
-            </a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div class="nav-links">
-                <a href="faithbot.html" class="nav-link">FaithBot</a>
-                <a href="https://www.engagelostness.com" class="nav-link" target="_blank" rel="noopener noreferrer">Engage Lostness</a>
-                <a href="https://biblepics.faithbot.tools" class="nav-link" target="_blank" rel="noopener noreferrer">Bible Pics</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-            </div>
-        </div>
-    </nav>
-    <div class="tool-container">
-        <iframe src="https://copiloto-de-pastor-sse4.on.chipp.ai" height="800px" width="100%" frameborder="0" allow="microphone; clipboard-write; screen-wake-lock" title="Copiloto de Pastor"></iframe>
-    </div>
-    
-    <script>
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-        
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
+    <p>Abriendo el Copiloto del Pastor… Si no carga,
+       <a href="https://copiloto.faithbot.tools/">continúe al Copiloto del Pastor</a>.</p>
 </body>
 </html>

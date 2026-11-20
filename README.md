@@ -72,9 +72,9 @@ the site instead of bouncing through the redirect again.
 language and one bot per worldview. The engine now handles both behind a single
 picker, so `other-languages.html` and the whole `engage-*` family are stubs.
 
-**Chipp is nearly gone.** Four pages still embed a `chipp.ai` bot:
-`nxtgen-faithbot.html`, `spanish-copiloto-de-pastor.html`,
-`spanish-alcanzar-a-las-naciones.html`, `spanish-ilustraciones-biblicas.html`.
+**Chipp is nearly gone.** Two pages still embed a `chipp.ai` bot:
+`nxtgen-faithbot.html` and `spanish-alcanzar-a-las-naciones.html`.
+(`spanish-copiloto-de-pastor.html` became a redirect stub to `copiloto.faithbot.tools` on 2026-11-20.)
 
 ---
 
@@ -101,7 +101,7 @@ two, which had to be edited in tandem; don't reintroduce a second one.
 Its three cards link straight out, no stub hop:
 Bot de Fe → `chat.faithbot.tools/?lang=es`,
 **Alcanza a los Perdidos** → `www.engagelostness.com/?lang=es`,
-Copiloto de Pastor → `spanish-copiloto-de-pastor.html`.
+**Copiloto del Pastor** → `copiloto.faithbot.tools` (FaithBot engine, Google sign-in required).
 
 "Alcanza a los Perdidos" is a name coined here — Engage Lostness has no Spanish
 name of its own and brands in English even under a Spanish UI.
