@@ -30,7 +30,7 @@ ASSET_CEILING = 150 * 1024
 # 308-redirect to /w/chat/<Bot>-<id>/. A check that greps only chipp.ai misses the vanity ones —
 # youversion.html embeds youversionplan.faithbot.io and went uncounted.
 CHIPP_HOSTS = r'(?:chipp\.ai|[a-z0-9-]+\.faithbot\.io)'
-CHIPP_BUDGET = 5
+CHIPP_BUDGET = 4
 EXPECTED_NAV = ['FaithBot', 'Engage Lostness', 'Bible Pics', 'Blog']
 NO_NAV = {'old-home.html'}          # dead archive, queued for deletion in #5
 FONT_EXEMPT = {'old-home.html'}     # ditto — sole user of styles.css and its font-weight: 800

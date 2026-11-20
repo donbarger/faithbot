@@ -2,63 +2,40 @@
 <html lang="es">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  
-  gtag('config', 'G-S8PE79TKZ1');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8PE79TKZ1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S8PE79TKZ1');
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ilustraciones bíblicas - Don Barger</title>
-    <link rel="stylesheet" href="tool-styles.css">
-    <link rel="stylesheet" href="spanish-nav-override.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="site-nav.css">
+    <title>Ilustraciones Bíblicas</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Ilustraciones Bíblicas was a Chipp bot (ilustracionesbblicas-71429.chipp.ai), which died
+         when Chipp retired its legacy hosts in November 2026 (issue #34). Bible Pics is its natural
+         home, so this page now redirects there. Bible Pics takes no ?lang= parameter, so it opens
+         on its default page. Kept as a redirect so old links, bookmarks and printed QR codes still
+         land somewhere useful. location.replace keeps it out of history so Back works. -->
+    <link rel="canonical" href="https://biblepics.faithbot.tools/">
+    <meta http-equiv="refresh" content="0; url=https://biblepics.faithbot.tools/">
+    <script>window.location.replace('https://biblepics.faithbot.tools/');</script>
+
+    <style>
+        html, body { height: 100%; margin: 0; }
+        body {
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1B365D; background: #f7f9fc; text-align: center; padding: 2rem;
+        }
+        a { color: #1B365D; font-weight: 600; }
+    </style>
 </head>
 <body>
-    <nav class="site-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="imb-innovation-logo-navy.png" alt="IMB Innovation" class="logo-img">
-            </a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div class="nav-links">
-                <a href="faithbot.html" class="nav-link">FaithBot</a>
-                <a href="https://www.engagelostness.com" class="nav-link" target="_blank" rel="noopener noreferrer">Engage Lostness</a>
-                <a href="https://biblepics.faithbot.tools" class="nav-link" target="_blank" rel="noopener noreferrer">Bible Pics</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-            </div>
-        </div>
-    </nav>
-    <div class="tool-container">
-        <iframe src="https://ilustracionesbblicas-71429.chipp.ai" height="800px" width="100%" frameborder="0" title="Ilustraciones bíblicas" allow="microphone; camera"></iframe>
-    </div>
-    
-    <script>
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-        
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
+    <p>Abriendo Bible Pics… Si no carga,
+       <a href="https://biblepics.faithbot.tools/">continúa a Bible Pics</a>.</p>
 </body>
 </html>
