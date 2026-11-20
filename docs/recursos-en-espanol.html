@@ -174,6 +174,16 @@
             .tools-grid { grid-template-columns: 1fr; }
             .tools-grid-wrapper { padding: 32px 16px 48px; }
         }
+        /* "Colabore con nosotros" — the home page's support section (index.html .support-section), in Spanish. */
+        .support-section { background: #f5f5f5; text-align: center; padding: 56px 20px; }
+        .support-section h2 { font-size: 32px; font-weight: 700; margin: 0 0 18px; color: #1B365D; }
+        .support-section p { font-size: 18px; line-height: 1.6; color: #333; max-width: 700px; margin: 0 auto 28px; }
+        .support-button { display: inline-block; background: #1B365D; color: white; padding: 16px 40px; border-radius: 8px;
+            text-decoration: none; font-weight: 600; font-size: 18px; transition: all 0.2s; }
+        .support-button:hover { background: #142742; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(27, 54, 93, 0.3); }
+        .support-button:focus { outline: 3px solid #1B365D; outline-offset: 3px; }
+        .support-button:active { transform: translateY(0); }
+        @media (max-width: 600px) { .support-section h2 { font-size: 26px; } .support-section p { font-size: 16px; } }
     </style>
     <link rel="stylesheet" href="site-nav.css">
 </head>
@@ -228,6 +238,15 @@
 
         </div>
     </div>
+
+    <!-- Support — same giving page as the home page's "Support This Ministry" (Don, 2026-11-20). -->
+    <section class="support-section">
+        <h2>Colabore con nosotros</h2>
+        <p>
+            Ofrecemos estas herramientas sin costo gracias a la generosidad de donantes que creen en esta misión. Si le han sido útiles, ¿consideraría apoyarnos con una ofrenda mensual? Su donación recurrente ayuda a cubrir los costos de alojamiento y de los servicios de IA, a llegar a nuevos idiomas y a crear nuevas herramientas para misioneros, pastores y creyentes en todo el mundo.
+        </p>
+        <a href="https://www.imb.org/give/project/innovation-ministry/" target="_blank" rel="noopener noreferrer" class="support-button">Apoye este ministerio</a>
+    </section>
 
     <footer>
         <div class="footer-links">

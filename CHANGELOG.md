@@ -9,6 +9,11 @@ day the change went live — pushing to `main` publishes immediately.
 
 ## 2026-11-20
 
+### Added
+- **"Colabore con nosotros" on the Spanish hub** (`recursos-en-espanol.html`): the home page's support
+  section, in Spanish, with an **Apoye este ministerio** button to the same IMB giving page. No sticky
+  button; the page fits on one screen.
+
 ### Changed
 - **Copiloto del Pastor moved off Chipp.** It now runs on the FaithBot engine at
   https://copiloto.faithbot.tools/ (Spanish, English, Portuguese; Google sign-in). The Spanish hub
