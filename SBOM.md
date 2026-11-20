@@ -26,7 +26,7 @@ Every one of these is a live third-party request made from the visitor's browser
 |---|---|---|---|
 | `googletagmanager.com` | Google Analytics 4 (`G-S8PE79TKZ1`) | every page, stubs included | traffic measurement |
 | `fonts.googleapis.com` / `fonts.gstatic.com` | Inter (and Merriweather on one page) | most pages | typography |
-| `chipp.ai` | embedded chatbots | 4 pages | legacy tools not yet migrated |
+| `chipp.ai` | embedded chatbots | 2 pages (`nxtgen-faithbot.html`, `spanish-alcanzar-a-las-naciones.html`) | legacy tools not yet migrated |
 | `rss2json.com` | Substack feed → JSON | `blog.html`, `post.html` | renders Don's blog list |
 
 **Privacy note:** GA and Google Fonts both mean every page view is visible to

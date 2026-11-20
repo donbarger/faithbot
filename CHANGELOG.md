@@ -7,6 +7,15 @@ day the change went live — pushing to `main` publishes immediately.
 
 ---
 
+## 2026-11-20
+
+### Changed
+- **Copiloto del Pastor moved off Chipp.** It now runs on the FaithBot engine at
+  https://copiloto.faithbot.tools/ (Spanish, English, Portuguese; Google sign-in). The Spanish hub
+  card links straight there in a new tab, like Bot de Fe. `spanish-copiloto-de-pastor.html` no longer
+  iframes the Chipp bot. It is a redirect stub, so old links and QR codes still land in the right
+  place. The card and the home page now use the app's name, "Copiloto del Pastor".
+
 ## 2026-11-08
 
 ### Changed
